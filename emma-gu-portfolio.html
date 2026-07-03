@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma Gu — Product Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF9;--bg2:#F4F3F1;--bg3:#ECEAE7;
+  --text-primary:#18181A;--text-secondary:#6B6965;--text-muted:#AAA8A3;
+  --accent:#7B6FE8;
+  --accent-dim:rgba(123,111,232,0.08);--accent-dim2:rgba(123,111,232,0.04);
+  --border:rgba(0,0,0,0.08);--border-hover:rgba(123,111,232,0.35);
+  --rule:rgba(0,0,0,0.07);--tag-bg:rgba(0,0,0,0.04);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text-primary);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.page-home-bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,#f0eeff 0%,#faf9ff 35%,#eef5ff 65%,#fff5f0 100%);pointer-events:none}
+.page{display:none;min-height:100vh}.page.active{display:block}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:transparent;border-bottom:1px solid transparent;transition:background 0.3s ease,border-color 0.3s ease,backdrop-filter 0.3s ease}
+nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.4)}
+.nav-logo{font-size:17px;font-weight:600;letter-spacing:0.01em;color:var(--text-primary);text-decoration:none;cursor:pointer}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--text-primary)}
+.container{max-width:1100px;margin:0 auto;padding:0 4rem}
+
+/* ── Hero ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 6rem;position:relative}
+.hero-inner{width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;background:var(--accent-dim);padding:0.4rem 0.9rem;border-radius:100px}
+.hero-eyebrow::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero-name{font-family:'DM Sans',sans-serif;font-size:clamp(42px,6vw,76px);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:1.75rem}
+.hero-tagline{font-size:clamp(16px,1.6vw,19px);font-weight:400;color:var(--text-primary);line-height:1.75;margin-bottom:2.5rem}
+.tagline-logo{display:inline-flex;align-items:center;gap:5px;vertical-align:middle;position:relative;top:-1px}
+.tagline-name{color:var(--text-primary);font-weight:500}
+.hero-links{display:flex;gap:0.75rem;flex-wrap:wrap}
+.link-pill{display:inline-flex;align-items:center;gap:0.4rem;font-size:13px;font-weight:500;color:var(--text-secondary);text-decoration:none;border:1px solid var(--border);padding:0.55rem 1.1rem;border-radius:100px;transition:all 0.2s;background:white}
+.link-pill:hover{color:var(--accent);border-color:var(--border-hover);background:var(--accent-dim2)}
+.link-pill svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+/* ── Work section ── */
+.work-section{padding:5rem 0 8rem}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.section-title{font-family:'DM Sans',sans-serif;font-size:clamp(22px,2.5vw,30px);font-weight:600;color:var(--text-primary);line-height:1.2;margin-bottom:3rem;letter-spacing:-0.02em;opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.section-title.card-visible{opacity:1;transform:translateY(0)}
+.work-grid{display:flex;flex-direction:column;gap:32px}
+.work-card{opacity:0;transform:translateY(70px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.25s,box-shadow 0.25s}
+.work-card.card-visible{opacity:1;transform:translateY(0)}
+.work-card.card-visible:hover{transform:translateY(-2px)}
+.work-card{
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(255,255,255,0.85);
+  border-radius:20px;
+  overflow:hidden;
+  cursor:pointer;
+  backdrop-filter:blur(24px) saturate(1.6);
+  -webkit-backdrop-filter:blur(24px) saturate(1.6);
+  box-shadow:0 2px 0 0 rgba(255,255,255,0.9) inset,0 8px 32px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
+}
+.work-card:hover{
+  border-color:rgba(255,255,255,1);
+  box-shadow:0 2px 0 0 rgba(255,255,255,0.9) inset,0 16px 48px rgba(0,0,0,0.1),0 2px 4px rgba(0,0,0,0.05);
+  transform:translateY(-2px);
+}
+.card-layout{display:grid;grid-template-columns:1fr 1fr;min-height:300px}
+.card-content{padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between}
+.card-num{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.75rem}
+.card-title{font-family:'DM Sans',sans-serif;font-size:clamp(22px,2.5vw,32px);font-weight:700;color:var(--text-primary);line-height:1.1;letter-spacing:-0.025em;margin-bottom:0.75rem}
+.card-blurb{font-size:14px;font-weight:400;color:var(--text-secondary);line-height:1.7}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:2rem}
+.card-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-muted);background:var(--tag-bg);border:1px solid var(--border);padding:0.25rem 0.6rem;border-radius:4px}
+.card-cta{display:flex;align-items:center;gap:0.35rem;font-size:12px;font-weight:600;color:var(--accent);opacity:0;transform:translateX(-6px);transition:opacity 0.2s,transform 0.2s;white-space:nowrap}
+.card-cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.work-card:hover .card-cta{opacity:1;transform:translateX(0)}
+.card-image{overflow:hidden;position:relative;background:transparent;display:flex;align-items:flex-end;justify-content:center;padding:2rem 2rem 0}
+.browser-frame{width:100%;border-radius:10px 10px 0 0;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.12);transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+.work-card:hover .browser-frame{transform:translateY(-4px)}
+.browser-frame img{width:100%;display:block;height:auto}
+
+.home-footer{border-top:1px solid var(--rule);padding:2.5rem 0;display:flex;align-items:center;justify-content:space-between}
+.footer-left{font-size:12px;color:var(--text-muted)}
+.footer-about-btn{font-size:13px;font-weight:500;color:var(--text-secondary);display:flex;align-items:center;gap:0.4rem;border:1px solid var(--border);padding:0.5rem 1rem;border-radius:100px;cursor:pointer;transition:all 0.2s;background:white}
+.footer-about-btn:hover{color:var(--accent);border-color:var(--border-hover)}
+.footer-about-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+.about-page{padding:10rem 0 8rem}
+.about-hero{margin-bottom:4rem}
+.about-hero-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.about-hero-title{font-family:'DM Sans',sans-serif;font-size:clamp(34px,4.5vw,48px);font-weight:700;color:var(--text-primary);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.about-hero-title em{font-style:italic;color:var(--accent);font-family:'DM Serif Display',serif;font-weight:400}
+.about-hero-title em{font-style:italic;color:var(--accent);font-family:'DM Serif Display',serif;font-weight:400}
+.about-photo{flex-shrink:0;width:340px;border-radius:20px;overflow:hidden;background:var(--accent-dim);align-self:stretch}
+.about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.about-simple{display:flex;gap:4rem;align-items:stretch}
+.about-text p{font-size:15px;font-weight:400;color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem}
+.about-text p strong{color:var(--text-primary);font-weight:600}
+.about-links{display:flex;gap:0.75rem;margin-top:2.5rem;flex-wrap:wrap}
+.sidebar-block{margin-bottom:2.75rem}
+.sidebar-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.exp-item{padding:0.85rem 0;border-top:1px solid var(--rule)}
+.exp-item:first-of-type{border-top:none;padding-top:0}
+.exp-role{font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:0.2rem}
+.exp-co{font-size:13px;color:var(--text-secondary);margin-bottom:0.15rem}
+.exp-year{font-size:11px;color:var(--text-muted)}
+.skills-list{display:flex;flex-wrap:wrap;gap:0.45rem}
+.skill-chip{font-size:11px;color:var(--text-secondary);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:100px;background:white}
+.about-cta{margin-top:5rem;padding-top:4rem;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between}
+.cta-text{font-family:'DM Sans',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--text-primary);line-height:1.2;letter-spacing:-0.02em}
+.cta-text em{font-style:italic;color:var(--accent);font-family:'DM Serif Display',serif;font-weight:400}
+.cta-email{font-size:14px;font-weight:500;color:var(--accent);text-decoration:none;border:1px solid var(--border-hover);padding:0.75rem 1.5rem;border-radius:100px;transition:background 0.2s;white-space:nowrap}
+.cta-email:hover{background:var(--accent-dim)}
+
+/* Case Study */
+.cs-page{padding:8rem 0 6rem}
+.cs-back{display:inline-flex;align-items:center;gap:0.5rem;font-size:13px;color:var(--text-muted);cursor:pointer;margin-bottom:4rem;transition:color 0.2s;background:none;border:none;padding:0}
+.cs-back:hover{color:var(--accent)}
+.cs-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+.cs-hero{margin-bottom:5rem}
+.cs-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.cs-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--accent)}
+.cs-title{font-family:'DM Sans',sans-serif;font-size:clamp(40px,6vw,80px);font-weight:800;line-height:0.97;letter-spacing:-0.035em;color:var(--text-primary);margin-bottom:2rem}
+.cs-meta{display:flex;gap:3rem;flex-wrap:wrap}
+.cs-meta-item{display:flex;flex-direction:column;gap:0.25rem}
+.cs-meta-label{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
+.cs-meta-value{font-size:14px;color:var(--text-secondary)}
+.cs-rule{border:none;border-top:1px solid var(--rule);margin:4rem 0}
+.cs-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:5rem}
+.cs-stat{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem}
+.cs-stat-num{font-family:'DM Sans',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:800;color:var(--accent);line-height:1;margin-bottom:0.5rem;letter-spacing:-0.03em}
+.cs-stat-label{font-size:12px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem}
+.cs-stat-desc{font-size:13px;font-weight:400;color:var(--text-secondary);line-height:1.6}
+.cs-section{margin-bottom:5rem}
+.cs-section-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.cs-section-title{font-family:'DM Sans',sans-serif;font-size:clamp(22px,2.8vw,34px);font-weight:700;color:var(--text-primary);line-height:1.1;letter-spacing:-0.025em;margin-bottom:1.5rem}
+.cs-body{font-size:15px;font-weight:400;color:var(--text-secondary);line-height:1.85;max-width:680px}
+.cs-body+.cs-body{margin-top:1rem}
+.cs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.cs-three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cs-pillar{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem}
+.cs-pillar-num{font-size:10px;font-weight:500;color:var(--accent);letter-spacing:0.12em;margin-bottom:1rem}
+.cs-pillar-title{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;letter-spacing:-0.01em}
+.cs-pillar-body{font-size:13px;font-weight:400;color:var(--text-secondary);line-height:1.7}
+.cs-image{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--border);margin:2rem 0}
+.cs-image img{width:100%;display:block}
+.cs-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.cs-table th{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);padding:0.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+.cs-table td{font-size:13px;color:var(--text-secondary);padding:0.75rem 1rem;border-bottom:1px solid var(--rule);vertical-align:top}
+.cs-table tr:last-child td{border-bottom:none}
+.cs-table td:first-child{color:var(--text-primary);font-weight:600}
+.cs-check{color:var(--accent)}
+.cs-cross{color:var(--text-muted)}
+.cs-highlight{background:var(--accent-dim);border:1px solid rgba(139,111,62,0.15);border-radius:12px;padding:2rem;margin:2rem 0}
+.cs-highlight-text{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,24px);color:var(--text-primary);line-height:1.4;font-style:italic}
+.cs-results{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.cs-result-card{background:white;border:1px solid var(--border);border-radius:12px;padding:2rem}
+.cs-result-num{font-family:'DM Sans',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--accent);line-height:1;margin-bottom:0.5rem;letter-spacing:-0.03em}
+.cs-result-label{font-size:13px;color:var(--text-secondary);font-weight:400;line-height:1.6}
+
+@media(max-width:768px){
+  .cs-overview,.cs-three-col,.cs-results{grid-template-columns:1fr}
+  .cs-two-col{grid-template-columns:1fr;gap:2rem}
+}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.container{padding:0 1.5rem}
+  .card-layout{grid-template-columns:1fr}
+  .card-image{height:220px;border-left:none;border-top:0.5px solid var(--border)}
+  .about-simple{flex-direction:column;gap:2rem}
+  .about-cta,.home-footer{flex-direction:column;gap:1.5rem;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo" onclick="showPage('home')">Emma Gu<span style="color:#BBAFFF">.</span></span>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('home');setTimeout(function(){document.getElementById('work').scrollIntoView({behavior:'smooth'})},50)" id="nav-work">Work</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+  </ul>
+</nav>
+
+<div class="page-home-bg"></div>
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+          <h1 class="hero-name">Emma Gu</h1>
+          <p class="hero-tagline">
+            I've shaped how people advertise on
+            <span class="tagline-logo"><svg height="14" viewBox="0 0 287.56 191" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><defs><linearGradient id="mg1" x1="61" y1="117" x2="259" y2="127" gradientUnits="userSpaceOnUse"><stop stop-color="#0064e1" offset="0"/><stop stop-color="#0064e1" offset="0.4"/><stop stop-color="#0073ee" offset="0.83"/><stop stop-color="#0082fb" offset="1"/></linearGradient><linearGradient id="mg2" x1="45" y1="139" x2="45" y2="66" gradientUnits="userSpaceOnUse"><stop stop-color="#0082fb" offset="0"/><stop stop-color="#0064e0" offset="1"/></linearGradient></defs><path fill="#0081fb" d="m31.06,125.96c0,10.98 2.41,19.41 5.56,24.51 4.13,6.68 10.29,9.51 16.57,9.51 8.1,0 15.51-2.01 29.79-21.76 11.44-15.83 24.92-38.05 33.99-51.98l15.36-23.6c10.67-16.39 23.02-34.61 37.18-46.96 11.56-10.08 24.03-15.68 36.58-15.68 21.07,0 41.14,12.21 56.5,35.11 16.81,25.08 24.97,56.67 24.97,89.27 0,19.38-3.82,33.62-10.32,44.87-6.28,10.88-18.52,21.75-39.11,21.75l0-31.02c17.63,0 22.03-16.2 22.03-34.74 0-26.42-6.16-55.74-19.73-76.69-9.63-14.86-22.11-23.94-35.84-23.94-14.85,0-26.8,11.2-40.23,31.17-7.14,10.61-14.47,23.54-22.7,38.13l-9.06,16.05c-18.2,32.27-22.81,39.62-31.91,51.75-15.95,21.24-29.57,29.29-47.5,29.29-21.27,0-34.72-9.21-43.05-23.09-6.8-11.31-10.14-26.15-10.14-43.06z"/><path fill="url(#mg1)" d="m24.49,37.3c14.24-21.95 34.79-37.3 58.36-37.3 13.65,0 27.22,4.04 41.39,15.61 15.5,12.65 32.02,33.48 52.63,67.81l7.39,12.32c17.84,29.72 27.99,45.01 33.93,52.22 7.64,9.26 12.99,12.02 19.94,12.02 17.63,0 22.03-16.2 22.03-34.74l27.4-.86c0,19.38-3.82,33.62-10.32,44.87-6.28,10.88-18.52,21.75-39.11,21.75-12.8,0-24.14-2.78-36.68-14.61-9.64-9.08-20.91-25.21-29.58-39.71l-25.79-43.08c-12.94-21.62-24.81-37.74-31.68-45.04-7.39-7.85-16.89-17.33-32.05-17.33-12.27,0-22.69,8.61-31.41,21.78z"/><path fill="url(#mg2)" d="m82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78-12.33,18.61-19.88,46.33-19.88,72.95 0,10.98 2.41,19.41 5.56,24.51l-26.48,17.44c-6.8-11.31-10.14-26.15-10.14-43.06 0-30.75 8.44-62.8 24.49-87.55 14.24-21.95 34.79-37.3 58.36-37.3z"/></svg><span class="tagline-name">Meta,</span></span>
+            and sell on
+            <span class="tagline-logo"><svg height="14" viewBox="0 0 534 599.5" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><g transform="matrix(1.777778,0,0,1.777778,-32,-502.720032)"><path fill="#FDBB30" d="M168.167 396.322C176.065 396.322 182.548 392.198 183.418 386.883L191.218 298.652C191.218 289.933 181.033 282.78 168.167 282.78C155.324 282.78 145.14 289.933 145.14 298.652L152.939 386.883C153.784 392.198 160.292 396.322 168.167 396.322"/><path fill="#FDBB30" d="M120.474 423.87C124.424 417.063 124.125 409.338 119.952 405.935L47.445 355.088C39.918 350.717 28.592 355.982 22.183 367.086C15.775 378.214 16.892 390.61 24.419 394.956L104.675 432.315C109.718 434.177 116.525 430.626 120.498 423.771"/><path fill="#FDBB30" d="M215.858 423.795C219.807 430.651 226.639 434.203 231.631 432.34L311.938 394.981C319.489 390.61 320.607 378.214 314.173 367.11C307.765 355.982 296.414 350.741 288.911 355.113L216.405 405.96C212.256 409.363 211.958 417.088 215.883 423.894"/><path fill="#FDBB30" d="M168.167 506.511C176.065 506.511 182.548 510.585 183.418 515.875L191.218 604.081C191.218 612.824 181.033 619.979 168.167 619.979C155.324 619.979 145.14 612.824 145.14 604.081L152.939 515.875C153.784 510.585 160.292 506.511 168.167 506.511"/><path fill="#FDBB30" d="M215.858 478.964C219.807 472.108 226.639 468.556 231.631 470.419L311.938 507.753C319.489 512.149 320.607 524.545 314.173 535.673C307.765 546.776 296.414 552.042 288.911 547.671L216.405 496.874C212.256 493.445 211.958 485.745 215.883 478.915"/><path fill="#FDBB30" d="M120.474 478.915C124.424 485.77 124.125 493.445 119.952 496.874L47.445 547.695C39.918 552.042 28.592 546.776 22.183 535.698C15.775 524.57 16.892 512.149 24.419 507.753L104.675 470.443C109.718 468.531 116.525 472.108 120.498 478.939"/></g></svg><span class="tagline-name">Walmart</span></span>
+            — turning the most ambiguous problems into something that just flows.
+          </p>
+          <div class="hero-links">
+            <a href="mailto:yejigu@gmail.com" class="link-pill">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+              Get in touch
+            </a>
+            <a href="https://www.linkedin.com/in/emmadesigner/" class="link-pill" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="EmmaGu_ProductDesigner_.pdf" class="link-pill" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              Resume
+            </a>
+          </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="work-section" id="work">
+    <div class="container">
+      <h2 class="section-title">Selected Work</h2>
+      <div class="work-grid">
+
+        <div class="work-card" onclick="showPage('creatives')">
+          <div class="card-layout">
+            <div class="card-content">
+              <div>
+                <div class="card-num">01 — Meta</div>
+                <h3 class="card-title">Creatives</h3>
+                <p class="card-blurb">Restructured how Marketing messages are created in Ads Manager — introducing multi-text options and AI-powered text generation for advertisers.</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-tags"><span class="tag">IA restructure</span><span class="tag">text optimization</span></div>
+                <div class="card-cta">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+              </div>
+            </div>
+            <div class="card-image" style="min-height:320px">
+              <div class="browser-frame">
+                <img src="Creatives main image.png" alt="Meta Creatives">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('conversations')">
+          <div class="card-layout">
+            <div class="card-content">
+              <div>
+                <div class="card-num">02 — Meta</div>
+                <h3 class="card-title">Conversations</h3>
+                <p class="card-blurb">Created the Conversations experience for Marketing messages in Ads Manager, enabling businesses to manage and automate how they respond to customers at scale.</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-tags"><span class="tag">IA restructure</span><span class="tag">conversation strategy</span></div>
+                <div class="card-cta">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+              </div>
+            </div>
+            <div class="card-image" style="min-height:320px">
+              <div class="browser-frame">
+                <img src="Conversations main image.png" alt="Meta Conversations">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('walmart')">
+          <div class="card-layout">
+            <div class="card-content">
+              <div>
+                <div class="card-num">03 — Walmart</div>
+                <h3 class="card-title">Seller Center</h3>
+                <p class="card-blurb">Built the first Seller Center homepage for Walmart sellers and redesigned the onboarding and communications experience, driving a +12 NPS lift.</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-tags"><span class="tag">+12 NPS</span><span class="tag">content strategy</span></div>
+                <div class="card-cta">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+              </div>
+            </div>
+            <div class="card-image" style="min-height:320px">
+              <div class="browser-frame">
+                <img src="Seller Center main image.png" alt="Walmart Seller Center">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="home-footer">
+      <span class="footer-left">© 2026 Emma Gu</span>
+      <button class="footer-about-btn" onclick="showPage('about')">
+        About me
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-about">
+  <div class="about-page">
+    <div class="container">
+      <div class="about-simple">
+        <div class="about-text">
+          <p class="about-hero-label">About</p>
+          <h1 class="about-hero-title">Hi, I'm <em>Emma.</em></h1>
+          <p>A product designer based in the <strong>Bay Area</strong> (San Jose).</p>
+          <p>Most recently I was at <strong>Meta</strong>, leading the Marketing message experience team — building 0→1 AI-powered creative tools and working closely with PMs, engineers, and data scientists along the way.</p>
+          <p>Before that, I was at <strong>Walmart Marketplace</strong> leading the seller acquisition and communications team — designing the Seller Center homepage, onboarding, notifications, and the overall seller experience.</p>
+          <p>Earlier in my career I did a completely different kind of design — experiential and brand work. Different medium, same job: I've always been a designer.</p>
+        </div>
+        <div class="about-photo"><img src="yeji.png" alt="Emma Gu"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Intro animation — masked word rise (replayable)
+var heroInners=[];
+(function(){
+  var name=document.querySelector('.hero-name');
+  var tagline=document.querySelector('.hero-tagline');
+  var links=document.querySelector('.hero-links');
+  if(!name)return;
+
+  function makeWord(text, delay){
+    var outer=document.createElement('span');
+    outer.style.cssText='display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit';
+    var inner=document.createElement('span');
+    inner.style.cssText='display:inline-block;transform:translateY(105%);transition:transform 0.65s cubic-bezier(0.16,1,0.3,1);transition-delay:'+delay+'ms';
+    inner.textContent=text;
+    outer.appendChild(inner);
+    heroInners.push(inner);
+    return outer;
+  }
+
+  function makeFade(el, delay){
+    el.style.opacity='0';
+    el.style.transition='opacity 0.5s ease';
+    el.style.transitionDelay=delay+'ms';
+    heroInners.push({_fade:true, el:el});
+  }
+
+  var nameWords=name.textContent.trim().split(/\s+/);
+  name.innerHTML='';
+  var NSTART=100, NSTEP=90;
+  nameWords.forEach(function(word,i){
+    if(i>0) name.appendChild(document.createTextNode(' '));
+    name.appendChild(makeWord(word, NSTART+i*NSTEP));
+  });
+
+  if(tagline){
+    var tagStart=NSTART+nameWords.length*NSTEP+140;
+    var TSTEP=50;
+    var wi=0;
+    var nodes=Array.from(tagline.childNodes);
+    tagline.innerHTML='';
+    nodes.forEach(function(node){
+      if(node.nodeType===3){
+        var parts=node.textContent.split(/(\s+)/);
+        parts.forEach(function(part){
+          if(!part)return;
+          if(/^\s+$/.test(part)){
+            tagline.appendChild(document.createTextNode(part));
+          } else {
+            tagline.appendChild(makeWord(part, tagStart+wi*TSTEP));
+            wi++;
+          }
+        });
+      } else if(node.nodeType===1){
+        makeFade(node, tagStart+wi*TSTEP);
+        wi++;
+        tagline.appendChild(node);
+      }
+    });
+    if(links) makeFade(links, tagStart+wi*TSTEP+120);
+  }
+
+  playHeroAnim();
+})();
+
+function playHeroAnim(){
+  // reset
+  heroInners.forEach(function(item){
+    if(item._fade) item.el.style.opacity='0';
+    else item.style.transform='translateY(105%)';
+  });
+  // re-trigger after two frames
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      heroInners.forEach(function(item){
+        if(item._fade) item.el.style.opacity='1';
+        else item.style.transform='translateY(0)';
+      });
+    });
+  });
+}
+
+// Nav glass on scroll
+(function(){
+  var nav=document.querySelector('nav');
+  function update(){nav.classList.toggle('scrolled',window.scrollY>40);}
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
+// Scroll animation: each element animates when it individually enters view
+(function(){
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('card-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.section-title,.work-card').forEach(function(el){
+    observer.observe(el);
+  });
+})();
+
+function openLightbox(src){
+  var lb=document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src=src;
+  lb.style.display='flex';
+}
+function showPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  var pageEl=document.getElementById('page-'+n);
+  pageEl.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('nav-'+n)?.classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  location.hash = n==='home' ? '' : n;
+  if(n==='home'){
+    playHeroAnim();
+    document.querySelectorAll('.section-title,.work-card').forEach(function(el){
+      el.classList.remove('card-visible');
+    });
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){entry.target.classList.add('card-visible');obs.unobserve(entry.target);}
+      });
+    },{threshold:0.15});
+    document.querySelectorAll('.section-title,.work-card').forEach(function(el){obs.observe(el);});
+  }
+}
+// restore page from URL hash on load
+window.addEventListener('load', function(){
+  var hash=location.hash.replace('#','');
+  if(hash && document.getElementById('page-'+hash)) showPage(hash);
+});
+</script>
+
+<!-- ═══════════════════════════════════════════ META CREATIVES ═══ -->
+<div class="page" id="page-creatives">
+  <div class="cs-page">
+    <div class="container">
+
+      <div class="cs-hero" style="margin-bottom:3rem">
+        <div class="cs-eyebrow">01 — Meta · Ads Manager</div>
+        <h1 class="cs-title">Creatives</h1>
+      </div>
+
+      <!-- Hero image -->
+      <div style="margin-bottom:5rem;border-radius:20px;overflow:hidden">
+        <img src="creatives main.png" alt="Creatives" style="width:100%;display:block">
+      </div>
+
+      <!-- Overview stat -->
+      <div style="margin-bottom:5rem;background:var(--accent-dim);border-radius:16px;padding:3rem;display:flex;align-items:center;gap:4rem">
+        <div style="flex-shrink:0">
+          <div style="font-family:'DM Sans',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:800;color:var(--accent);line-height:1;letter-spacing:-0.03em">+42.67<span style="font-size:0.55em">%</span></div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem">CTR — multi-text vs single text</div>
+          <div style="font-size:17px;color:var(--text-primary);line-height:1.7;font-weight:400">Marketing messages with multiple body text variants performed <strong>42.67% better in CTR</strong> than those with a single text option — the core finding that validated the entire direction of this work.</div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Background -->
+      <div class="cs-section">
+        <div class="cs-section-label">Background</div>
+        <h2 class="cs-section-title" style="font-size:clamp(20px,2.5vw,28px)">Marketing messages inside Meta Ads Manager</h2>
+        <div style="display:grid;grid-template-columns:1fr 220px;gap:4rem;align-items:start">
+          <div>
+            <p class="cs-body">Marketing messages (MM) are a message-based format — distinct from standard ads — that lets businesses send promotional messages directly to customers who have opted in via WhatsApp, Instagram, or Messenger. This project focused on WhatsApp.</p>
+            <p class="cs-body" style="margin-top:1rem">I led design across multiple projects combined into three phases — restructuring how MM fits into the creative flow, building multi-text optimization on top of it, and defining a unified future direction. Since the Ads team owns the broader Creative space in Ads Manager, close alignment with them was a constant throughout — not just a one-time handoff.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div>
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem">Role</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Lead Designer · Project Owner</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem">Team</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">PM · Engineering · Data Science · Content Designer</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem">Collaboration</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Ads team alignment throughout</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:0 0 5rem 0">
+
+      <!-- What is MM -->
+      <div class="cs-section">
+        <div style="display:flex;gap:4rem;align-items:center;margin-top:0">
+          <div style="flex:0 0 480px">
+            <div class="cs-section-label" style="margin-bottom:1rem">What is a Marketing message?</div>
+            <p class="cs-body" style="margin:0">A WhatsApp Marketing message is a promotional message businesses send directly to customers who have opted in — delivered to their WhatsApp inbox, not a feed. Unlike standard ads, when a consumer replies, it opens a real conversation.</p>
+            <p class="cs-body" style="margin-top:1rem">Marketing messages can be sent through multiple channels. One of them is Meta Ads Manager — the largest advertising platform at Meta — where MM runs as a placement alongside existing ads, letting businesses leverage their ad spend to reach opted-in customers on WhatsApp.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem">
+              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">New product launches</span>
+              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Promotions &amp; deals</span>
+<span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Re-engagement</span>
+            </div>
+          </div>
+          <div style="position:relative;width:560px;flex-shrink:0;margin-left:auto;align-self:center">
+            <!-- Image -->
+            <img src="Marketing messages.png" alt="Marketing message example" style="width:240px;display:block;border-radius:12px">
+
+            <!-- Media ~20% -->
+            <div style="position:absolute;top:24%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#AAA8A3"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-secondary)">Media</div>
+            </div>
+
+            <!-- TEP Target ~40% -->
+            <div style="position:absolute;top:38%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#AAA8A3"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-secondary)">Tap Target</div>
+            </div>
+
+            <!-- Headline ~46% -->
+            <div style="position:absolute;top:44%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:var(--accent)"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent)">Headline</div>
+            </div>
+
+            <!-- Primary Text ~51% -->
+            <div style="position:absolute;top:51%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:var(--accent)"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent)">Primary Text</div>
+            </div>
+
+            <!-- CTA ~61% -->
+            <div style="position:absolute;top:61%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#378ADD"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#378ADD">Call to Action</div>
+            </div>
+
+            <!-- Quick Replies ~69% -->
+            <div style="position:absolute;top:69%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#378ADD"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#378ADD">Quick Replies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- R1 -->
+      <div class="cs-section">
+        <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
+          <div class="cs-section-label">Phase 1</div>
+        </div>
+        <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Restructuring the IA — and building on top</h2>
+
+        <!-- R1 Problem -->
+        <div class="cs-section-label" style="margin-top:3rem">The Problem</div>
+        <p class="cs-body" style="margin-top:0.75rem">MM features were buried in their own isolated sub-section inside Ads Manager — completely separate from where ad creative lived. Research showed that advertisers think about ads and MM as part of the same creative workflow, not as separate tasks. The structure didn't match their mental model, and that mismatch was hurting adoption.</p>
+        <div style="margin-top:2rem;display:flex;gap:1.5rem;overflow:visible;justify-content:center;align-items:flex-start">
+          <div style="width:560px;flex-shrink:0;position:relative">
+            <img src="Original creative.png" alt="Original creative setup" id="creatives-left-img" style="width:100%;display:block;border-radius:8px;cursor:zoom-in" onclick="openLightbox(this.src)">
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Ad creative setup — MM buried at the bottom</div>
+          </div>
+          <div style="width:560px;flex-shrink:0;display:flex;flex-direction:column">
+            <div id="creatives-modal-bg" style="background:rgba(0,0,0,0.45);border-radius:8px;padding:0.75rem;display:flex;align-items:center;justify-content:center">
+              <img src="MM setup before.png" alt="MM setup modal" style="width:85%;display:block;border-radius:6px;cursor:zoom-in" onclick="openLightbox(this.src)">
+            </div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Clicking "Edit marketing message" opened a separate modal</div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          function matchHeight(){
+            var left=document.getElementById('creatives-left-img');
+            var modal=document.getElementById('creatives-modal-bg');
+            if(!left||!modal) return;
+            modal.style.height=left.offsetHeight+'px';
+            modal.style.boxSizing='border-box';
+          }
+          if(document.readyState==='complete') matchHeight();
+          else window.addEventListener('load',matchHeight);
+        })();
+        </script>
+
+        <!-- IA Comparison Diagram -->
+        <div id="ia-diagram" style="position:relative;margin-top:2.5rem;font-size:13px">
+          <svg id="ia-svg" style="position:absolute;top:0;left:0;pointer-events:none;overflow:visible;z-index:10"></svg>
+          <div style="display:grid;grid-template-columns:1fr 60px 1fr;align-items:start">
+
+            <!-- Before -->
+            <div style="padding-right:1.5rem">
+              <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">Before</div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
+                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
+                <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
+                  <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
+                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px;border-bottom:0.5px solid #f0eefe">
+                    <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:2px">Ad setup</div>
+                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media</div>
+                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Text</div>
+                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Enhancement</div>
+                  </div>
+                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                    <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#534AB7;margin-bottom:2px">Marketing message setup</div>
+                    <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Suggested optimizations</div>
+                    <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
+                      <div id="ia-b-text" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Text</div>
+                      <div id="ia-b-ar" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Auto reply</div>
+                    </div>
+                    <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7;margin-top:1px">Advanced features</div>
+                    <div style="padding-left:10px;border-left:1.5px solid #AFA9EC">
+                      <div id="ia-b-qr" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Quick replies</div>
+                    </div>
+                  </div>
+                </div>
+                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ · Language · Tracking</div>
+              </div>
+            </div>
+
+            <div></div>
+
+            <!-- After -->
+            <div style="padding-left:1.5rem">
+              <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">After</div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
+                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
+                <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
+                  <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
+                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                    <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#534AB7;margin-bottom:2px">Ad + Marketing message setup</div>
+                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media · Enhancement</div>
+                    <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Text</div>
+                    <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
+                      <div style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Ad text</div>
+                      <div id="ia-a-text" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Marketing message text</div>
+                    </div>
+                  </div>
+                </div>
+                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ creative</div>
+                <div style="border:1px solid #85B7EB;border-radius:10px;overflow:hidden">
+                  <div style="background:#E6F1FB;padding:8px 11px;font-size:11px;font-weight:500;color:#0C447C;border-bottom:0.5px solid #85B7EB;display:flex;align-items:center;gap:6px">Conversations <span style="font-size:9px;background:#B5D4F4;color:#0C447C;padding:1px 6px;border-radius:100px">new</span></div>
+                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                    <div id="ia-a-ar" style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Auto reply</div>
+                    <div id="ia-a-qr" style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Quick replies</div>
+                  </div>
+                </div>
+                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Language · Tracking</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <script>
+        setTimeout(function(){
+          var wrap=document.getElementById('ia-diagram');
+          var svg=document.getElementById('ia-svg');
+          svg.setAttribute('width',wrap.offsetWidth);
+          svg.setAttribute('height',wrap.offsetHeight);
+          function pos(id){
+            var el=document.getElementById(id);
+            var wr=wrap.getBoundingClientRect();
+            var er=el.getBoundingClientRect();
+            return{x:er.left-wr.left,right:er.right-wr.left,y:er.top-wr.top+er.height/2};
+          }
+          function bezier(x1,y1,x2,y2,color){
+            var cx=(x1+x2)/2;
+            var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+            path.setAttribute('d','M'+x1+' '+y1+' C'+cx+' '+y1+' '+cx+' '+y2+' '+x2+' '+y2);
+            path.setAttribute('stroke',color);path.setAttribute('stroke-width','1.5');
+            path.setAttribute('fill','none');path.setAttribute('stroke-dasharray','4 3');
+            path.setAttribute('opacity','0.65');
+            svg.appendChild(path);
+            var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+            dot.setAttribute('cx',x2);dot.setAttribute('cy',y2);dot.setAttribute('r','3');
+            dot.setAttribute('fill',color);dot.setAttribute('opacity','0.9');
+            svg.appendChild(dot);
+          }
+          var bText=pos('ia-b-text'),aText=pos('ia-a-text');
+          var bAr=pos('ia-b-ar'),aAr=pos('ia-a-ar');
+          var bQr=pos('ia-b-qr'),aQr=pos('ia-a-qr');
+          bezier(bText.right,bText.y,aText.x,aText.y,'#7B6FE8');
+          bezier(bAr.right,bAr.y,aAr.x,aAr.y,'#378ADD');
+          bezier(bQr.right,bQr.y,aQr.x,aQr.y,'#378ADD');
+        },150);
+        </script>
+
+        <!-- Design sub-label -->
+        <div class="cs-section-label" style="margin-top:5rem">Design</div>
+
+        <!-- Text setup + Gen AI descriptions -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1.5rem">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem">Text setup</div>
+            <p class="cs-body">MM was a zero-to-one product — new to Ads Manager and unfamiliar to most advertisers. Giving MM its own separate text field made it legible as something distinct from ad copy. To lower the barrier, the MM field pre-fills from the ad text already written — so it's never blank, but clearly its own thing.</p>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem">Gen AI</div>
+            <p class="cs-body">We introduced Gen AI text generation natively within the creative wizard. The MM field surfaces performance-optimized alternatives so advertisers can accept a suggestion or refine the pre-filled text manually — without ever leaving Ads Manager.</p>
+          </div>
+        </div>
+
+        <!-- Video centered, large -->
+        <div style="margin-top:2.5rem;display:flex;overflow:visible;justify-content:center">
+          <div style="width:760px;flex-shrink:0;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.12)">
+            <video src="creative screen recording.mov" autoplay loop muted playsinline style="width:100%;display:block"></video>
+          </div>
+        </div>
+
+      </div><!-- /R1 cs-section -->
+
+      <!-- Phase 1 → Phase 2 bridge -->
+      <p class="cs-body" style="margin-top:3rem">The IA restructure brought MM into the advertiser's natural workflow — but adoption data showed that visibility alone wasn't moving the needle. Customization rate stayed at 1.4%, which became the starting point for Phase 2.</p>
+
+      <!-- R2 -->
+      <div class="cs-section" style="margin-top:3rem">
+        <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
+          <div class="cs-section-label">Phase 2</div>
+        </div>
+        <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Multi-text options — bringing ads-level optimization to MM</h2>
+
+        <!-- R2 Problem & Research -->
+        <div class="cs-section-label" style="margin-top:3rem">The Problem & Research</div>
+        <p class="cs-body" style="margin-top:0.75rem">Even after the IA restructure, only 1.4% of MM texts were customized by advertisers. Meanwhile, multi-text on standard ads was already proving its value — delivering a <strong style="color:var(--text-primary)">+16.33% CTR lift</strong>. MM had the same potential, but advertisers weren't leveraging it.</p>
+        <!-- Annotated diagram -->
+        <div id="r2-wrap" style="position:relative;margin-top:1.5rem">
+          <svg id="r2-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:10"></svg>
+          <div style="margin-right:200px;position:relative">
+            <img src="ad text example.png" id="r2-img" alt="Ad text multi-text options" style="width:100%;display:block;border-radius:10px">
+          </div>
+          <!-- 23% — top right -->
+          <div id="r2-stat1" style="position:absolute;right:0;top:22%;width:170px">
+            <div style="font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-0.02em;line-height:1">23%</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem;line-height:1.5">of ads adopted<br>multi-text options</div>
+          </div>
+          <!-- 1.4% — bottom right -->
+          <div id="r2-stat2" style="position:absolute;right:0;bottom:22%;width:170px">
+            <div style="font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;line-height:1">1.4%</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem;line-height:1.5">of MM texts<br>were customized</div>
+          </div>
+        </div>
+        <script>
+        setTimeout(function(){
+          var wrap=document.getElementById('r2-wrap');
+          var svg=document.getElementById('r2-svg');
+          var img=document.getElementById('r2-img');
+          var s1=document.getElementById('r2-stat1');
+          var s2=document.getElementById('r2-stat2');
+          var wr=wrap.getBoundingClientRect();
+          var ir=img.getBoundingClientRect();
+          var s1r=s1.getBoundingClientRect();
+          var s2r=s2.getBoundingClientRect();
+          svg.setAttribute('width',wrap.offsetWidth);
+          svg.setAttribute('height',wrap.offsetHeight+60);
+
+          // Y positions in image: primary text for ad ~38%, MM ~64%
+          var adY=ir.top-wr.top+ir.height*0.38;
+          var mmY=ir.top-wr.top+ir.height*0.64;
+          var imgRight=ir.right-wr.left;
+
+          // Stat anchor points
+          var s1x=s1r.left-wr.left;
+          var s1y=s1r.top-wr.top+12;
+          var s2x=s2r.left-wr.left;
+          var s2y=s2r.bottom-wr.top-12;
+
+          function annotate(barX,barY1,barY2,statX,statY,color){
+            var midY=(barY1+barY2)/2;
+            // Vertical bar at image edge
+            var bar=document.createElementNS('http://www.w3.org/2000/svg','line');
+            bar.setAttribute('x1',barX);bar.setAttribute('y1',barY1);
+            bar.setAttribute('x2',barX);bar.setAttribute('y2',barY2);
+            bar.setAttribute('stroke',color);bar.setAttribute('stroke-width','2');bar.setAttribute('opacity','0.7');
+            svg.appendChild(bar);
+            // Dotted line from midpoint of bar to stat
+            var p=document.createElementNS('http://www.w3.org/2000/svg','path');
+            var cx=(barX+statX)/2;
+            p.setAttribute('d','M'+barX+' '+midY+' C'+cx+' '+midY+' '+cx+' '+statY+' '+statX+' '+statY);
+            p.setAttribute('stroke',color);p.setAttribute('stroke-width','1.5');
+            p.setAttribute('fill','none');p.setAttribute('stroke-dasharray','4 3');p.setAttribute('opacity','0.55');
+            svg.appendChild(p);
+          }
+
+          // 23%: moved up a bit
+          var adY1=ir.top-wr.top+ir.height*0.16;
+          var adY2=ir.top-wr.top+ir.height*0.54;
+          // 1.4%: longer bar
+          var mmY1=ir.top-wr.top+ir.height*0.60;
+          var mmY2=ir.top-wr.top+ir.height*0.72;
+
+          annotate(imgRight,adY1,adY2,s1x,s1y,'#7B6FE8');
+          annotate(imgRight,mmY1,mmY2,s2x,s2y,'rgba(0,0,0,0.5)');
+        },200);
+        </script>
+        <p class="cs-body" style="margin-top:2rem">Advertisers were already doing the work on the ads side — we just weren't leveraging it for MM. We extended their existing multi-text options to automatically apply to MM, without asking them to do extra work. The key challenge: surface this without overwhelming them visually.</p>
+        <div class="cs-highlight" style="margin-top:1.5rem">
+          <div class="cs-highlight-text">"Due to low adoption, we planned to <span style="color:var(--accent)">leverage the multi-text options</span> already added by advertisers for ads — and extend them to MM."</div>
+        </div>
+
+        <div class="cs-section-label" style="margin-top:5rem">Design & A/B Test</div>
+        <p class="cs-body" style="margin-top:1rem">The leadership direction was clear: make it immediately obvious to advertisers that their ads copy is being used for MM by default — and give them a way to customize if needed. The design challenge was surfacing this without adding friction to an already complex workflow.</p>
+        <!-- Option A -->
+        <div style="margin-top:2rem">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Option A — Progressive disclosure</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+            <img src="option a-2.png" style="width:100%;border-radius:8px;display:block">
+            <img src="option a-4.png" style="width:100%;border-radius:8px;display:block">
+          </div>
+          <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">Displays options only when needed. By default, ads copy is used for MM. If advertisers want to customize their marketing message, they can select "Provide your own text" to enter their own.</p>
+          <div style="display:flex;flex-direction:column;gap:0.3rem">
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Keeps the UI simple and focused</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Reduces visual noise and cognitive load</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:0.2rem"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>MM customization may be missed unless advertisers expand</div>
+          </div>
+        </div>
+
+        <!-- Option B -->
+        <div style="margin-top:2.5rem">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Option B — Full visibility</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+            <img src="option b-2.png" style="width:100%;border-radius:8px;display:block">
+            <img src="option b-3.png" style="width:100%;border-radius:8px;display:block">
+          </div>
+          <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">Displays all options at once for immediate comparison. Makes MM customization more visible and easier to discover.</p>
+          <div style="display:flex;flex-direction:column;gap:0.3rem">
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Greater visibility and prominence for MM</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Advertisers can compare options at a glance</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Fewer clicks to explore</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:0.2rem"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>UI may feel visually dense or cluttered</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>Higher cognitive load when multiple elements compete</div>
+          </div>
+        </div>
+
+        <!-- A/B Test Results -->
+        <p class="cs-body" style="margin-top:2.5rem">We measured MM customization rate — how many advertisers chose to write their own MM text. We ran a 10% rollout followed by a 50% rollout to validate at scale.</p>
+        <div style="margin-top:1.5rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem">
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.4rem">Option A — Dropdown</div>
+              <div style="font-size:26px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;line-height:1">27.8%</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem">customization rate at 50% rollout</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.4rem">Option B — Radio · Winner</div>
+              <div style="font-size:26px;font-weight:700;color:var(--accent);letter-spacing:-0.02em;line-height:1">32.4%</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem">customization rate at 50% rollout</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">Full visibility made it easier for advertisers to discover and act on the customization option. Option B was selected as the winning design.</p>
+        </div>
+
+        <div class="cs-section-label" style="margin-top:5rem">Gen AI Redesign</div>
+        <p class="cs-body" style="margin-top:1rem">To further support customization adoption, we redesigned the Gen AI experience for MM.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
+          <div>
+            <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">Before</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Single replacement</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem">Gen AI generated one suggestion at a time — advertisers had to replace their text entirely to use it.</div>
+            <img src="gen ai before.png" style="width:100%;border-radius:8px;display:block">
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">After</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Multi-select</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem">Up to 5 MM-specific variants presented at once — advertisers pick which ones to include, adding multiple options in one step.</div>
+            <img src="gen ai after.png" style="width:100%;border-radius:8px;display:block">
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+          <div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">MM-specific best practices</div>
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">We synthesized <strong style="color:var(--text-primary)">~17,000 Marketing messages</strong> to identify what drives high CTR in MM — tone, phrasing, and structure that works in direct messaging is different from standard ads. This informed how GenAI generates MM-specific suggestions.</p>
+        </div>
+        <div style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+            <div style="font-size:11px;font-weight:600;color:#3FA66B;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">Do</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:12px;color:var(--text-secondary);line-height:1.6">
+              <div>✓ Include an emoji, used selectively</div>
+              <div>✓ Personalize the message</div>
+              <div>✓ Keep under 550 characters</div>
+            </div>
+          </div>
+          <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+            <div style="font-size:11px;font-weight:600;color:#D9534F;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">Don't</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:12px;color:var(--text-secondary);line-height:1.6">
+              <div>✗ Overload with sale-heavy language</div>
+              <div>✗ Overuse emojis</div>
+            </div>
+          </div>
+        </div>
+        <p class="cs-body" style="margin-top:1rem;margin-bottom:0">Together, these changes — the radio button design and the Gen AI redesign — formed the final experience.</p>
+      </div>
+
+      <!-- Final Design -->
+      <div class="cs-section">
+        <div class="cs-section-label">Final Design</div>
+        <div style="display:flex;flex-direction:column;gap:3rem;margin-top:1.5rem">
+          <!-- Step 1 -->
+          <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
+            <div style="padding-top:0.25rem">
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">1</span></div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Default</div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Ads copy is used for MM by default — "Optimize with ad text" is pre-selected</div>
+            </div>
+            <img src="final 1.png" style="width:100%;border-radius:8px;display:block">
+          </div>
+          <!-- Step 2 -->
+          <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
+            <div style="padding-top:0.25rem">
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">2</span></div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-primary)">First option selected</div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Advertiser adds multiple ad texts — MM automatically inherits all variants for system testing</div>
+            </div>
+            <img src="final 2.png" style="width:100%;border-radius:8px;display:block">
+          </div>
+          <!-- Step 3 -->
+          <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
+            <div style="padding-top:0.25rem">
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">3</span></div>
+                <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Customize selected</div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Advertiser writes MM-specific text — Gen AI surfaces up to 5 tailored variants to choose from</div>
+            </div>
+            <img src="final 3.png" style="width:100%;border-radius:8px;display:block">
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="cs-section">
+        <div class="cs-section-label">Results</div>
+        <h2 class="cs-section-title">Multi-text drove significantly higher CTR for marketing messages</h2>
+        <p class="cs-body">The more text options an advertiser adds, the more variants the system tests — and the better it gets at identifying which message resonates most with each consumer. The best-performing variant is then delivered to the majority of the audience, compounding the impact over time.</p>
+        <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+          <div style="font-size:48px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1">+42.67%</div>
+          <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-top:0.4rem">CTR lift for MM with multiple body text variants vs. single text</div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="cs-section" style="margin-top:5rem">
+        <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
+          <div class="cs-section-label">Phase 3 · Future Direction</div>
+        </div>
+        <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Unification — questioning the structure, not just the features</h2>
+        <p class="cs-body">As the ads team began exploring changes to the creative setup, I partnered with them early to ensure MM wasn't designed around — the two surfaces share the same space, and decisions on one directly impact the other. That collaboration opened up a bigger strategic question: <strong style="color:var(--text-primary)">rather than maintaining two separate inputs, what if we unified them?</strong></p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2rem">
+          <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
+            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">01</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">One unified field</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Single primary text input serving both ads and MM — one workflow, no duplication</div>
+          </div>
+          <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
+            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">02</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Differentiated GenAI</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Same source, tailored output — GenAI surfaces distinct suggestions for ads vs. MM based on their separate best practices</div>
+          </div>
+          <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
+            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">03</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Simpler interface</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Unification reduces screen complexity — less real estate, cleaner creation flow</div>
+          </div>
+        </div>
+
+        <!-- Wireframe -->
+        <p class="cs-body" style="margin-top:2rem">This is what that unified experience could look like.</p>
+        <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:1rem;margin-bottom:0.75rem">Sketch</div>
+        <div style="border-radius:12px;overflow:hidden;background:rgba(30,28,40,0.72);padding:1.5rem;display:flex;justify-content:center;max-width:780px;margin:0 auto">
+          <div style="width:100%;max-width:520px;background:white;border-radius:10px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.3)">
+            <!-- Modal header -->
+            <div style="padding:12px 16px;border-bottom:1px solid #ECEAE7;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:6px">
+                <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
+                <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
+                <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
+              </div>
+              <div style="font-size:11px;color:#AAA8A3">Text</div>
+              <div style="font-size:11px;color:#AAA8A3">✕</div>
+            </div>
+            <!-- Modal body: two columns -->
+            <div style="display:grid;grid-template-columns:1fr 1fr">
+              <!-- Left -->
+              <div style="padding:1.25rem;border-right:1px solid #ECEAE7">
+                <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:10px">Add text</div>
+                <div style="border:1px solid #ECEAE7;border-radius:6px;padding:10px 12px;background:#FAFAF9;min-height:68px">
+                  <div style="height:9px;background:#ECEAE7;border-radius:3px;width:90%;margin-bottom:6px"></div>
+                  <div style="height:9px;background:#ECEAE7;border-radius:3px;width:75%;margin-bottom:6px"></div>
+                  <div style="height:9px;background:#ECEAE7;border-radius:3px;width:55%"></div>
+                </div>
+                <div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;border:1px solid #ECEAE7;border-radius:6px;padding:5px 10px;font-size:11px;color:#6B6965">+ Add text option</div>
+                <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #ECEAE7">
+                  <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:6px">Call to action</div>
+                  <div style="border:1px solid #ECEAE7;border-radius:6px;padding:7px 10px;font-size:11px;color:#AAA8A3;display:flex;justify-content:space-between">Learn more, Shop now… <span>▾</span></div>
+                </div>
+                <div style="margin-top:1rem;display:flex;align-items:center;gap:8px">
+                  <div style="flex:1;height:1px;background:#ECEAE7"></div>
+                  <div style="font-size:10px;color:#AAA8A3">AI routes to each placement</div>
+                  <div style="flex:1;height:1px;background:#ECEAE7"></div>
+                </div>
+              </div>
+              <!-- Right -->
+              <div style="padding:1.25rem;background:#FAFAF9">
+                <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:10px">Advantage+ text generation ✦</div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div style="background:white;border:1px solid #ECEAE7;border-radius:6px;padding:10px 12px">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                      <div style="font-size:11px;font-weight:600;color:#18181A">Strategy 1</div>
+                      <span style="font-size:10px;color:#AAA8A3">▾</span>
+                    </div>
+                    <div style="font-size:10px;color:#AAA8A3;margin-bottom:5px">Ad text</div>
+                    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:60%"></div></div>
+                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:80%"></div></div>
+                    </div>
+                    <div style="font-size:10px;color:#AAA8A3;margin-bottom:5px">Marketing message text</div>
+                    <div style="display:flex;flex-direction:column;gap:4px">
+                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:75%"></div></div>
+                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:55%"></div></div>
+                    </div>
+                  </div>
+                  <div style="border:1px solid #ECEAE7;border-radius:6px;padding:9px 12px;background:white;display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:11px;color:#6B6965">Strategy 2</span><span style="font-size:10px;color:#AAA8A3">▸</span>
+                  </div>
+                  <div style="border:1px solid #ECEAE7;border-radius:6px;padding:9px 12px;background:white;display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:11px;color:#6B6965">Strategy 3</span><span style="font-size:10px;color:#AAA8A3">▸</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div style="padding:10px 16px;border-top:1px solid #ECEAE7;display:flex;justify-content:flex-end;gap:8px">
+              <div style="border:1px solid #ECEAE7;border-radius:6px;padding:6px 14px;font-size:11px;color:#6B6965">Cancel</div>
+              <div style="background:#18181A;border-radius:6px;padding:6px 14px;font-size:11px;color:white">Next</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+          <div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">What's next</div>
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">This strategy was defined and handed off as the north star for where MM and ads creative should converge next — a single input, with GenAI surfacing tailored suggestions for each surface behind the scenes.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ META CONVERSATIONS ═══ -->
+<div class="page" id="page-conversations">
+  <div class="cs-page">
+    <div class="container">
+
+      <div class="cs-hero" style="margin-bottom:3rem">
+        <div class="cs-eyebrow">02 — Meta · Ads Manager</div>
+        <h1 class="cs-title">Conversations</h1>
+      </div>
+
+      <!-- Hero image placeholder -->
+      <div style="border-radius:14px;overflow:hidden;margin-bottom:5rem;text-align:center">
+        <div style="width:80%;display:inline-block;aspect-ratio:16/9;background:#EEF2F5;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;border:1.5px dashed rgba(123,111,232,0.2)">
+          <span style="font-size:11px;color:#AAA8A3;letter-spacing:0.1em;text-transform:uppercase">Hero image placeholder</span>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Background -->
+      <div class="cs-section">
+        <div class="cs-section-label">Background</div>
+        <h2 class="cs-section-title" style="font-size:clamp(20px,2.5vw,28px)">Turning marketing messages into conversations</h2>
+        <div style="display:grid;grid-template-columns:1fr 220px;gap:4rem;align-items:start">
+          <div>
+            <p class="cs-body">Marketing messages don't end at publish. When a consumer receives an MM and replies on WhatsApp, a conversation begins — but that post-publish experience had no dedicated home in Ads Manager. It was buried inside the creative setup flow, designed for pre-publish decisions, not post-publish conversations.</p>
+            <p class="cs-body" style="margin-top:1rem">I led the end-to-end design to give conversations their own surface — a standalone Conversations card — and defined the future direction for how AI could make those conversations scalable for advertisers.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div>
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem">Role</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Lead Designer</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem">Team</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">PM · Engineering · Content Designer · Data Science</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:0 0 5rem 0">
+
+      <!-- What is MM -->
+      <div class="cs-section">
+        <div style="display:flex;gap:4rem;align-items:center;margin-top:0">
+          <div style="flex:0 0 480px">
+            <div class="cs-section-label" style="margin-bottom:1rem">What is a Marketing message?</div>
+            <p class="cs-body" style="margin:0">A WhatsApp Marketing message is a promotional message businesses send directly to customers who have opted in — delivered to their WhatsApp inbox, not a feed. Unlike standard ads, when a consumer replies, it opens a real conversation.</p>
+            <p class="cs-body" style="margin-top:1rem">Marketing messages can be sent through multiple channels. One of them is Meta Ads Manager — the largest advertising platform at Meta — where MM runs as a placement alongside existing ads, letting businesses leverage their ad spend to reach opted-in customers on WhatsApp.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem">
+              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">New product launches</span>
+              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Promotions &amp; deals</span>
+              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Re-engagement</span>
+            </div>
+          </div>
+          <div style="position:relative;width:560px;flex-shrink:0;margin-left:auto;align-self:center">
+            <img src="Marketing messages.png" alt="Marketing message example" style="width:240px;display:block;border-radius:12px">
+            <div style="position:absolute;top:24%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#AAA8A3"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-secondary)">Media</div>
+            </div>
+            <div style="position:absolute;top:38%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#AAA8A3"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-secondary)">Tap Target</div>
+            </div>
+            <div style="position:absolute;top:44%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:var(--accent)"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent)">Headline</div>
+            </div>
+            <div style="position:absolute;top:51%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:var(--accent)"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent)">Primary Text</div>
+            </div>
+            <div style="position:absolute;top:61%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#378ADD"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#378ADD">Call to Action</div>
+            </div>
+            <div style="position:absolute;top:69%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
+              <div style="width:28px;height:1px;background:#378ADD"></div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#378ADD">Quick Replies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Research -->
+      <div class="cs-section">
+        <div class="cs-section-label">Research</div>
+        <h2 class="cs-section-title">Conversations drive MM performance — but they're not happening</h2>
+        <p class="cs-body">Marketing messages are one-directional today. 60% of consumers read them — but only ~1% end up in a real conversation.</p>
+        <div class="cs-three-col" style="margin-top:2.5rem">
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">FINDING 01</div>
+            <div class="cs-pillar-title">60% read rate</div>
+            <div class="cs-pillar-body">Consumers see Marketing messages. The drop-off happens after — there's no conversational partner on the other side to continue the exchange.</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">FINDING 02</div>
+            <div class="cs-pillar-title">3.26% → 19.31%</div>
+            <div class="cs-pillar-body">Only 3.26% of consumers reply to MMs. Of those, just 19.31% become deep conversations — defined as 2+ messages from each side. The rest drop off with no follow-through.</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">FINDING 03</div>
+            <div class="cs-pillar-title">+11% CTR</div>
+            <div class="cs-pillar-body">MMs with deep conversations show 11% higher CTR compared to those without. When conversations happen, performance follows.</div>
+          </div>
+        </div>
+        <p class="cs-body" style="margin-top:2rem">Of our MM advertisers, 61% manage replies directly — without any third-party tool. Of those, <strong style="color:var(--text-primary)">89% have no conversation tool at all.</strong> For them, Chat Builder wouldn't be an upgrade. It would be their first ever reply management solution. Consumers were already replying to their MMs — and getting no response.</p>
+
+        <div class="cs-highlight" style="margin-top:2.5rem">
+          <div class="cs-highlight-text">"The data showed a clear opportunity: if we could <span style="color:var(--accent);font-weight:600">make conversations happen more reliably, CTR would follow.</span> The product just didn't have the right surface to support that yet."</div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Structural Problem -->
+      <div class="cs-section">
+        <div class="cs-section-label">Structural Problem</div>
+        <h2 class="cs-section-title">The automation setup was in the wrong place entirely</h2>
+        <!-- Insight highlight -->
+        <p class="cs-body" style="margin-top:1rem">Auto Reply and Quick Replies were collapsed into Creative — a pre-publish flow with no connection to post-publish conversations. Two different moments in the advertiser journey were sharing the same card.</p>
+        <div class="cs-highlight" style="margin-top:1.5rem">
+          <div class="cs-highlight-text">"Most advertisers <span style="color:var(--accent);font-weight:600">never found the automation setup</span> at all."</div>
+        </div>
+
+        <!-- Pre / Post -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem">
+          <div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.25rem">Pre-publish · Creative</div>
+            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">This is where advertisers configure how the marketing message looks before it goes live — media, copy, and creative decisions. It's a setup flow that happens once, before the campaign launches.</p>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.25rem">Post-publish · Conversations</div>
+            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">This is where automation lives — Auto Reply and Quick Replies are only relevant after a consumer sends a message in response to a marketing message. It's a response layer that operates independently of how the marketing message was built.</p>
+          </div>
+        </div>
+
+        <!-- Process timeline -->
+        <div style="display:flex;gap:0;position:relative;margin-top:2rem">
+          <div style="position:absolute;top:11px;left:11px;right:11px;height:1px;background:var(--border);z-index:0"></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;z-index:1">
+            <div style="width:22px;height:22px;border-radius:50%;background:white;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem"><span style="font-size:9px;color:var(--text-secondary);font-weight:600">1</span></div>
+            <div style="font-size:12px;font-weight:500;color:var(--text-primary);padding-right:1.25rem">Working session</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.2rem;padding-right:1.25rem;line-height:1.5">With Business Messaging team's designer to formalize the pre vs. post framework</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;z-index:1">
+            <div style="width:22px;height:22px;border-radius:50%;background:white;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem"><span style="font-size:9px;color:var(--text-secondary);font-weight:600">2</span></div>
+            <div style="font-size:12px;font-weight:500;color:var(--text-primary);padding-right:1.25rem">Leadership presentation</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.2rem;padding-right:1.25rem;line-height:1.5">Brought the framework to both Ads and BM leadership</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;z-index:1">
+            <div style="width:22px;height:22px;border-radius:50%;background:white;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem"><span style="font-size:9px;color:var(--text-secondary);font-weight:600">3</span></div>
+            <div style="font-size:12px;font-weight:500;color:var(--text-primary);padding-right:1.25rem">Cross-team alignment</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.2rem;padding-right:1.25rem;line-height:1.5">Both sides approved the restructure — argument was structural, not subjective</div>
+          </div>
+        </div>
+
+        <!-- Before → Recommended side by side -->
+        <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:start;margin-top:2.5rem;font-size:13px">
+
+          <!-- Before -->
+          <div>
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">Before</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
+              <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
+              <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
+                <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
+                <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px;border-bottom:0.5px solid #f0eefe">
+                  <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:2px">Ad setup</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Text</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Enhancement</div>
+                </div>
+                <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                  <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#534AB7;margin-bottom:2px">Marketing message setup</div>
+                  <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Suggested optimizations</div>
+                  <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
+                    <div style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Text</div>
+                    <div id="ia3-ar" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Auto reply</div>
+                  </div>
+                  <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7;margin-top:1px">Advanced features</div>
+                  <div style="padding-left:10px;border-left:1.5px solid #AFA9EC">
+                    <div id="ia3-qr" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Quick replies</div>
+                  </div>
+                </div>
+              </div>
+              <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ · Language · Tracking</div>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div style="display:flex;align-items:center;justify-content:center;padding-top:1.75rem">
+            <span style="font-size:16px;color:var(--text-secondary);opacity:0.4">→</span>
+          </div>
+
+          <!-- Recommended -->
+          <div>
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">Recommended</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
+              <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
+              <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
+                <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
+                <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                  <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:2px">Ad setup</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Text</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Enhancement</div>
+                </div>
+              </div>
+              <div style="border:1px solid #85B7EB;border-radius:10px;overflow:hidden">
+                <div style="background:#E6F1FB;padding:8px 11px;font-size:11px;font-weight:500;color:#0C447C;border-bottom:0.5px solid #85B7EB;display:flex;align-items:center;gap:6px">Conversations <span style="font-size:9px;background:#B5D4F4;color:#0C447C;padding:1px 6px;border-radius:100px">new</span></div>
+                <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                  <div style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Auto reply</div>
+                  <div style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Quick replies</div>
+                </div>
+              </div>
+              <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ · Language · Tracking</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="display:none"><div id="ia3-diagram"><svg id="ia3-svg"></svg></div></div>
+      </div>
+
+      <!-- R1 -->
+      <div class="cs-section">
+        <div class="cs-section-label" style="margin-bottom:0.75rem">Solution</div>
+        <h2 class="cs-section-title">Chat Builder — a new home for conversations</h2>
+        <p class="cs-body" style="margin-top:1rem">Auto Reply and Quick Replies moved out of Creative into their own dedicated card — Chat Builder — a new Conversations section at the same level as Creative in the L1 flow.</p>
+        <p class="cs-body" style="margin-top:1rem">For the design pattern, we didn't start from scratch. <strong>Click to WhatsApp (CTWA)</strong> already had a Chat Builder — and most MM advertisers are also CTWA users. We built on the same pattern to give advertisers one consistent surface for conversation setup, no matter which product they're using.</p>
+        <div class="cs-highlight" style="margin-top:1.5rem">
+          <div class="cs-highlight-text">"We didn't introduce something new. <span style="color:var(--accent);font-weight:600">The mental model transferred directly.</span>"</div>
+        </div>
+
+        <!-- L1 context -->
+        <div style="margin-top:2.5rem">
+          <img src="Chat builder - L1.png" style="width:100%;display:block;border-radius:12px">
+          <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Chat Builder — where it lives in the L1 flow</div>
+        </div>
+
+        <!-- Annotated chat builder card -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem">
+          <!-- Left: annotated image -->
+          <div id="cb-wrap" style="position:relative">
+            <svg id="cb-svg" style="position:absolute;top:0;left:0;pointer-events:none;overflow:visible;z-index:2"></svg>
+            <img src="chat builder.png" id="cb-img" style="width:100%;display:block;border-radius:10px;position:relative;z-index:1">
+          </div>
+          <!-- Right: labels with IDs for JS positioning -->
+          <div style="position:relative;display:flex;flex-direction:column;gap:1.75rem">
+            <div id="cb-l1">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem">Template Management</div>
+              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">Choose from previously saved configurations to apply a full automation setup in one click. Every time you publish, Chat Builder auto-saves your setup as a template — so returning advertisers start with their preferred configuration already filled in.</p>
+            </div>
+            <div id="cb-l2">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem">Automation Preview</div>
+              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">See what's configured before you publish — both automations shown inline so advertisers can review at a glance.</p>
+              <div style="display:flex;flex-direction:column;gap:0.5rem;padding-left:0.75rem;border-left:1.5px solid var(--border)">
+                <div>
+                  <div style="font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:0.15rem">Quick Replies</div>
+                  <p style="font-size:12px;color:var(--text-secondary);line-height:1.5;margin:0">Quick reply buttons delivered with the MM — when a consumer taps one, that response is sent instantly.</p>
+                </div>
+                <div>
+                  <div style="font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:0.15rem">Auto Reply</div>
+                  <p style="font-size:12px;color:var(--text-secondary);line-height:1.5;margin:0">Triggered automatically when a consumer sends any message. Pre-filled by default so advertisers can publish immediately without any setup.</p>
+                </div>
+              </div>
+            </div>
+            <div id="cb-l3" style="display:none"></div>
+          </div>
+        </div>
+        <script>
+        setTimeout(function(){
+          var wrap=document.getElementById('cb-wrap');
+          var svg=document.getElementById('cb-svg');
+          var img=document.getElementById('cb-img');
+          var wr=wrap.getBoundingClientRect();
+          svg.setAttribute('width',wrap.offsetWidth);
+          svg.setAttribute('height',wrap.offsetHeight);
+          // approximate y positions on image (as % of image height)
+          var imgH=img.offsetHeight;
+          var pts=[
+            {id:'cb-l1',pct:0.32},
+            {id:'cb-l2',pct:0.65}
+          ];
+          function labelMidY(id){
+            var el=document.getElementById(id);
+            var er=el.getBoundingClientRect();
+            return er.top-wr.top+er.height/2;
+          }
+          pts.forEach(function(pt){
+            var x1=img.offsetWidth; // right edge of image
+            var y1=imgH*pt.pct;
+            var x2=img.offsetWidth+20; // gap before label column starts
+            var y2=labelMidY(pt.id);
+            var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+            var cx=(x1+x2)/2;
+            path.setAttribute('d','M'+x1+' '+y1+' C'+cx+' '+y1+' '+cx+' '+y2+' '+x2+' '+y2);
+            path.setAttribute('stroke','#AFA9EC');path.setAttribute('stroke-width','1');
+            path.setAttribute('fill','none');path.setAttribute('opacity','0.7');
+            svg.appendChild(path);
+            var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+            dot.setAttribute('cx',x1);dot.setAttribute('cy',y1);dot.setAttribute('r','3');
+            dot.setAttribute('fill','#7B6FE8');dot.setAttribute('opacity','0.8');
+            svg.appendChild(dot);
+          });
+        },200);
+        </script>
+
+        <!-- QR Modal Before/After -->
+        <div style="margin-top:3rem">
+          <div class="cs-section-label" style="margin-bottom:1.25rem">Improving the setup experience</div>
+          <div style="display:flex;flex-direction:column;gap:1.5rem">
+            <!-- Before row -->
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;align-items:start">
+              <div>
+                <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.5rem">Before</div>
+                <div style="background:rgba(0,0,0,0.3);border-radius:8px;padding:1.25rem;cursor:zoom-in" onclick="openLightbox('QR before.png')">
+                  <img src="QR before.png" style="width:100%;display:block;border-radius:6px">
+                </div>
+              </div>
+              <div style="padding-top:1.5rem">
+                <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin:0">No live preview. Advertisers published without seeing the consumer experience.</p>
+              </div>
+            </div>
+            <!-- After row -->
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;align-items:start">
+              <div>
+                <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem">After</div>
+                <div style="background:rgba(0,0,0,0.3);border-radius:8px;padding:0.5rem;cursor:zoom-in" onclick="openLightbox('Chat builder - QR2 added 2 buttons.png')">
+                  <img src="Chat builder - QR2 added 2 buttons.png" style="width:100%;display:block;border-radius:6px">
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:1rem;padding-top:1.5rem">
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Interactive live preview</div>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin:0">Right panel updates in real time as advertisers configure.</p>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Consumer POV</div>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin:0">Preview shows exactly what the consumer will see and receive.</p>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Improved grouping</div>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin:0">Replaced nested fields with flat layout — button and response relationship is clearer.</p>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Placeholder association</div>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin:0">Updated placeholder text to better match the quick reply configuration component.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outcome -->
+        <div class="cs-highlight" style="margin-top:2.5rem">
+          <div class="cs-highlight-text">"Advertiser feedback confirmed that <span style="color:var(--accent);font-weight:600">setup was significantly easier</span> — many could configure their automations immediately, without any guidance."</div>
+        </div>
+
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- BizAI -->
+      <div class="cs-section">
+        <div class="cs-section-label">Future Direction</div>
+        <h2 class="cs-section-title">Automating the conversation gap at scale</h2>
+        <!-- The gap -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;align-items:start">
+          <div>
+            <p class="cs-body">Business AI closes that gap by turning every marketing message into an <span style="color:var(--accent);font-weight:600">intelligent two-way conversation.</span> When a consumer replies, AI responds instantly — keeping the exchange within the 24-hour free messaging window so advertisers incur no additional cost to reopen conversations.</p>
+            <p class="cs-body" style="margin-top:1rem">Existing MM advertisers complete a one-time BizAI onboarding. Once enabled, the feature surfaces directly inside the Conversations card and Chat Builder at the L1 level — no new surface to learn.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1.25rem">
+            <div style="padding:1.25rem;background:var(--accent-dim);border-radius:10px">
+              <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">The opportunity</div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.5">Every unanswered reply is a missed conversion. Business AI turns that gap into a scalable conversation engine.</div>
+            </div>
+            <div style="padding:1.25rem;background:var(--accent-dim);border-radius:10px">
+              <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">24-hour free window</div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.5">When a consumer replies to an MM, a free 24-hour messaging window opens. Business AI responds instantly within that window — so advertisers pay nothing extra to continue the conversation.</div>
+            </div>
+            <div style="padding:1.25rem;background:var(--accent-dim);border-radius:10px">
+              <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">One-time onboarding</div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.5">Existing MM advertisers complete BizAI setup once — then it surfaces at L1 inside Conversations card and Chat Builder.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BizAI image -->
+        <div style="margin-top:2.5rem">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary)">Strategy exploration · Not launched</div>
+          </div>
+          <img src="BizAI.png" style="width:100%;display:block;border-radius:10px;cursor:zoom-in" onclick="openLightbox('BizAI.png')">
+        </div>
+
+        <!-- Icebreaker -->
+        <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)">
+          <div class="cs-section-label" style="margin-bottom:0.75rem">Alongside this</div>
+          <p class="cs-body">I also redesigned the quick reply placement — moving the buttons below the CTA to create a visual separation between the marketing message and the conversation entry point. The hypothesis: advertisers who clearly distinguish the two will see higher conversation initiation rates than those using the current placement.</p>
+        </div>
+
+        <div class="cs-highlight" style="margin-top:2.5rem">
+          <div class="cs-highlight-text">"Without automation, every consumer reply goes nowhere. <span style="color:var(--accent);font-weight:600">Business AI closes that loop.</span>"</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-walmart">
+
+  <div class="cs-page">
+    <div class="container">
+
+      <!-- Hero -->
+      <div class="cs-hero" style="margin-bottom:3rem">
+        <div class="cs-eyebrow">03 — Walmart Seller Center</div>
+        <h1 class="cs-title">Seller Center</h1>
+      </div>
+
+      <!-- Hero image -->
+      <div style="border-radius:14px;overflow:hidden;margin-bottom:5rem;text-align:center">
+        <img src="main image.png" style="width:80%;display:inline-block">
+      </div>
+
+      <!-- Overview stats -->
+      <div class="cs-overview" style="margin-bottom:5rem">
+        <div class="cs-stat">
+          <div class="cs-stat-num">↑ 1200 <span style="font-size:0.5em">bps</span></div>
+          <div class="cs-stat-label">Landing Page NPS</div>
+          <div class="cs-stat-desc">Improvement in NPS score after launch</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">1600</div>
+          <div class="cs-stat-label">Homepage Card CTR</div>
+          <div class="cs-stat-desc">Average clicks per day across homepage cards</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">↑ 82%</div>
+          <div class="cs-stat-label">Promotion Adoption</div>
+          <div class="cs-stat-desc">Increase in WMP Capital Program adoption</div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Background -->
+      <div class="cs-section">
+        <div class="cs-section-label">Background</div>
+        <h2 class="cs-section-title" style="font-size:clamp(20px,2.5vw,28px)">The platform powering Walmart's third-party sellers</h2>
+        <div style="display:grid;grid-template-columns:1fr 220px;gap:4rem;align-items:start">
+          <div>
+            <p class="cs-body">Walmart Seller Center had no dedicated homepage — sellers landed directly on the items page with no sense of context, priority, or what to do next. I led the end-to-end design of the first-ever homepage from scratch, from competitive analysis through to launch and design QA.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div>
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem">Role</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Lead Designer · Project Owner</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem">Team</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">PM · Engineering · Content Designer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem -->
+      <div class="cs-section" style="margin-bottom:1.5rem">
+        <div class="cs-section-label">The Problem</div>
+        <h2 class="cs-section-title">There was no homepage — sellers had nowhere to start</h2>
+        <p class="cs-body">Without a dedicated landing page, sellers went straight to the items page. Unrelated notifications appeared on this page to alert sellers, with no sense of priority or context. There was no homepage that could help sellers understand their business, complete tasks, or grow their store.</p>
+      </div>
+
+      <!-- Before images -->
+      <div class="cs-section" style="margin-top:2rem">
+        <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">Before</div>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;margin-top:2rem;align-items:center">
+          <div style="text-align:center">
+            <img src="before.png" style="max-width:100%;display:inline-block;border-radius:10px">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem">
+            <div style="background:var(--accent-dim);border-radius:10px;padding:0.75rem 1.1rem">
+              <div style="font-size:13px;color:var(--text-primary);line-height:1.6;font-style:italic">"The website is lacking in general functionality related to the tasks needed each day."</div>
+            </div>
+            <div style="background:var(--accent-dim);border-radius:10px;padding:0.75rem 1.1rem">
+              <div style="font-size:13px;color:var(--text-primary);line-height:1.6;font-style:italic">"A lot of tasks are too manual to remember."</div>
+            </div>
+            <div style="background:var(--accent-dim);border-radius:10px;padding:0.75rem 1.1rem">
+              <div style="font-size:13px;color:var(--text-primary);line-height:1.6;font-style:italic">"We would like to have more complete information in one place."</div>
+            </div>
+            <div style="background:var(--accent-dim);border-radius:10px;padding:0.75rem 1.1rem">
+              <div style="font-size:13px;color:var(--text-primary);line-height:1.6;font-style:italic">"I hope there is a dashboard to tell new orders, return and refund requests — just an overview of my account."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Discovery: Competitive Analysis -->
+      <div class="cs-section">
+        <div class="cs-section-label">Discovery — Competitive Analysis</div>
+        <h2 class="cs-section-title">Every major competitor was ahead</h2>
+        <p class="cs-body">I audited Amazon, eBay, Etsy, and Shopify to understand what sellers experience elsewhere. All four had dedicated homepages with task guidance and growth features. Walmart had none of these — and was the only platform without a dismissible notification system or a promotions discovery surface.</p>
+        <div style="overflow:hidden;margin-top:2rem;text-align:center">
+          <img src="competitive analysis - exploring industry best practices.png" style="max-width:80%;display:inline-block;border-radius:10px">
+        </div>
+        <table class="cs-table" style="margin-top:2rem">
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Guided tasks</th>
+              <th>Contextual metrics</th>
+              <th>Growth tips</th>
+              <th>Lifecycle-aware</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="company%20logo/Amazon_logo.svg.webp" style="height:18px;display:block;object-fit:contain"></td>
+              <td class="cs-check">✓</td><td class="cs-check">✓</td><td style="color:var(--text-muted)">—</td><td class="cs-check">✓</td>
+            </tr>
+            <tr>
+              <td><img src="company%20logo/EBay_logo.svg" style="height:18px;display:block;object-fit:contain"></td>
+              <td class="cs-check">✓</td><td style="color:var(--text-muted)">—</td><td class="cs-check">✓</td><td style="color:var(--text-muted)">—</td>
+            </tr>
+            <tr>
+              <td><img src="company%20logo/Etsy_logo.svg.png" style="height:18px;display:block;object-fit:contain"></td>
+              <td class="cs-check">✓</td><td class="cs-check">✓</td><td class="cs-check">✓</td><td class="cs-check">✓</td>
+            </tr>
+            <tr>
+              <td><img src="company%20logo/Shopify_logo_2018.svg.png" style="height:18px;display:block;object-fit:contain"></td>
+              <td class="cs-check">✓</td><td class="cs-check">✓</td><td class="cs-check">✓</td><td class="cs-check">✓</td>
+            </tr>
+            <tr>
+              <td><img src="company%20logo/logo-walmart-vector-PNG.png" style="height:18px;display:block;object-fit:contain"></td>
+              <td style="color:var(--text-muted)">—</td><td style="color:var(--text-muted)">—</td><td style="color:var(--text-muted)">—</td><td style="color:var(--text-muted)">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Discovery: Workshop -->
+      <div class="cs-section">
+        <div class="cs-section-label">Discovery — Content Workshop</div>
+        <h2 class="cs-section-title">Defining what belongs on the homepage</h2>
+        <p class="cs-body">I ran a content workshop with the product team to determine the essential requirements across three core areas: key business metrics, tasks, and growth. From there, we mapped each piece of content to the seller's lifecycle stage — whether they're onboarding for the first time or already an active seller — so the homepage surfaces the right information at the right moment.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem">
+          <div style="overflow:hidden;cursor:zoom-in;text-align:center" onclick="openLightbox('workshop.png')"><img src="workshop.png" style="max-width:100%;display:inline-block;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'"></div>
+          <div style="overflow:hidden;cursor:zoom-in;text-align:center" onclick="openLightbox('workshop2.png')"><img src="workshop2.png" style="max-width:100%;display:inline-block;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'"></div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Mission: 3 Pillars -->
+      <div class="cs-section">
+        <div class="cs-section-label">Design Direction</div>
+        <h2 class="cs-section-title">Three pillars. One homepage.</h2>
+        <p class="cs-body">A clear mission emerged from the research: the homepage should help sellers run their business, complete their tasks, and grow their store — in that order of urgency.</p>
+        <div class="cs-three-col" style="margin-top:2.5rem">
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">01</div>
+            <div class="cs-pillar-title">Run the Business</div>
+            <div class="cs-pillar-body">Surface the metrics that matter — revenue, orders, conversion — with context for trend, not just the number.</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">02</div>
+            <div class="cs-pillar-title">Complete Tasks</div>
+            <div class="cs-pillar-body">Prioritize pending actions by business impact. Turn the homepage into a daily triage layer.</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">03</div>
+            <div class="cs-pillar-title">Grow the Store</div>
+            <div class="cs-pillar-body">Offer contextual growth tips — promotions, listing health, programs — relevant to where sellers are in their lifecycle.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seller Journey Map -->
+      <div class="cs-section">
+        <div class="cs-section-label">Seller Journey</div>
+        <h2 class="cs-section-title">Mapping needs by lifecycle stage</h2>
+        <p class="cs-body">A week-one seller and a three-year veteran need completely different things. I mapped the full journey to design an experience that adapts to where sellers are.</p>
+        <div style="overflow:hidden;margin-top:2rem;cursor:zoom-in;text-align:center" onclick="openLightbox('user journey.png')">
+          <img src="user journey.png" style="max-width:100%;display:inline-block;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Visual Exploration -->
+      <div class="cs-section">
+        <div class="cs-section-label">Design Exploration</div>
+        <h2 class="cs-section-title">Exploring the layout</h2>
+        <p class="cs-body">I explored several directions before converging on the final approach — testing how to balance metrics density with task clarity.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem">
+          <div style="border-radius:4px;overflow:hidden;cursor:zoom-in" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="visual exploration 1.png" style="width:100%;display:block;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="border-radius:4px;overflow:hidden;cursor:zoom-in" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="visual exploration 2.png" style="width:100%;display:block;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="border-radius:4px;overflow:hidden;cursor:zoom-in" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="visual exploration 3.png" style="width:100%;display:block;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+        </div>
+      </div>
+
+      <!-- First Round -->
+      <div class="cs-section">
+        <div class="cs-section-label">First Round</div>
+        <h2 class="cs-section-title">Initial homepage with three core sections</h2>
+        <p class="cs-body">After several iterations, we developed the initial version of the homepage — a single layout organizing everything sellers need into three focused sections: To-dos, KPIs, and Promotions.</p>
+        <div style="overflow:hidden;margin-top:2rem;text-align:center">
+          <img src="First round.png" style="max-width:100%;display:inline-block;border-radius:10px">
+        </div>
+      </div>
+
+      <!-- Usability Testing -->
+      <div class="cs-section">
+        <div class="cs-section-label">Usability Testing</div>
+        <h2 class="cs-section-title">Testing comprehension — new design vs. original onboarding</h2>
+        <p class="cs-body">We tested this first-round design using the PURE (Practical Usability Rating by Experts) method with 5 evaluators. To set a baseline, we first tested the original onboarding flow, then integrated that onboarding into the new homepage to see how the To-do section improved seller comprehension.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem">
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">Original onboarding flow</div>
+            <img src="original onboarding flow.png" style="max-width:100%;display:inline-block;border-radius:10px">
+            <p class="cs-body" style="margin-top:1rem;max-width:none;font-size:13px">The original onboarding prioritized the "Add Items" banner over the actual setup steps — sellers were pushed toward listing products before completing essential account setup, causing confusion and drop-off.</p>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">New onboarding flow</div>
+            <img src="new onboarding flow.png" style="max-width:100%;display:inline-block;border-radius:10px">
+            <p class="cs-body" style="margin-top:1rem;max-width:none;font-size:13px">By integrating onboarding into the To-do section, sellers could clearly see what setup steps remained — in the right order, with the right priority — without being distracted by promotions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section" style="padding-top:0">
+        <div class="cs-section-label">PURE Results</div>
+        <h2 class="cs-section-title">New design outperformed across every task</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem">
+          <div style="display:flex;align-items:flex-start;gap:1.25rem;background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem">
+            <img src="evaluators.png" style="width:56px;height:56px;object-fit:contain;flex-shrink:0">
+            <div>
+              <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem">5 Evaluators</div>
+              <ul style="margin:0;padding-left:1rem;font-size:13px;color:var(--text-secondary);line-height:1.8">
+                <li>2 Designers</li>
+                <li>2 Products</li>
+                <li>1 Researcher</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1.25rem;background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem">
+            <img src="user mindset.png" style="width:56px;height:56px;object-fit:contain;flex-shrink:0">
+            <div>
+              <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem">User Mindset</div>
+              <ul style="margin:0;padding-left:1rem;font-size:13px;color:var(--text-secondary);line-height:1.8">
+                <li>Prospective Walmart Marketplace seller</li>
+                <li>Already sells on Amazon and eBay</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+          <!-- Original -->
+          <div style="background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+            <div style="background:#4a4a5a;padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:14px;font-weight:600;color:#fff">Original onboarding</span>
+              <span style="background:#e8845a;color:#fff;font-size:16px;font-weight:700;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center">17</span>
+            </div>
+            <div style="padding:0">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border)">
+                <span style="font-size:13px;color:var(--text-primary)">Become a Verified Seller</span>
+                <span style="background:#f5c842;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border)">
+                <span style="font-size:13px;color:var(--text-primary)">Add Payments</span>
+                <span style="background:#e8845a;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border)">
+                <span style="font-size:13px;color:var(--text-primary)">Review Status</span>
+                <span style="background:#e8845a;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem">
+                <span style="font-size:13px;color:var(--text-primary)">Add Shipping Information</span>
+                <span style="background:#e8845a;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</span>
+              </div>
+            </div>
+          </div>
+          <!-- New design -->
+          <div style="background:white;border:1.5px solid var(--accent);border-radius:12px;overflow:hidden">
+            <div style="background:var(--accent);padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:14px;font-weight:600;color:#fff">New onboarding</span>
+              <span style="background:white;color:var(--accent);font-size:16px;font-weight:700;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center">11</span>
+            </div>
+            <div style="padding:0">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border)">
+                <span style="font-size:13px;color:var(--text-primary)">Become a Verified Seller</span>
+                <span style="background:#f5c842;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border)">
+                <span style="font-size:13px;color:var(--text-primary)">Add Payments</span>
+                <span style="background:#f5c842;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border)">
+                <span style="font-size:13px;color:var(--text-primary)">Review Status</span>
+                <span style="background:#4ecdc4;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.25rem">
+                <span style="font-size:13px;color:var(--text-primary)">Add Shipping Information</span>
+                <span style="background:#4ecdc4;color:#fff;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem;font-size:12px;color:var(--text-muted);text-align:center">PURE score — lower is better. Teal = easy, yellow = moderate, red = difficult.</div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Final Solution -->
+      <div class="cs-section">
+        <div class="cs-section-label">Final Solution</div>
+        <h2 class="cs-section-title">A homepage that knows who you are</h2>
+        <p class="cs-body">The redesigned homepage brings together three focused sections in one scannable layout — adapting to each seller's stage and surfacing the right information at the right time.</p>
+        <div style="overflow:hidden;margin-top:2rem;text-align:center">
+          <img src="final solution.png" style="max-width:100%;display:inline-block">
+        </div>
+        <div class="cs-three-col" style="margin-top:2rem">
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">TO-DOS</div>
+            <div class="cs-pillar-title">Action-first</div>
+            <div class="cs-pillar-body">Sellers can clearly see what needs to be done — ordered by urgency and business impact, so nothing falls through the cracks.</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">BUSINESS KPIs</div>
+            <div class="cs-pillar-title">Performance at a glance</div>
+            <div class="cs-pillar-body">Key metrics like revenue, orders, and conversion shown in context — with trend signals so sellers understand their business without digging.</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-num">PROMOTIONS</div>
+            <div class="cs-pillar-title">Contextual growth</div>
+            <div class="cs-pillar-body">Relevant programs and promotions surfaced based on where the seller is in their lifecycle — not one-size-fits-all banners.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Design Framework -->
+      <div class="cs-section">
+        <div class="cs-section-label">Content Design</div>
+        <h2 class="cs-section-title">A framework for what shows up and when</h2>
+        <p class="cs-body">In collaboration with the Content Designer, we developed a framework to determine what content belongs on the homepage and where — including where seller alerts should be routed, how each module is prioritized, and when content appears or retires based on the seller's lifecycle stage.</p>
+        <div style="overflow:hidden;margin-top:2rem;text-align:center">
+          <img src="content framework.png" style="max-width:72%;display:inline-block;border-radius:10px">
+        </div>
+      </div>
+
+      <!-- Promotional Banner Lifecycle -->
+      <div class="cs-section">
+        <div class="cs-section-label">Promotional System</div>
+        <h2 class="cs-section-title">Banner lifecycle</h2>
+        <p class="cs-body">Promotional banners were a major pain point — they'd pile up, go stale, and drown out more important tasks. I designed a lifecycle system that controls how banners appear, surface, and expire.</p>
+        <div style="overflow:hidden;margin-top:2rem;text-align:center">
+          <img src="promotional banner lifecycle.png" style="max-width:100%;display:inline-block">
+        </div>
+      </div>
+
+      <!-- Seller Quotes -->
+      <div class="cs-section">
+        <div class="cs-section-label">Seller Feedback</div>
+        <h2 class="cs-section-title">What sellers said</h2>
+        <div style="margin-top:2.5rem">
+          <!-- top two quotes centered -->
+          <div style="display:flex;justify-content:center;gap:1rem;margin-bottom:1.25rem">
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.1rem">
+              <div style="font-size:14px;color:var(--text-primary);line-height:1.5;font-style:italic">"I LOVE the homepage you've created."</div>
+            </div>
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.1rem">
+              <div style="font-size:14px;color:var(--text-primary);line-height:1.5;font-style:italic">"Love the new homepage, I can even see new orders everyday!"</div>
+            </div>
+          </div>
+          <!-- middle row: left quote | icon | right quote -->
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1.25rem;align-items:center">
+            <div style="display:flex;justify-content:flex-start">
+              <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.1rem">
+                <div style="font-size:14px;color:var(--text-primary);line-height:1.5;font-style:italic">"It's really easy to work with."</div>
+              </div>
+            </div>
+            <img src="impact icon.png" style="width:120px;display:block;flex-shrink:0">
+            <div style="display:flex;justify-content:flex-end">
+              <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.1rem">
+                <div style="font-size:14px;color:var(--text-primary);line-height:1.5;font-style:italic">"This is new and interesting. It's a good landing page."</div>
+              </div>
+            </div>
+          </div>
+          <!-- bottom quote centered -->
+          <div style="display:flex;justify-content:center;margin-top:1.25rem">
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.1rem">
+              <div style="font-size:14px;color:var(--text-primary);line-height:1.5;font-style:italic">"If we can have a checklist of the actions needed to keep the site at top shape, that will help."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Results -->
+      <div class="cs-section">
+        <div class="cs-section-label">Results & Impact</div>
+        <h2 class="cs-section-title">Measurable impact across the board</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem">
+          <div class="cs-stat">
+            <div class="cs-stat-num">↑ 1200 <span style="font-size:0.5em">bps</span></div>
+            <div class="cs-stat-label">Landing Page NPS</div>
+            <div class="cs-stat-desc">Improvement in NPS score</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat-num">1600 <span style="font-size:0.45em;opacity:0.7">/day</span></div>
+            <div class="cs-stat-label">Homepage Card CTR</div>
+            <div class="cs-stat-desc">Average clicks per day across homepage cards</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat-num">↑ 82%</div>
+            <div class="cs-stat-label">Promo Adoption Rate</div>
+            <div class="cs-stat-desc">Increase in WMP Capital Program adoption</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center;padding:2rem">
+  <img id="lightbox-img" style="max-width:90vw;max-height:90vh;border-radius:8px;object-fit:contain" onclick="event.stopPropagation()">
+</div>
+
+</body>
+</html>
