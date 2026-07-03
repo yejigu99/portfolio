@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  if(sessionStorage.getItem('auth')==='ok') return;
+  var pw=prompt('Password:');
+  if(pw==='emmadesigner'){sessionStorage.setItem('auth','ok');}
+  else{document.documentElement.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#6B6965">Incorrect password.</div>';throw new Error('auth');}
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emma Gu — Product Designer</title>
