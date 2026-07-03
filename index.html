@@ -179,8 +179,9 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
 
   /* home cards */
   .card-layout{grid-template-columns:1fr}
-  .card-image{height:200px;padding:1.25rem 1.25rem 0}
+  .card-image{height:200px!important;min-height:0!important;padding:1.25rem 1.25rem 0}
   .card-content{padding:1.75rem}
+  div[style*="min-height:320px"]{min-height:0!important;height:200px!important}
   .home-footer{flex-direction:column;gap:1rem;align-items:flex-start}
 
   /* about */
@@ -208,8 +209,10 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
   div[style*="grid-template-columns:1fr 220px"]{grid-template-columns:1fr!important}
   div[style*="grid-template-columns:180px 1fr"]{grid-template-columns:1fr!important}
   div[style*="grid-template-columns:2fr 1fr"]{grid-template-columns:1fr!important}
-  div[style*="grid-template-columns:1fr 60px 1fr"]{display:flex!important;flex-direction:column!important;gap:1.5rem!important}
-  div[style*="grid-template-columns:1fr 40px 1fr"]{display:flex!important;flex-direction:column!important;gap:1.5rem!important}
+  /* IA diagrams — horizontal scroll instead of breaking layout */
+  div[style*="grid-template-columns:1fr 60px 1fr"]{overflow-x:auto!important;display:block!important;-webkit-overflow-scrolling:touch!important}
+  div[style*="grid-template-columns:1fr 40px 1fr"]{overflow-x:auto!important;display:block!important;-webkit-overflow-scrolling:touch!important}
+  #ia-diagram{overflow-x:auto!important}
 
   /* process timeline — stack vertically */
   div[style*="gap:0"][style*="position:relative"]{flex-direction:column!important;gap:1.25rem!important}
@@ -225,13 +228,15 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
   div[style*="max-width:780px"]{padding:1rem!important}
   div[style*="max-width:520px"]{max-width:100%!important}
 
-  /* annotation diagram — hide floating labels, keep phone image */
-  div[style*="position:absolute"][style*="left:240px"]{display:none!important}
-  div[style*="width:560px"][style*="position:relative"]{width:auto!important;max-width:260px!important;margin:1.5rem auto 0!important;flex-shrink:0!important}
+  /* annotation diagram — keep labels visible, show scrollable */
+  div[style*="width:560px"][style*="position:relative"]{width:320px!important;flex-shrink:0!important;margin:1.5rem auto 0!important;overflow:visible!important}
 
   /* r2 stat annotations */
   div[style*="margin-right:200px"]{margin-right:0!important}
   div[style*="position:absolute"][style*="right:0"][style*="width:170px"]{display:none!important}
+
+  /* Phase 1 side-by-side images — undo JS-set height */
+  #creatives-modal-bg{height:auto!important}
 
   /* hide SVG connector lines in diagrams on mobile */
   #ia-svg,#r2-svg,#cb-svg{display:none!important}
@@ -946,13 +951,13 @@ window.addEventListener('load', function(){
             <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">Before</div>
             <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Single replacement</div>
             <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem">Gen AI generated one suggestion at a time — advertisers had to replace their text entirely to use it.</div>
-            <img src="gen ai before.png" style="width:100%;border-radius:8px;display:block">
+            <img src="Gen AI before.png" style="width:100%;border-radius:8px;display:block">
           </div>
           <div>
             <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">After</div>
             <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Multi-select</div>
             <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem">Up to 5 MM-specific variants presented at once — advertisers pick which ones to include, adding multiple options in one step.</div>
-            <img src="gen ai after.png" style="width:100%;border-radius:8px;display:block">
+            <img src="Gen AI after.png" style="width:100%;border-radius:8px;display:block">
           </div>
         </div>
 
