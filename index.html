@@ -12,9 +12,22 @@
 <script>
 (function(){
   if(sessionStorage.getItem('auth')==='ok') return;
-  var pw=prompt('Password:');
-  if(pw==='emmadesigner'){sessionStorage.setItem('auth','ok');}
-  else{document.documentElement.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#6B6965">Incorrect password.</div>';throw new Error('auth');}
+  document.documentElement.style.visibility='hidden';
+  window.addEventListener('DOMContentLoaded',function(){
+    document.documentElement.style.visibility='';
+    var overlay=document.createElement('div');
+    overlay.id='pw-overlay';
+    overlay.style.cssText='position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:-apple-system,sans-serif';
+    overlay.innerHTML='<div style="text-align:center"><div style="font-size:14px;color:#888;margin-bottom:20px;letter-spacing:0.08em">EMMA GU</div><input id="pw-input" type="password" placeholder="Password" style="display:block;width:220px;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:15px;outline:none;margin-bottom:10px"><div id="pw-err" style="font-size:12px;color:#c00;height:16px;margin-bottom:8px"></div><button onclick="checkPw()" style="width:248px;padding:10px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer">Enter</button></div>';
+    document.body.appendChild(overlay);
+    document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
+    document.getElementById('pw-input').focus();
+  });
+  window.checkPw=function(){
+    var v=document.getElementById('pw-input').value;
+    if(v==='emmadesigner'){sessionStorage.setItem('auth','ok');document.getElementById('pw-overlay').remove();}
+    else{document.getElementById('pw-err').textContent='Incorrect password';document.getElementById('pw-input').value='';}
+  };
 })();
 </script>
   <script defer src="/_vercel/insights/script.js"></script>
