@@ -671,12 +671,12 @@ window.addEventListener('load', function(){
         <!-- R1 Problem -->
         <div class="cs-section-label" style="margin-top:3rem">The Problem</div>
         <p class="cs-body" style="margin-top:0.75rem">MM features were buried in their own isolated sub-section inside Ads Manager — completely separate from where ad creative lived. Research showed that advertisers think about ads and MM as part of the same creative workflow, not as separate tasks. The structure didn't match their mental model, and that mismatch was hurting adoption.</p>
-        <div style="margin-top:2rem;display:flex;gap:1.5rem;overflow:visible;justify-content:center;align-items:flex-start">
-          <div style="width:560px;flex-shrink:0;position:relative">
+        <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+          <div>
             <img src="Original creative.png" alt="Original creative setup" id="creatives-left-img" style="width:100%;display:block;border-radius:8px;cursor:zoom-in" onclick="openLightbox(this.src)">
             <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Ad creative setup — MM buried at the bottom</div>
           </div>
-          <div style="width:560px;flex-shrink:0;display:flex;flex-direction:column">
+          <div>
             <div id="creatives-modal-bg" style="background:rgba(0,0,0,0.45);border-radius:8px;padding:0.75rem;display:flex;align-items:center;justify-content:center">
               <img src="MM setup before.png" alt="MM setup modal" style="width:85%;display:block;border-radius:6px;cursor:zoom-in" onclick="openLightbox(this.src)">
             </div>
@@ -916,7 +916,30 @@ window.addEventListener('load', function(){
         </div>
 
         <div class="cs-section-label" style="margin-top:5rem">Design & A/B Test</div>
-        <p class="cs-body" style="margin-top:1rem">The leadership direction was clear: make it immediately obvious to advertisers that their ads copy is being used for MM by default — and give them a way to customize if needed. The design challenge was surfacing this without adding friction to an already complex workflow.</p>
+        <p class="cs-body" style="margin-top:1rem">Phase 1 showed that MM was buried at the bottom of the ad creative flow — advertisers never reached it. Phase 2 opened a new path: since advertisers were already writing multiple ad text variants, we could extend those to MM automatically. The design question became: how do you surface that connection in the UI clearly, without adding yet another input to an already complex workflow?</p>
+
+        <!-- Design Exploration sub-section -->
+        <div style="margin-top:3rem;padding:2rem;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem">Step 1 · Design Exploration</div>
+          <p class="cs-body" style="margin-top:0.5rem;margin-bottom:1.5rem">I explored three directions before deciding how to move forward:</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Direction 1 — Unified ad & MM text</div>
+              <img src="text optimization - option 1.png" style="width:100%;border-radius:8px;display:block">
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Direction 2 — Conditional MM customization ✦ Chosen</div>
+              <img src="text optimization - option 3.png" style="width:100%;border-radius:8px;display:block">
+            </div>
+          </div>
+          <p class="cs-body" style="margin-top:1.25rem">I recommended Direction 2 as the MVP approach — it kept MM always visible without adding UI complexity, and required the lowest engineering lift.</p>
+        </div>
+
+        <!-- A/B Test sub-section -->
+        <div style="margin-top:1.5rem;padding:2rem;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem">Step 2 · A/B Test</div>
+          <p class="cs-body" style="margin-top:0.5rem;margin-bottom:2rem">With Direction 2 chosen, the remaining question was <em>how</em> visible to make the customization option. I ran an A/B test to validate.</p>
+
         <!-- Option A -->
         <div style="margin-top:2rem">
           <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Option A — Progressive disclosure</div>
@@ -966,6 +989,7 @@ window.addEventListener('load', function(){
           </div>
           <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">Full visibility made it easier for advertisers to discover and act on the customization option. Option B was selected as the winning design.</p>
         </div>
+        </div><!-- /A/B Test container -->
 
         <div class="cs-section-label" style="margin-top:5rem">Gen AI Redesign</div>
         <p class="cs-body" style="margin-top:1rem">To further support customization adoption, we redesigned the Gen AI experience for MM.</p>
