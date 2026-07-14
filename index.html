@@ -10,25 +10,23 @@
   gtag('config', 'G-Q7H6DG4SWQ');
 </script>
 <script>
-(function(){
-  if(sessionStorage.getItem('auth')==='ok') return;
-  document.documentElement.style.visibility='hidden';
-  window.addEventListener('DOMContentLoaded',function(){
-    document.documentElement.style.visibility='';
-    var overlay=document.createElement('div');
-    overlay.id='pw-overlay';
-    overlay.style.cssText='position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:-apple-system,sans-serif';
-    overlay.innerHTML='<div style="text-align:center"><div style="font-size:14px;color:#888;margin-bottom:20px;letter-spacing:0.08em">EMMA GU</div><input id="pw-input" type="password" placeholder="Password" style="display:block;width:220px;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:15px;outline:none;margin-bottom:10px"><div id="pw-err" style="font-size:12px;color:#c00;height:16px;margin-bottom:8px"></div><button onclick="checkPw()" style="width:248px;padding:10px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer">Enter</button></div>';
-    document.body.appendChild(overlay);
-    document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
-    document.getElementById('pw-input').focus();
-  });
-  window.checkPw=function(){
+var PROTECTED=['creatives','conversations','walmart'];
+function requireAuth(callback){
+  if(localStorage.getItem('auth')==='ok'){callback();return;}
+  var overlay=document.createElement('div');
+  overlay.id='pw-overlay';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:99999;font-family:-apple-system,sans-serif';
+  overlay.innerHTML='<div style="text-align:center"><div style="font-size:13px;color:#aaa;margin-bottom:20px;letter-spacing:0.1em;text-transform:uppercase">Password required</div><input id="pw-input" type="password" placeholder="Password" style="display:block;width:220px;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:15px;outline:none;margin-bottom:10px"><div id="pw-err" style="font-size:12px;color:#c00;height:16px;margin-bottom:8px"></div><button id="pw-btn" style="width:248px;padding:10px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer">Enter</button></div>';
+  document.body.appendChild(overlay);
+  function check(){
     var v=document.getElementById('pw-input').value;
-    if(v==='emmadesigner'){sessionStorage.setItem('auth','ok');document.getElementById('pw-overlay').remove();}
+    if(v==='emmadesigner'){localStorage.setItem('auth','ok');overlay.remove();callback();}
     else{document.getElementById('pw-err').textContent='Incorrect password';document.getElementById('pw-input').value='';}
-  };
-})();
+  }
+  document.getElementById('pw-btn').addEventListener('click',check);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+  document.getElementById('pw-input').focus();
+}
 </script>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -534,7 +532,7 @@ function openLightbox(src){
   document.getElementById('lightbox-img').src=src;
   lb.style.display='flex';
 }
-function showPage(n){
+function _doShowPage(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   var pageEl=document.getElementById('page-'+n);
   pageEl.classList.add('active');
@@ -556,6 +554,13 @@ function showPage(n){
       });
     },{threshold:0.15});
     document.querySelectorAll('.section-title,.work-card').forEach(function(el){obs.observe(el);});
+  }
+}
+function showPage(n){
+  if(PROTECTED.indexOf(n)!==-1 && localStorage.getItem('auth')!=='ok'){
+    requireAuth(function(){_doShowPage(n);});
+  } else {
+    _doShowPage(n);
   }
 }
 // restore page from URL hash on load

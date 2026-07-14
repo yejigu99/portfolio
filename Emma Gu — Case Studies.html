@@ -83,9 +83,10 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
 .progress-dot.active { background: var(--purple); transform: scale(1.5); }
 
 #counter {
-  position: absolute; bottom: 10px; right: 14px;
-  font-size: 10px; color: rgba(255,255,255,0.25);
-  letter-spacing: 0.06em; font-variant-numeric: tabular-nums; z-index: 10;
+  position: absolute; bottom: 14px; right: 20px;
+  font-size: 18px; color: rgba(255,255,255,0.85);
+  letter-spacing: 0.03em; font-variant-numeric: tabular-nums; z-index: 10;
+  font-weight: 600;
 }
 
 /* ── Sidebar ── */
@@ -174,7 +175,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
   padding: 4px 8px 5px; background: var(--navy2);
   display: flex; align-items: center; gap: 5px;
 }
-.thumb-num { font-size: 8.5px; font-weight: 700; color: rgba(255,255,255,0.25); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.thumb-num { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); font-variant-numeric: tabular-nums; flex-shrink: 0; }
 .thumb-title { font-size: 9.5px; color: rgba(255,255,255,0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .thumb.active .thumb-num { color: var(--purple); }
 .thumb.active .thumb-title { color: rgba(255,255,255,0.85); }
@@ -184,7 +185,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
    SLIDE DESIGN SYSTEM
    ═══════════════════════════════════ */
 
-.slide { font-size: 13px; line-height: 1.5; color: var(--text); }
+.slide { font-size: 22px; line-height: 1.5; color: var(--text); }
 
 .sl { padding: 7% 5.5% 5%; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
 .sl-dark { background: var(--navy); color: #fff; }
@@ -192,13 +193,13 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
 .ey { font-size: 0.6em; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.6em; }
 .ey-blue { color: var(--blue-bright); }
 
-.h1 { font-family: "Avenir Next", "Avenir", -apple-system, sans-serif; font-size: 3.6em; font-weight: 600; line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance; }
-.h2 { font-family: "Avenir Next", "Avenir", -apple-system, sans-serif; font-size: 1.75em; font-weight: 600; line-height: 1.15; letter-spacing: -0.025em; text-wrap: balance; margin-bottom: 0.45em; }
-.h2-sm { font-size: 1.42em; }
+.h1 { font-family: "Avenir Next", "Avenir", -apple-system, sans-serif; font-size: 4em; font-weight: 600; line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance; }
+.h2 { font-family: "Avenir Next", "Avenir", -apple-system, sans-serif; font-size: 2em; font-weight: 600; line-height: 1.15; letter-spacing: -0.025em; text-wrap: balance; margin-bottom: 0.45em; }
+.h2-sm { font-size: 1.6em; }
 .slide-num { position: absolute; top: 4%; right: 4.5%; font-size: 0.55em; font-weight: 600; color: rgba(0,0,0,0.12); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; z-index: 5; }
 .slide[data-bg="dark"] .slide-num { color: rgba(255,255,255,0.15); }
 
-.bd { font-size: 0.86em; color: #3D3B38; line-height: 1.65; }
+.bd { font-size: 1em; color: #3D3B38; line-height: 1.65; }
 
 .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5%; }
 .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5%; }
@@ -210,14 +211,14 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
 .card-warn   { background: #FFF5F5; border: 1px solid #FECACA; border-radius: 10px; padding: 4.5% 5%; }
 
 .stat-num   { font-family: Cambria, Georgia, serif; font-size: 2.6em; font-weight: 700; letter-spacing: -0.03em; color: var(--purple); line-height: 1; }
-.stat-label { font-size: 0.74em; color: var(--muted); line-height: 1.4; margin-top: 0.3em; }
+.stat-label { font-size: 0.9em; color: var(--muted); line-height: 1.4; margin-top: 0.3em; }
 
-.quote      { background: var(--purple-dim); border-left: 3px solid var(--purple); border-radius: 0 9px 9px 0; padding: 3% 4%; font-family: Cambria, Georgia, serif; font-size: 0.9em; font-style: italic; color: var(--purple-deep); line-height: 1.65; }
+.quote      { background: var(--purple-dim); border-left: 3px solid var(--purple); border-radius: 0 9px 9px 0; padding: 3% 4%; font-family: Cambria, Georgia, serif; font-size: 1em; font-style: italic; color: var(--purple-deep); line-height: 1.65; }
 .quote-blue { background: var(--blue-dim); border-left-color: var(--blue-bright); color: #0c447c; }
 
 .pill        { display: inline-block; font-size: 0.72em; padding: 2px 10px; border-radius: 100px; border: 1px solid var(--border); color: var(--muted); white-space: nowrap; }
 
-.opt-label   { font-size: 0.68em; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.opt-label   { font-size: 0.8em; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
 .opt-label.win   { color: var(--purple); }
 .opt-label.win-b { color: var(--blue-bright); }
 
@@ -266,123 +267,6 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
   <div id="slide-wrapper">
 
   <!-- INTRO 1 · COVER -->
-  <div class="slide" data-section="intro" data-title="Hello, I'm Emma" data-bg="dark">
-    <div style="width:100%;height:100%;background:var(--navy);display:flex;align-items:center;padding:7% 10%;box-sizing:border-box">
-      <div>
-        <div style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:4.4em;font-weight:600;color:#fff;letter-spacing:-0.04em;line-height:1">Hello,</div>
-        <div style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:4.4em;font-weight:600;color:rgba(255,255,255,0.42);letter-spacing:-0.04em;line-height:1">I'm Emma.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- INTRO 2 · AGENDA -->
-  <div class="slide" data-section="intro" data-title="Agenda">
-    <div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:8% 10%;box-sizing:border-box;background:#fff">
-      <div style="font-size:0.55em;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);margin-bottom:1.4em">Agenda</div>
-      <div style="margin-bottom:1.2em">
-        <div style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:3em;font-weight:500;color:var(--navy);letter-spacing:-0.03em;line-height:1.05">About me.</div>
-      </div>
-      <div style="width:100%;height:1px;background:#EBEBEB;margin-bottom:1.2em"></div>
-      <div>
-        <div style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:3em;font-weight:500;color:var(--navy);letter-spacing:-0.03em;line-height:1.05;margin-bottom:0.35em">The work.</div>
-        <div style="display:flex;flex-direction:column;gap:0.35em">
-          <div style="font-size:0.82em;color:#999;display:flex;align-items:center;gap:0.65em">
-            <span style="width:16px;height:1px;background:var(--purple);display:inline-block;flex-shrink:0"></span>WhatsApp Marketing Messages, Creatives
-          </div>
-          <div style="font-size:0.82em;color:#999;display:flex;align-items:center;gap:0.65em">
-            <span style="width:16px;height:1px;background:var(--purple);display:inline-block;flex-shrink:0"></span>WhatsApp Marketing Messages, Conversations
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- INTRO 3 · ABOUT ME -->
-  <div class="slide" data-section="intro" data-title="About Me">
-    <div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:7% 10%;box-sizing:border-box;background:#fff">
-      <div style="font-size:0.55em;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);margin-bottom:1.4em">About me</div>
-      <div style="display:flex;flex-direction:column;gap:0">
-        <div style="padding:0.95em 0;border-top:1px solid #EBEBEB;display:flex;align-items:baseline;gap:0.8em">
-          <span style="font-size:1em;flex-shrink:0">🎓</span>
-          <div>
-            <span style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1.05em;font-weight:500;color:var(--navy)">Industrial design grad</span>
-            <span style="font-size:0.82em;color:#bbb;margin-left:0.6em">graphic, 3D &amp; brand design background, now in product</span>
-          </div>
-        </div>
-        <div style="padding:0.95em 0;border-top:1px solid #EBEBEB;display:flex;align-items:baseline;gap:0.8em">
-          <span style="font-size:1em;flex-shrink:0">🌏</span>
-          <div>
-            <span style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1.05em;font-weight:500;color:var(--navy)">Lived in 4 countries</span>
-            <span style="font-size:0.82em;color:#bbb;margin-left:0.6em">🇰🇷 Korea → 🇳🇿 New Zealand → 🇨🇳 China → 🇺🇸 USA (10+ years)</span>
-          </div>
-        </div>
-        <div style="padding:0.95em 0;border-top:1px solid #EBEBEB;display:flex;align-items:baseline;gap:0.8em">
-          <span style="font-size:1em;flex-shrink:0">✈️</span>
-          <div>
-            <span style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1.05em;font-weight:500;color:var(--navy)">Travel · coffee hopping · cats</span>
-            <span style="font-size:0.82em;color:#bbb;margin-left:0.6em">... and now a 2.5-year-old 👶 keeps me busy</span>
-          </div>
-        </div>
-        <div style="padding:0.95em 0;border-top:1px solid #EBEBEB;border-bottom:1px solid #EBEBEB;display:flex;align-items:baseline;gap:0.8em">
-          <span style="font-size:1em;flex-shrink:0">💻</span>
-          <div>
-            <span style="font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1.05em;font-weight:500;color:var(--navy)">10+ years in design</span>
-            <span style="font-size:0.82em;color:#bbb;margin-left:0.6em">across physical products, brand, and digital</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- INTRO 4 · EXPERIENCE -->
-  <div class="slide" data-section="intro" data-title="Experience">
-    <div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:7% 10%;box-sizing:border-box;background:#fff">
-      <div style="font-size:0.55em;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);margin-bottom:1.4em">Experience</div>
-      <div style="display:flex;flex-direction:column;gap:0">
-        <div style="display:flex;align-items:flex-start;gap:2em;padding:1.1em 0;border-top:1px solid #EBEBEB">
-          <div style="width:22%;flex-shrink:0;font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1em;font-weight:500;color:var(--navy);padding-top:0.1em">Meta</div>
-          <div style="flex:1">
-            <div style="display:flex;align-items:center;gap:0.7em;margin-bottom:0.4em">
-              <span style="font-size:0.9em;color:var(--navy);font-weight:400">Senior Product Designer</span>
-              <span style="font-size:0.65em;font-weight:600;color:var(--purple);letter-spacing:0.06em;text-transform:uppercase">Current</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:0.2em">
-              <div style="font-size:0.78em;color:#888">· 0→1 WhatsApp Marketing Messages — end-to-end across Creatives &amp; Conversations</div>
-              <div style="font-size:0.78em;color:#888">· QB of 3-designer team; led roadmap, strategy, and design direction</div>
-              <div style="font-size:0.78em;color:#888">· Shipped code diffs to production; designed AI features end-to-end; integrated AI into daily workflow</div>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:2em;padding:1.1em 0;border-top:1px solid #EBEBEB">
-          <div style="width:22%;flex-shrink:0;font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1em;font-weight:500;color:var(--navy);padding-top:0.1em">Walmart</div>
-          <div style="flex:1">
-            <div style="margin-bottom:0.4em">
-              <span style="font-size:0.9em;color:var(--navy);font-weight:400">Senior Product Designer</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:0.2em">
-              <div style="font-size:0.78em;color:#888">· Lead of 4-designer team · Walmart Marketplace / Seller Center</div>
-              <div style="font-size:0.78em;color:#888">· Led acquisition &amp; communications, driving new user growth</div>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:baseline;gap:2em;padding:1.1em 0;border-top:1px solid #EBEBEB">
-          <div style="width:22%;flex-shrink:0;font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1em;font-weight:500;color:var(--navy)">American Airlines</div>
-          <div style="flex:1">
-            <span style="font-size:0.9em;color:var(--navy);font-weight:400">Product Designer</span>
-            <span style="font-size:0.78em;color:#bbb;margin-left:0.7em">Customer booking journey on aa.com</span>
-          </div>
-        </div>
-        <div style="display:flex;align-items:baseline;gap:2em;padding:1.1em 0;border-top:1px solid #EBEBEB;border-bottom:1px solid #EBEBEB">
-          <div style="width:22%;flex-shrink:0;font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:1em;font-weight:500;color:var(--navy)">Paycom</div>
-          <div style="flex:1">
-            <span style="font-size:0.9em;color:var(--navy);font-weight:400">Product Designer</span>
-            <span style="font-size:0.78em;color:#bbb;margin-left:0.7em">Expense management</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- S2 · CREATIVES DIVIDER -->
   <div class="slide" data-section="creatives" data-title="Creatives" data-bg="dark">
     <div class="sl sl-dark" style="justify-content:center;gap:0">
@@ -392,6 +276,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
       <div style="display:flex;gap:3em;margin-bottom:2.5em">
         <div><div style="font-size:2em;font-family:Cambria,Georgia,serif;font-weight:700;color:var(--purple);line-height:1">+42.67%</div><div style="font-size:0.72em;color:rgba(255,255,255,0.28);margin-top:4px">CTR lift · multi-text variants</div></div>
         <div><div style="font-size:2em;font-family:Cambria,Georgia,serif;font-weight:700;color:rgba(255,255,255,0.45);line-height:1">32.4%</div><div style="font-size:0.72em;color:rgba(255,255,255,0.28);margin-top:4px">MM customization rate · A/B winner</div></div>
+        <div><div style="font-size:2em;font-family:Cambria,Georgia,serif;font-weight:700;color:rgba(255,255,255,0.45);line-height:1">95%</div><div style="font-size:0.72em;color:rgba(255,255,255,0.28);margin-top:4px">MM send rate · end of project</div></div>
       </div>
       <div style="font-size:0.78em;color:rgba(255,255,255,0.18);max-width:70%;line-height:1.65">Redesigning the MM creative setup experience, from IA restructure to A/B testing to Gen AI.</div>
     </div>
@@ -399,7 +284,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
 
   <!-- S3a · WHAT IS MM -->
   <div class="slide" data-section="creatives" data-title="What is a Marketing Message?">
-    <div class="sl" style="gap:0">
+    <div class="sl" style="gap:0;justify-content:flex-start">
       <div class="ey">Creatives · Context</div>
       <div class="h2">What is a Marketing Message (MM)?</div>
       <div class="flex gap16 mt8" style="align-items:center">
@@ -412,7 +297,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
             <span class="pill">Re-engagement</span>
             <span class="pill">Direct-response</span>
           </div>
-          <div class="card-purple" style="margin-top:auto">
+          <div class="card-purple" style="margin-top:16px">
             <div style="font-size:0.68em;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--purple);margin-bottom:6px">My Role</div>
             <div style="font-size:0.81em;color:var(--purple-deep);line-height:1.6"><strong>Lead Designer</strong> · Marketing Message Experience team<br><span style="color:var(--muted);display:block;margin-top:4px">Set design direction across a team of 3 designers · Owned creatives &amp; conversations end-to-end</span></div>
           </div>
@@ -439,10 +324,25 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
             <div style="font-size:0.78em;font-weight:700;color:var(--text);margin-bottom:3px">Set up inside Ads Manager</div>
             <p class="bd" style="font-size:0.8em">Despite these differences, MM is created with the same budget and workflow advertisers already use.</p>
           </div>
+          <div style="font-size:0.86em;color:var(--red);margin-top:4px;padding:10px 14px;background:#FFF5F5;border-radius:8px;border-left:3px solid var(--red)">
+            But MM delivery rate was <strong>near zero</strong>. Most advertisers never set it up at all.
+          </div>
         </div>
         <div style="width:44%;flex-shrink:0">
           <img src="Original creative.png" alt="Ads Manager" class="img-full">
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH Q1 -->
+  <div class="slide" data-section="creatives" data-title="Research: Why aren't advertisers setting up MM?">
+    <div style="width:100%;height:100%;background:#F0EEFF;display:flex;flex-direction:column;justify-content:center;padding:7% 8%">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:#F5C842;border-radius:100px;padding:4px 12px;width:fit-content;margin-bottom:10%">
+        <span style="font-size:0.62em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#1a1200">Research</span>
+      </div>
+      <div style="font-family:Cambria,Georgia,serif;font-size:2.6em;font-weight:700;line-height:1.2;color:var(--navy);max-width:75%">
+        Why aren't advertisers <span style="color:var(--purple)">setting up MM</span>?
       </div>
     </div>
   </div>
@@ -456,7 +356,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
         <div class="flex fc gap12 f1">
           <p class="bd">MM setup was hidden inside the Ad Creative card. Advertisers had to find an "Edit marketing message" button to open a separate modal, disconnected from the main workflow.</p>
           <div class="flex fc gap6 mt4" style="font-size:0.86em;color:var(--muted)">
-            <div>→ Most advertisers published without ever setting up MM</div>
+            <div>→ Most advertisers published without ever setting up MM. Delivery rate was near zero</div>
             <div>→ The modal felt like a completely different product</div>
           </div>
           <div class="quote" style="margin-top:auto">"Advertisers think of ads and MM as one workflow, the structure didn't match that."</div>
@@ -470,57 +370,76 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
     </div>
   </div>
 
-  <!-- S5 · IA RESTRUCTURE -->
-  <div class="slide" data-section="creatives" data-title="Phase 1: IA Restructure">
+  <!-- S5a · USER RESEARCH FINDING -->
+  <div class="slide" data-section="creatives" data-title="User Research: What Advertisers Said">
+    <div class="sl" style="gap:0;justify-content:center">
+      <div class="ey">Creatives · Phase 1 · User Research</div>
+      <div class="h2 h2-sm">Advertisers don't think of ads and MM as two separate tasks</div>
+      <p class="bd mt4" style="margin-bottom:24px;max-width:80%">User interviews revealed a consistent pattern: advertisers expected MM to be part of the ad setup, not hidden somewhere else. Many had never found the option at all.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:78%">
+        <div class="quote">"Where is the marketing message setup? I can't find it."</div>
+        <div class="quote">"I didn't even know there was a marketing message option."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5b · IA RESTRUCTURE DIAGRAM -->
+  <div class="slide" data-section="creatives" data-title="Phase 1: The IA Change">
     <div class="sl" style="gap:0;justify-content:flex-start">
-      <div class="ey">Creatives · Phase 1 · Solution</div>
-      <div class="h2 h2-sm">IA restructure, moved post-publish tools out of Creative</div>
-      <p class="bd mt4" style="margin-bottom:10px">Auto Reply and Quick Replies only activate <em>after</em> a consumer replies, they don't belong in Creative setup. Moving them out unlocked a cleaner structure for both surfaces.</p>
-      <div class="flex gap16" style="align-items:start">
-        <div style="flex:1;display:flex;flex-direction:column;gap:4px">
-          <div class="opt-label" style="margin-bottom:4px">Before</div>
-          <div class="ia-box">Name · Identity · Setup</div>
-          <div class="ia-box">Destination</div>
-          <div class="ia-section">
-            <div class="ia-header">Creative</div>
-            <div class="ia-inner">
-              <div class="ia-glabel">Ad setup</div>
-              <div class="ia-box" style="font-size:0.82em">Media</div>
-              <div class="ia-box" style="font-size:0.82em">Text</div>
-              <div class="ia-box" style="font-size:0.82em">Enhancement</div>
-              <div class="ia-glabel ia-glabel-p" style="margin-top:6px">Marketing message setup</div>
-              <div class="ia-box-p" style="font-size:0.82em">Text</div>
-              <div class="ia-box-p" style="font-size:0.82em">Auto reply <span style="opacity:0.55">← wrong place</span></div>
-              <div class="ia-box-p" style="font-size:0.82em">Quick replies <span style="opacity:0.55">← wrong place</span></div>
-            </div>
-          </div>
-          <div class="ia-box">Advantage+ · Language · Tracking</div>
+      <div class="ey">Creatives · Phase 1 · Restructure</div>
+      <div class="flex gap20 mt6 f1" style="align-items:flex-start">
+        <!-- LEFT: text -->
+        <div class="flex fc gap10" style="width:34%;flex-shrink:0">
+          <div class="h2 h2-sm">MM moved out of a modal and into Ad Creative</div>
+          <p class="bd mt4">MM had lived inside a buried section of Creative, disconnected from the ad setup advertisers already knew. The restructure moved it to the same level, making the connection obvious.</p>
+          <div class="note-bar" style="margin-top:auto"><span class="senior-tag">Cross-org alignment</span><span style="margin-left:8px">Secured sign-off from both orgs' leadership by leading with the structural argument.</span></div>
         </div>
-        <div class="flex ac" style="padding-top:55px;color:var(--muted);font-size:1.3em">→</div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:4px">
-          <div class="opt-label win" style="margin-bottom:4px">After</div>
-          <div class="ia-box">Name · Identity · Setup</div>
-          <div class="ia-box">Destination</div>
-          <div class="ia-section">
-            <div class="ia-header">Creative, Ad + MM unified</div>
-            <div class="ia-inner">
-              <div class="ia-glabel ia-glabel-p">Ad + MM text, together</div>
-              <div class="ia-box" style="font-size:0.82em">Media · Enhancement</div>
-              <div class="ia-box-p" style="font-size:0.82em">Primary text + MM text</div>
+        <!-- RIGHT: IA diagram -->
+        <div class="flex gap8 f1" style="align-items:flex-start">
+          <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+            <div class="opt-label" style="margin-bottom:4px">Before</div>
+            <div class="ia-box">Name · Identity · Setup</div>
+            <div class="ia-box">Destination</div>
+            <div class="ia-section">
+              <div class="ia-header">Creative</div>
+              <div class="ia-inner">
+                <div class="ia-glabel">Ad setup</div>
+                <div class="ia-box" style="font-size:0.82em">Media</div>
+                <div class="ia-box" style="font-size:0.82em">Text</div>
+                <div class="ia-box" style="font-size:0.82em">Enhancement</div>
+                <div class="ia-glabel ia-glabel-p" style="margin-top:6px">Marketing message setup</div>
+                <div class="ia-box-p" style="font-size:0.82em">Text</div>
+                <div class="ia-box-p" style="font-size:0.82em">Auto reply <span style="opacity:0.55">← wrong place</span></div>
+                <div class="ia-box-p" style="font-size:0.82em">Quick replies <span style="opacity:0.55">← wrong place</span></div>
+              </div>
             </div>
+            <div class="ia-box">Advantage+ · Language · Tracking</div>
           </div>
-          <div class="ia-box">Advantage+ creative</div>
-          <div class="ia-section ia-section-b">
-            <div class="ia-header ia-header-b">Conversations <span style="font-size:0.72em;background:#B5D4F4;color:#0c447c;padding:1px 6px;border-radius:100px;margin-left:4px">new</span></div>
-            <div class="ia-inner">
-              <div class="ia-box-b" style="font-size:0.82em">Auto reply ← moved here</div>
-              <div class="ia-box-b" style="font-size:0.82em">Quick replies ← moved here</div>
+          <div class="flex ac" style="padding-top:55px;color:var(--muted);font-size:1.3em">→</div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+            <div class="opt-label win" style="margin-bottom:4px">After</div>
+            <div class="ia-box">Name · Identity · Setup</div>
+            <div class="ia-box">Destination</div>
+            <div class="ia-section">
+              <div class="ia-header">Creative, Ad + MM unified</div>
+              <div class="ia-inner">
+                <div class="ia-glabel ia-glabel-p">Ad + MM text, together</div>
+                <div class="ia-box" style="font-size:0.82em">Media · Enhancement</div>
+                <div class="ia-box-p" style="font-size:0.82em">Primary text + MM text</div>
+              </div>
             </div>
+            <div class="ia-box">Advantage+ creative</div>
+            <div class="ia-section ia-section-b">
+              <div class="ia-header ia-header-b">Conversations <span style="font-size:0.72em;background:#B5D4F4;color:#0c447c;padding:1px 6px;border-radius:100px;margin-left:4px">new</span></div>
+              <div class="ia-inner">
+                <div class="ia-box-b" style="font-size:0.82em">Auto reply ← moved here</div>
+                <div class="ia-box-b" style="font-size:0.82em">Quick replies ← moved here</div>
+              </div>
+            </div>
+            <div class="ia-box">Language · Tracking</div>
           </div>
-          <div class="ia-box">Language · Tracking</div>
         </div>
       </div>
-      <div class="note-bar mt10"><span class="senior-tag">Cross-org alignment</span><span style="margin-left:8px">I secured sign-off from both orgs' leadership by leading with the structural argument — the logic made it hard to push back.</span></div>
     </div>
   </div>
 
@@ -531,11 +450,10 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
       <div class="h2">MM text field pre-fills from the ad, never blank</div>
       <div class="flex gap16 mt8" style="align-items:center">
         <div class="flex fc gap12 f1">
-          <p class="bd">MM is brand new to most advertisers. A blank field creates friction, so the MM text field pre-fills from the primary ad copy as a starting point.</p>
-          <div class="flex fc gap8 mt4" style="font-size:0.86em;color:var(--muted)">
+          <p class="bd">MM's primary text is a <strong>required field</strong>. If it's blank, the ad can't go live. That's the direct connection to delivery rate: pre-filling it from the ad copy meant MM would always launch with a valid message, even if the advertiser never touched it.</p>
+          <div class="flex fc gap6 mt4" style="font-size:0.86em;color:var(--muted)">
             <div>→ Removes the blank-page problem</div>
-            <div>→ Still clearly labeled as a separate WhatsApp message</div>
-            <div>→ Advertisers who want to customize can, those who don't have a working default</div>
+            <div>→ Advertisers who customize can; those who don't have a working default</div>
           </div>
         </div>
         <div style="width:46%;flex-shrink:0">
@@ -547,22 +465,49 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
   </div>
 
   <!-- S6b · PHASE 1 GEN AI + LEARNING -->
-  <div class="slide" data-section="creatives" data-title="Phase 1: Gen AI &amp; What We Learned">
+  <div class="slide" data-section="creatives" data-title="Phase 1: Gen AI &amp; What Came Next">
     <div class="sl" style="gap:0">
       <div class="ey">Creatives · Phase 1 · Gen AI</div>
-      <div class="h2 h2-sm">Gen AI v1 shipped, but customization stayed at 1.4%</div>
+      <div class="h2 h2-sm">Gen AI turned customization into a one-tap decision</div>
       <div class="flex gap16 mt8" style="align-items:center">
+        <div class="flex fc gap12 f1">
+          <p class="bd">Gen AI text generation was introduced natively within the creative wizard. The MM field surfaces performance-optimized alternatives so advertisers can accept a suggestion or refine the pre-filled text manually, without ever leaving Ads Manager.</p>
+        </div>
         <div style="width:46%;flex-shrink:0">
           <img src="r1-genai.png" alt="Gen AI v1" class="img-full">
           <div style="font-size:0.7em;color:var(--muted);margin-top:6px">Single suggestion, accept and replace, or ignore</div>
         </div>
-        <div class="flex fc gap12 f1">
-          <p class="bd">Gen AI surfaced one MM suggestion inline in the wizard. Accept it to replace your text, or ignore it. Simple and low-risk for v1.</p>
-          <div class="card-warn" style="margin-top:8px">
-            <div style="font-size:0.78em;font-weight:700;color:var(--red);margin-bottom:4px">The pivot</div>
-            <p class="bd" style="color:#7A1515">MM customization rate: <strong>1.4%</strong>. The all-or-nothing format wasn't the problem — most advertisers never even saw the option. That reframe became my brief for Phase 2.</p>
-          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 RESULTS -->
+  <div class="slide" data-section="creatives" data-title="Phase 1: Results">
+    <div class="sl" style="justify-content:center;gap:0">
+      <div class="ey" style="margin-bottom:0.8em">Creatives · Phase 1 · Results</div>
+      <div class="flex gap16 mt8" style="align-items:stretch;width:100%">
+        <div class="card-purple f1 flex fc" style="justify-content:center;padding:6% 8%;border-width:1.5px">
+          <div style="font-size:0.68em;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--purple);margin-bottom:12px">MM delivery rate · end of phase 1</div>
+          <div style="font-family:Cambria,Georgia,serif;font-size:3.8em;font-weight:700;color:var(--purple);letter-spacing:-0.03em;line-height:1">95%</div>
+          <div style="font-size:0.8em;color:var(--purple-mid);margin-top:10px;line-height:1.5">IA restructure moved MM into Ad Creative. Primary text auto-powered MM, lifting delivery from near zero.</div>
         </div>
+        <div class="card f1 flex fc" style="justify-content:center;padding:6% 8%">
+          <div style="font-size:0.68em;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">MM customization rate · Gen AI v1</div>
+          <div style="font-family:Cambria,Georgia,serif;font-size:3.8em;font-weight:700;color:var(--text);letter-spacing:-0.03em;line-height:1">1.4%</div>
+          <div style="font-size:0.8em;color:var(--muted);margin-top:10px;line-height:1.5">Advertisers weren't customizing. The behavior wasn't changing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH Q2 -->
+  <div class="slide" data-section="creatives" data-title="Research: Why is customization so low?">
+    <div style="width:100%;height:100%;background:#F0EEFF;display:flex;flex-direction:column;justify-content:center;padding:7% 8%">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:#F5C842;border-radius:100px;padding:4px 12px;width:fit-content;margin-bottom:10%">
+        <span style="font-size:0.62em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#1a1200">Research</span>
+      </div>
+      <div style="font-family:Cambria,Georgia,serif;font-size:2.6em;font-weight:700;line-height:1.2;color:var(--navy);max-width:80%">
+        1.4% customized. <span style="color:var(--purple)">Why so low,</span> and what would actually change that?
       </div>
     </div>
   </div>
@@ -570,9 +515,9 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
   <!-- S7 · PHASE 2 PROBLEM -->
   <div class="slide" data-section="creatives" data-title="Phase 2: Multi-text Opportunity">
     <div class="sl" style="gap:0">
-      <div class="ey">Creatives · Phase 2</div>
-      <div class="h2">Ad text variants could power MM — without extra work</div>
-      <p class="bd" style="margin-bottom:16px">Phase 1 told me the problem was visibility, not content quality. So I looked at what advertisers were already doing — and found they were already writing multiple ad text variants. The insight: instead of asking them to write new MM text from scratch, let those variants power MM automatically.</p>
+      <div class="ey">Creatives · Phase 2 · Hypothesis</div>
+      <div class="h2">If MM used ad multi-text variants by default, CTR would improve</div>
+      <p class="bd" style="margin-bottom:16px">Phase 1 showed the problem was visibility, not content quality. Advertisers were already writing multiple ad text variants. The hypothesis: use those variants to power MM automatically, so advertisers get relevant messages without extra work.</p>
       <div class="three-col">
         <div class="card flex fc gap6">
           <div class="opt-label">The gap</div>
@@ -593,103 +538,182 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
     </div>
   </div>
 
-  <!-- S7b · DESIGN EXPLORATION -->
-  <div class="slide" data-section="creatives" data-title="Phase 2: Design Exploration">
+  <!-- S7b · DESIGN EXPLORATION OPT 1 -->
+  <div class="slide" data-section="creatives" data-title="Phase 2: Direction 1 — Unified Text">
     <div class="sl" style="gap:0;justify-content:flex-start">
       <div class="ey">Creatives · Phase 2 · Exploration</div>
-      <div class="h2 h2-sm">I explored two directions before moving forward</div>
-      <div class="f1 mt8" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5%;align-items:stretch">
-
-        <!-- Option 1 -->
-        <div class="flex fc gap6">
-          <div style="display:inline-flex;font-size:0.6em;font-weight:700;background:#E8E6FF;color:#5B50C8;padding:2px 9px;border-radius:100px;width:fit-content">Option 1</div>
-          <div style="font-size:0.8em;font-weight:700;color:var(--text);line-height:1.3">Unified ad & MM text</div>
-          <div style="border:1px solid #D8D5F8;border-radius:8px;background:#FAFAFE;padding:7px 8px;flex:1;font-size:0.58em;color:#555;display:flex;flex-direction:column;gap:4px">
-            <div style="font-size:1em;font-weight:700;color:#222;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:2px">Text for ad and marketing message</div>
-            <div style="color:#999;font-size:0.9em">Primary text</div>
-            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;height:16px"></div>
-            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;padding:2px 7px;width:fit-content;color:#666;font-size:0.88em">+ Add text option ▾</div>
-            <div style="background:#EEF4FF;border:1px solid #C8DDF8;border-radius:5px;padding:4px 6px;margin-top:2px;flex:1">
-              <div style="font-size:0.88em;font-weight:600;color:#1a5c9e;margin-bottom:3px">✦ AI  Advantage+ creative</div>
-              <div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0;border-bottom:1px solid #dbe8ff">
-                <span style="color:#555;font-size:0.9em">Big news! Introducing our yoga...</span>
-                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 4px;font-size:0.78em;flex-shrink:0;margin-left:3px">MM</span>
+      <div class="h2 h2-sm">Direction 1: Unified ad &amp; MM text in one field</div>
+      <div class="flex gap16 mt8 f1" style="align-items:start">
+        <div class="flex fc gap8 f1">
+          <p class="bd">Combine ad and MM text into one unified setup. Ad and MM recommendations appear together in the Gen AI container.</p>
+          <div class="flex fc gap6 mt4" style="font-size:0.86em">
+            <div><span class="pro">+</span><span style="color:var(--muted)">MM is front and center in primary text setup</span></div>
+            <div><span class="pro">+</span><span style="color:var(--muted)">Simplifies UI · leverages multi-text adoption</span></div>
+            <div><span class="con">−</span><span style="color:var(--red)">MM just went GA. Could miss early adoption growth</span></div>
+            <div><span class="con">−</span><span style="color:var(--red)">Large eng lift and XFN alignment needed</span></div>
+          </div>
+        </div>
+        <div style="width:46%;flex-shrink:0">
+          <div style="border:1px solid #D8D5F8;border-radius:8px;background:#FAFAFE;padding:14px 16px;font-size:0.7em;color:#555;display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:1.1em;font-weight:700;color:#222;border-bottom:1px solid #eee;padding-bottom:6px;margin-bottom:2px">Text for ad and marketing message</div>
+            <div style="color:#999">Primary text</div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;height:20px"></div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;padding:3px 9px;width:fit-content;color:#666">+ Add text option ▾</div>
+            <div style="background:#EEF4FF;border:1px solid #C8DDF8;border-radius:5px;padding:6px 8px;margin-top:2px">
+              <div style="font-weight:600;color:#1a5c9e;margin-bottom:4px">✦ AI Advantage+ creative</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #dbe8ff">
+                <span>Big news! Introducing our yoga...</span>
+                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 5px;font-size:0.85em;flex-shrink:0;margin-left:4px">MM</span>
               </div>
-              <div style="padding:2px 0;border-bottom:1px solid #dbe8ff;color:#555;font-size:0.9em">Move freely. Flow effortlessly.</div>
-              <div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0">
-                <span style="color:#555;font-size:0.9em">Get ready to SLAY your practice...</span>
-                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 4px;font-size:0.78em;flex-shrink:0;margin-left:3px">MM</span>
+              <div style="padding:3px 0;border-bottom:1px solid #dbe8ff;color:#555">Move freely. Flow effortlessly.</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0">
+                <span>Get ready to SLAY your practice...</span>
+                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 5px;font-size:0.85em;flex-shrink:0;margin-left:4px">MM</span>
               </div>
             </div>
           </div>
-          <div style="font-size:0.68em;color:var(--red)">✗ Gen AI model change required · high eng lift</div>
         </div>
-
-        <!-- Option 2 -->
-        <div class="flex fc gap6">
-          <div style="display:inline-flex;font-size:0.6em;font-weight:700;background:var(--purple-dim);color:var(--purple-mid);padding:2px 9px;border-radius:100px;width:fit-content">Option 2 · Recommended</div>
-          <div style="font-size:0.8em;font-weight:700;color:var(--text);line-height:1.3">Conditional MM customization</div>
-          <div style="border:1.5px solid #B8B0F5;border-radius:8px;background:#F8F7FF;padding:7px 8px;flex:1;font-size:0.58em;color:#555;display:flex;flex-direction:column;gap:4px">
-            <div style="font-size:1em;font-weight:700;color:#222;border-bottom:1px solid #e4e2ff;padding-bottom:4px;margin-bottom:2px">Text for ads and marketing messages</div>
-            <div style="color:#999;font-size:0.9em">Primary text</div>
-            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;height:14px"></div>
-            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;padding:2px 7px;width:fit-content;color:#666;font-size:0.88em">+ Add text option ▾</div>
-            <div style="background:#EEF4FF;border:1px solid #C8DDF8;border-radius:5px;padding:4px 6px;margin-top:2px;flex:1">
-              <div style="font-size:0.88em;font-weight:600;color:#1a5c9e;margin-bottom:3px">✦ AI  Advantage+ creative</div>
-              <div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0;border-bottom:1px solid #dbe8ff">
-                <span style="color:#555;font-size:0.9em">Get ready to SLAY your practice...</span>
-                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 4px;font-size:0.78em;flex-shrink:0;margin-left:3px">MM</span>
-              </div>
-              <div style="padding:2px 0;border-bottom:1px solid #dbe8ff;color:#555;font-size:0.9em">Move freely. Flow effortlessly.</div>
-              <div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0">
-                <span style="color:#555;font-size:0.9em">Limited-edition yoga collection...</span>
-                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 4px;font-size:0.78em;flex-shrink:0;margin-left:3px">MM</span>
-              </div>
-            </div>
-            <div style="background:#fff;border:1.5px solid var(--purple);border-radius:5px;padding:3px 7px;display:flex;align-items:center;gap:5px">
-              <div style="width:9px;height:9px;border-radius:2px;background:var(--purple);flex-shrink:0"></div>
-              <span style="font-size:0.88em;color:var(--purple-deep)">Choose to customize your MM text</span>
-            </div>
-          </div>
-          <div style="font-size:0.68em;color:var(--green)">✓ MVP choice, lowest eng lift · MM always visible</div>
-        </div>
-
       </div>
-      <div class="note-bar mt8">Option 2 chosen as MVP approach, then A/B tested whether MM customization should be <strong>hidden behind a dropdown</strong> vs. <strong>always visible</strong>.</div>
     </div>
   </div>
 
-  <!-- S8 · A/B DESIGN -->
-  <div class="slide" data-section="creatives" data-title="Phase 2: Design A/B">
-    <div class="sl" style="gap:0">
-      <div class="ey">Creatives · Phase 2 · A/B Test</div>
-      <div class="h2 h2-sm">A/B test: how visible should the customization option be?</div>
-      <div class="flex gap16 mt8" style="align-items:start">
-        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-          <div class="opt-label">Option A: Hidden behind dropdown</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
-            <img src="option a-2.png" alt="A" class="img-full" style="max-height:150px;object-fit:cover;object-position:top">
-            <img src="option a-4.png" alt="A" class="img-full" style="max-height:150px;object-fit:cover;object-position:top">
-          </div>
-          <div class="flex fc gap3" style="font-size:0.8em">
-            <div><span class="pro">+</span><span style="color:var(--muted)">Simpler UI</span></div>
-            <div><span class="con">−</span><span style="color:var(--muted)">Customization invisible unless you know to look</span></div>
+  <!-- S7c · DESIGN EXPLORATION OPT 2 -->
+  <div class="slide" data-section="creatives" data-title="Phase 2: Direction 2 — Conditional Customization">
+    <div class="sl" style="gap:0;justify-content:flex-start">
+      <div class="ey">Creatives · Phase 2 · Exploration</div>
+      <div class="h2 h2-sm">Direction 2: Conditional MM customization, the MVP choice</div>
+      <div class="flex gap16 mt8 f1" style="align-items:start">
+        <div class="flex fc gap8 f1">
+          <p class="bd">MM customization option is visible below the primary text field. By default, ad and MM share the same variants. A dedicated MM text field appears only when the advertiser opts in.</p>
+          <div class="flex fc gap6 mt4" style="font-size:0.86em">
+            <div><span class="pro">+</span><span style="color:var(--muted)">Simplifies UI · leverages multi-text adoption</span></div>
+            <div><span class="pro">+</span><span style="color:var(--muted)">Low eng lift · no model change needed</span></div>
+            <div><span class="pro">+</span><span style="color:var(--muted)">Advertisers who want to customize still have the option to</span></div>
+            <div><span class="con">−</span><span style="color:var(--red)">MM is buried and advertisers won't notice</span></div>
           </div>
         </div>
-        <div class="vdiv"></div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-          <div class="opt-label win">Option B: Always visible ✦ My recommendation</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
-            <img src="option b-2.png" alt="B" class="img-full" style="max-height:150px;object-fit:cover;object-position:top">
-            <img src="option b-3.png" alt="B" class="img-full" style="max-height:150px;object-fit:cover;object-position:top">
-          </div>
-          <div class="flex fc gap3" style="font-size:0.8em">
-            <div><span class="pro">+</span><span style="color:var(--muted)">Customization is a first-class choice, always visible</span></div>
-            <div><span class="con">−</span><span style="color:var(--muted)">Denser UI, I ran the test to validate it</span></div>
+        <div style="width:46%;flex-shrink:0">
+          <div style="border:1.5px solid #B8B0F5;border-radius:8px;background:#F8F7FF;padding:14px 16px;font-size:0.7em;color:#555;display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:1.1em;font-weight:700;color:#222;border-bottom:1px solid #e4e2ff;padding-bottom:6px;margin-bottom:2px">Text for ads and marketing messages</div>
+            <div style="color:#999">Primary text</div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;height:18px"></div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:4px;padding:3px 9px;width:fit-content;color:#666">+ Add text option ▾</div>
+            <div style="background:#EEF4FF;border:1px solid #C8DDF8;border-radius:5px;padding:6px 8px;margin-top:2px">
+              <div style="font-weight:600;color:#1a5c9e;margin-bottom:4px">✦ AI Advantage+ creative</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #dbe8ff">
+                <span>Get ready to SLAY your practice...</span>
+                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 5px;font-size:0.85em;flex-shrink:0;margin-left:4px">MM</span>
+              </div>
+              <div style="padding:3px 0;border-bottom:1px solid #dbe8ff;color:#555">Move freely. Flow effortlessly.</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0">
+                <span>Limited-edition yoga collection...</span>
+                <span style="background:#E8E6FF;color:#5B50C8;border-radius:3px;padding:0px 5px;font-size:0.85em;flex-shrink:0;margin-left:4px">MM</span>
+              </div>
+            </div>
+            <div style="background:#fff;border:1.5px solid var(--purple);border-radius:5px;padding:5px 9px;display:flex;align-items:center;gap:6px">
+              <div style="width:10px;height:10px;border-radius:2px;background:var(--purple);flex-shrink:0"></div>
+              <span style="color:var(--purple-deep)">Choose to customize your MM text</span>
+            </div>
           </div>
         </div>
       </div>
-      <div style="background:var(--purple-dim);border-radius:7px;padding:8px 14px;margin-top:10px;font-size:0.8em;color:var(--purple-deep)"><strong>My hypothesis:</strong> 1.4% customization wasn't a willingness problem, it was a visibility problem. If you can't see the option, you won't use it.</div>
+    </div>
+  </div>
+
+  <!-- DECISION SLIDE -->
+  <div class="slide" data-section="creatives" data-title="Phase 2: Decision">
+    <div class="sl" style="gap:0">
+      <div class="ey">Creatives · Phase 2 · Decision</div>
+      <div class="flex gap20 mt6 f1" style="align-items:center">
+        <div class="flex fc gap12 f1">
+          <div class="h2 h2-sm">Went with Direction 2 as the MVP</div>
+          <p class="bd mt4" style="color:var(--muted)">To validate the hypothesis, we chose Direction 2. Faster to ship, lower eng lift, and enough signal to know if it worked. With room to go further if it did.</p>
+          <div class="card" style="margin-top:auto;padding:10px 14px;opacity:0.6">
+            <div style="font-size:0.72em;font-weight:700;color:var(--text);margin-bottom:4px">Direction 1: Unified text, set aside for now</div>
+            <div style="font-size:0.78em;color:var(--muted)">Required Gen AI model change and XFN alignment. Stronger long-term vision, but not the right scope to start.</div>
+          </div>
+        </div>
+        <div style="width:44%;flex-shrink:0">
+          <img src="option b-2.png" alt="Direction 2" class="img-full" style="border-radius:10px">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTION: A/B TEST -->
+  <div class="slide" data-section="creatives" data-title="The Question: A/B Test">
+    <div style="width:100%;height:100%;background:#F0EEFF;display:flex;flex-direction:column;justify-content:center;padding:7% 8%">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:#F5C842;border-radius:100px;padding:4px 12px;width:fit-content;margin-bottom:10%">
+        <span style="font-size:0.62em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#1a1200">Research</span>
+      </div>
+      <div style="font-family:Cambria,Georgia,serif;font-size:2.6em;font-weight:700;line-height:1.2;color:var(--navy);max-width:80%">
+        With Direction 2 chosen, how visible should the <span style="color:var(--purple)">customization option</span> be?
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGN OVERVIEW -->
+  <div class="slide" data-section="creatives" data-title="Phase 2: Design & A/B Test">
+    <div class="sl" style="gap:0">
+      <div class="ey">Creatives · Phase 2 · Exploration</div>
+      <div class="h2 h2-sm">Two directions, one question: how visible should MM be?</div>
+      <p class="bd" style="margin-bottom:20px">I explored two directions to find the right balance between MM visibility and UI simplicity. I ran an A/B test to decide.</p>
+      <div class="flex gap16 f1" style="align-items:flex-start">
+        <div class="flex fc gap8 f1">
+          <div style="font-size:0.7em;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted)">Direction 1 · Unified ad &amp; MM text</div>
+          <img src="option a-1.png" alt="Option A" class="img-full" style="border-radius:8px;border:1px solid var(--border)">
+        </div>
+        <div class="flex fc gap8 f1">
+          <div style="font-size:0.7em;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--purple)">Direction 2 · Conditional MM customization · Chosen</div>
+          <img src="option b-1.png" alt="Option B" class="img-full" style="border-radius:8px;border:1px solid var(--border)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8a · A/B OPTION A -->
+  <div class="slide" data-section="creatives" data-title="Phase 2: A/B — Option A">
+    <div class="sl" style="gap:0">
+      <div class="ey">Creatives · Phase 2 · A/B Test</div>
+      <div class="h2 h2-sm">Option A: Progressive disclosure</div>
+      <div class="flex gap16 mt8 f1" style="align-items:start">
+        <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+          <p class="bd">Displays options only when needed. By default, uses ad multi-text options to keep the UI clear and focused while allowing users to explore more choices when needed.</p>
+          <div class="flex fc gap4" style="font-size:0.86em">
+            <div><span class="pro">+</span><span style="color:var(--muted)">Keeps the UI simple and focused</span></div>
+            <div><span class="pro">+</span><span style="color:var(--muted)">Reduces visual noise and cognitive load</span></div>
+            <div><span class="con">−</span><span style="color:var(--red)">MM customization may be missed unless advertisers expand it</span></div>
+          </div>
+        </div>
+        <div style="width:55%;flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <img src="option a-2.png" alt="A" class="img-full" style="max-height:220px;object-fit:cover;object-position:top;border-radius:8px">
+          <img src="option a-4.png" alt="A" class="img-full" style="max-height:220px;object-fit:cover;object-position:top;border-radius:8px">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8b · A/B OPTION B -->
+  <div class="slide" data-section="creatives" data-title="Phase 2: A/B — Option B">
+    <div class="sl" style="gap:0">
+      <div class="ey">Creatives · Phase 2 · A/B Test</div>
+      <div class="h2 h2-sm">Option B: Full visibility</div>
+      <div class="flex gap16 mt8 f1" style="align-items:start">
+        <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+          <p class="bd">Displays all options at once for immediate comparison. Makes MM customization more visible and easier to discover, encouraging higher engagement.</p>
+          <div class="flex fc gap4" style="font-size:0.86em">
+            <div><span class="pro">+</span><span style="color:var(--muted)">Provides greater visibility and prominence for MM</span></div>
+            <div><span class="pro">+</span><span style="color:var(--muted)">Advertisers can compare and understand options at a glance</span></div>
+            <div><span class="pro">+</span><span style="color:var(--muted)">Reduces the need for additional clicks or exploration</span></div>
+            <div><span class="con">−</span><span style="color:var(--red)">UI may appear visually dense or cluttered</span></div>
+            <div><span class="con">−</span><span style="color:var(--red)">Increased cognitive load when multiple elements compete for attention</span></div>
+          </div>
+        </div>
+        <div style="width:55%;flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <img src="option b-2.png" alt="B" class="img-full" style="max-height:220px;object-fit:cover;object-position:top;border-radius:8px">
+          <img src="option b-3.png" alt="B" class="img-full" style="max-height:220px;object-fit:cover;object-position:top;border-radius:8px">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -720,19 +744,24 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
     <div class="sl" style="gap:0">
       <div class="ey">Creatives · Phase 2 · Gen AI</div>
       <div class="h2 h2-sm">Gen AI redesign gave advertisers 5 variants to choose from</div>
-      <div class="flex gap16 mt8" style="align-items:start">
-        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-          <div class="opt-label">Before</div>
-          <img src="Gen AI before.png" alt="Before" class="img-full" style="max-height:200px;object-fit:cover;object-position:top">
-          <div style="font-size:0.8em;color:var(--muted)">One suggestion, replace everything or ignore it entirely</div>
+      <div class="flex gap16 mt8 f1" style="align-items:center">
+        <div class="flex fc gap10 f1">
+          <p class="bd">The original Gen AI surface offered one suggestion: accept it and replace everything, or ignore it. The redesign replaced that with up to 5 MM-specific variants, letting advertisers pick what to include in a single step.</p>
+          <div class="card-purple" style="padding:10px 14px;margin-top:4px">
+            <div style="font-size:0.72em;font-weight:700;color:var(--purple);margin-bottom:4px">MM-specific model</div>
+            <div class="bd" style="font-size:0.8em;color:var(--purple-deep)">Trained on ~17,000 MM syntheses, with a different tone from ad copy, optimized for conversation-starting messages.</div>
+          </div>
         </div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-          <div class="opt-label win">After</div>
-          <img src="Gen AI after.png" alt="After" class="img-full" style="max-height:200px;object-fit:cover;object-position:top">
-          <div style="font-size:0.8em;color:var(--muted)">Up to 5 MM-specific variants, select which to include in one step</div>
-          <div class="card-purple" style="padding:8px 12px;margin-top:4px">
-            <span style="font-size:0.72em;font-weight:700;color:var(--purple)">MM-specific model</span>
-            <span class="bd" style="font-size:0.78em;margin-left:6px;color:var(--purple-deep)">Trained on ~17,000 MM syntheses, different tone from ad copy.</span>
+        <div style="width:48%;flex-shrink:0;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div class="opt-label" style="margin-bottom:2px">Before</div>
+            <img src="Gen AI before.png" alt="Before" class="img-full" style="max-height:160px;object-fit:cover;object-position:top">
+            <div style="font-size:0.72em;color:var(--muted)">One suggestion, replace everything or ignore</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div class="opt-label win" style="margin-bottom:2px">After</div>
+            <img src="Gen AI after.png" alt="After" class="img-full" style="max-height:160px;object-fit:cover;object-position:top">
+            <div style="font-size:0.72em;color:var(--muted)">5 variants, select any in one step</div>
           </div>
         </div>
       </div>
@@ -793,7 +822,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
     <div class="sl" style="gap:0">
       <div class="ey">Creatives · Phase 3 · North Star</div>
       <div class="h2 h2-sm">What if we didn't need two separate text inputs at all?</div>
-      <p class="bd" style="margin-bottom:14px">The A/B results confirmed my hypothesis — reducing friction changes behavior. That made me ask: what if the friction wasn't in the UI, but in having two separate inputs at all? When the ads team started a creative setup redesign, I partnered in early and used that opening to push the question further.</p>
+      <p class="bd" style="margin-bottom:14px">The A/B results confirmed the hypothesis: reducing friction changes behavior. That raised the question: what if the friction wasn't in the UI, but in having two separate inputs at all? When the ads team started a creative setup redesign, partnering in early opened the door to push further.</p>
       <div class="three-col" style="margin-bottom:12px">
         <div class="card">
           <div class="stat-num" style="font-size:1.5em;margin-bottom:6px">01</div>
@@ -811,7 +840,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
           <p class="bd" style="font-size:0.8em">Less UI complexity, less cognitive load, smaller engineering surface area.</p>
         </div>
       </div>
-      <div class="note-bar"><span class="senior-tag">Roadmap influence</span><span style="margin-left:8px">I pitched the unified direction to PM, engineering, and content. They accepted it — this set the Phase 3 roadmap direction.</span></div>
+      <div class="note-bar"><span class="senior-tag">Roadmap influence</span><span style="margin-left:8px">I pitched the unified direction to PM, engineering, and content. They accepted it, setting the Phase 3 roadmap direction.</span></div>
     </div>
   </div>
 
@@ -827,6 +856,18 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
         <div><div style="font-size:2em;font-family:Cambria,Georgia,serif;font-weight:700;color:rgba(255,255,255,0.3);line-height:1">0→1</div><div style="font-size:0.72em;color:rgba(255,255,255,0.28);margin-top:4px">new product surface</div></div>
       </div>
       <div style="font-size:0.78em;color:rgba(255,255,255,0.18);max-width:70%;line-height:1.65">Building a new 0-to-1 surface for post-publish conversations in Ads Manager.</div>
+    </div>
+  </div>
+
+  <!-- RESEARCH Q3 -->
+  <div class="slide" data-section="conversations" data-title="Research: What happens after an MM is sent?">
+    <div style="width:100%;height:100%;background:#EBF4FF;display:flex;flex-direction:column;justify-content:center;padding:7% 8%">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:#F5C842;border-radius:100px;padding:4px 12px;width:fit-content;margin-bottom:10%">
+        <span style="font-size:0.62em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#1a1200">Research</span>
+      </div>
+      <div style="font-family:Cambria,Georgia,serif;font-size:2.6em;font-weight:700;line-height:1.2;color:var(--navy);max-width:80%">
+        What happens <span style="color:var(--blue)">after an advertiser sends an MM</span>?
+      </div>
     </div>
   </div>
 
@@ -906,32 +947,37 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
     </div>
   </div>
 
-  <!-- S18 · CHAT BUILDER -->
+  <!-- S18a · CHAT BUILDER CONCEPT -->
   <div class="slide" data-section="conversations" data-title="Solution: Chat Builder">
     <div class="sl" style="gap:0">
       <div class="ey ey-blue">Conversations · Solution</div>
       <div class="h2">Chat Builder, a new first-class surface in Ads Manager</div>
-      <div class="flex gap16 mt8" style="align-items:center">
+      <div class="flex gap16 mt8 f1" style="align-items:center">
         <div class="flex fc gap10 f1">
-          <p class="bd">I moved Auto Reply and Quick Replies into their own dedicated card, <strong style="color:var(--text)">Chat Builder</strong>, at the same level as Creative. A new 0-to-1 product surface that had never existed before in Ads Manager.</p>
-          <div class="flex fc gap7 mt4">
-            <div class="card" style="padding:4% 5%">
-              <div style="font-size:0.78em;font-weight:700;color:var(--text);margin-bottom:3px">Followed CTWA's established pattern</div>
-              <p class="bd" style="font-size:0.8em">Rather than inventing a new pattern, I looked at what already existed in Ads Manager. CTWA had this structure at L1 — I proposed the same for MM so advertisers wouldn't need to relearn the mental model.</p>
-            </div>
-            <div class="card" style="padding:4% 5%">
-              <div style="font-size:0.78em;font-weight:700;color:var(--text);margin-bottom:3px">Auto-saves on publish</div>
-              <p class="bd" style="font-size:0.8em">Setup saves automatically. Second campaign takes seconds, already configured.</p>
-            </div>
-            <div class="card" style="padding:4% 5%">
-              <div style="font-size:0.78em;font-weight:700;color:var(--text);margin-bottom:3px">Live preview as you type</div>
-              <p class="bd" style="font-size:0.8em">Right panel shows exactly what the consumer sees, in real time.</p>
-            </div>
-          </div>
+          <p class="bd">Auto Reply and Quick Replies moved into their own dedicated card, <strong style="color:var(--text)">Chat Builder</strong>, at the same level as Creative. A 0-to-1 product surface that had never existed before in Ads Manager.</p>
+          <p class="bd" style="color:var(--muted)">Rather than inventing a new pattern, the design followed CTWA's established L1 structure, so advertisers wouldn't need to relearn the mental model across product surfaces.</p>
         </div>
-        <div style="width:46%;flex-shrink:0">
+        <div style="width:50%;flex-shrink:0">
           <img src="Chat builder - L1.png" alt="Chat Builder" class="img-full">
           <div style="font-size:0.7em;color:var(--muted);margin-top:6px">Chat Builder, new first-class section at L1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S18b · CHAT BUILDER DESIGN DETAILS -->
+  <div class="slide" data-section="conversations" data-title="Chat Builder: Design Details">
+    <div class="sl" style="gap:0">
+      <div class="ey ey-blue">Conversations · Solution · Design Details</div>
+      <div class="h2 h2-sm">Two design decisions that made Chat Builder work</div>
+      <div class="two-col mt8 f1" style="align-items:stretch">
+        <div class="card" style="padding:5% 6%">
+          <div style="font-size:0.78em;font-weight:700;color:var(--text);margin-bottom:8px">Auto-saves on publish</div>
+          <p class="bd">Setup saves automatically when the campaign is published. Second campaign takes seconds. Already configured, nothing to redo.</p>
+        </div>
+        <div class="card" style="padding:5% 6%">
+          <div style="font-size:0.78em;font-weight:700;color:var(--text);margin-bottom:8px">Live preview as you type</div>
+          <p class="bd">The right panel shows exactly what the consumer sees, updating in real time. No publishing blind.</p>
         </div>
       </div>
     </div>
@@ -942,25 +988,28 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
     <div class="sl" style="gap:0;justify-content:flex-start">
       <div class="ey ey-blue">Conversations · Design Detail</div>
       <div class="h2 h2-sm">Quick Reply setup went from confusing to obvious</div>
-      <div class="flex gap16 mt8" style="align-items:start">
-        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-          <div class="opt-label">Before</div>
-          <img src="QR before.png" alt="Before" class="img-full" style="flex:1;max-height:230px;object-fit:cover;object-position:top">
-          <div class="flex fc gap4 mt4" style="font-size:0.8em;color:var(--muted)">
-            <div>✗ No preview, published blind</div>
-            <div>✗ Button → response mapping unclear</div>
+      <div class="flex gap16 mt8 f1" style="align-items:center">
+        <div class="flex fc gap10 f1">
+          <p class="bd">The old QR setup had no preview. Advertisers configured button-to-response mappings without ever seeing what consumers would see. The redesign added a live phone preview that updates as you type.</p>
+          <div class="flex fc gap6 mt4" style="font-size:0.85em">
+            <div><span style="color:var(--red)">✗</span><span style="color:var(--muted);margin-left:6px">No preview, published blind</span></div>
+            <div><span style="color:var(--red)">✗</span><span style="color:var(--muted);margin-left:6px">Button → response mapping unclear</span></div>
+            <div><span style="color:var(--green)">✓</span><span style="color:var(--text);margin-left:6px">Live preview updates as you type</span></div>
+            <div><span style="color:var(--green)">✓</span><span style="color:var(--text);margin-left:6px">See exactly what the consumer sees</span></div>
           </div>
+          <div class="quote quote-blue" style="margin-top:auto;font-size:0.84em">Advertisers completed setup significantly faster, many finished with no guidance at all.</div>
         </div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-          <div class="opt-label win-b">After</div>
-          <img src="Chat builder - QR2 added 2 buttons.png" alt="After" class="img-full" style="flex:1;max-height:230px;object-fit:cover;object-position:top">
-          <div class="flex fc gap4 mt4" style="font-size:0.8em;color:var(--text)">
-            <div>✓ Live preview updates as you type</div>
-            <div>✓ See exactly what the consumer sees</div>
+        <div style="width:50%;flex-shrink:0;display:flex;gap:10px;align-items:start">
+          <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+            <div class="opt-label" style="margin-bottom:2px">Before</div>
+            <img src="QR before.png" alt="Before" class="img-full" style="max-height:260px;object-fit:cover;object-position:top">
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+            <div class="opt-label win-b" style="margin-bottom:2px">After</div>
+            <img src="Chat builder - QR2 added 2 buttons.png" alt="After" class="img-full" style="max-height:260px;object-fit:cover;object-position:top">
           </div>
         </div>
       </div>
-      <div class="quote quote-blue" style="margin-top:10px;font-size:0.84em">Advertisers completed setup significantly faster, many finished with no guidance at all.</div>
     </div>
   </div>
 
@@ -982,7 +1031,7 @@ html, body { height: 100%; overflow: hidden; background: #0a0818; font-family: -
               <p class="bd" style="font-size:0.8em">Set it up once, auto-applies to every future campaign.</p>
             </div>
           </div>
-          <div class="note-bar" style="margin-top:8px"><span class="senior-tag">Strategic influence</span><span style="margin-left:8px">I presented this to exec stakeholders as the north star — making conversations default, not exceptional.</span></div>
+          <div class="note-bar" style="margin-top:8px"><span class="senior-tag">Strategic influence</span><span style="margin-left:8px">I presented this to exec stakeholders as the north star: making conversations default, not exceptional.</span></div>
         </div>
         <div style="width:45%;flex-shrink:0">
           <img src="BizAI.png" alt="BizAI" class="img-full">
