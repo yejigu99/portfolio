@@ -34,7 +34,8 @@ function requireAuth(callback){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emma Gu — Product Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="smallicon.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -44,22 +45,34 @@ function requireAuth(callback){
   --accent-dim:rgba(123,111,232,0.08);--accent-dim2:rgba(123,111,232,0.04);
   --border:rgba(0,0,0,0.08);--border-hover:rgba(123,111,232,0.35);
   --rule:rgba(0,0,0,0.07);--tag-bg:rgba(0,0,0,0.04);
+  --hero-bg:#4B4BF6;--hero-text:#FDF09D;
+  --hero-fs:clamp(50px,9.5vw,132px);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text-primary);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .page-home-bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,#f0eeff 0%,#faf9ff 35%,#eef5ff 65%,#fff5f0 100%);pointer-events:none}
 .page{display:none;min-height:100vh}.page.active{display:block}
+#page-home{background:var(--hero-bg);position:relative;z-index:0}
+#page-about{background:var(--hero-bg);min-height:100vh}
+#dot-grid-bg{position:absolute;top:0;left:0;z-index:-1;display:block;pointer-events:none}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:transparent;border-bottom:1px solid transparent;transition:background 0.3s ease,border-color 0.3s ease,backdrop-filter 0.3s ease}
-nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.4)}
-.nav-logo{font-size:17px;font-weight:600;letter-spacing:0.01em;color:var(--text-primary);text-decoration:none;cursor:pointer}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;cursor:pointer}
+nav{position:fixed;top:1.1rem;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:0 1.5rem}
+@keyframes navZoomIn{from{opacity:0;transform:scale(0.82)}to{opacity:1;transform:scale(1)}}
+.nav-pill{display:flex;align-items:center;gap:1.75rem;padding:0.65rem 1.85rem;border-radius:100px;background:linear-gradient(180deg,rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.28) 100%);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.55);box-shadow:inset 0 1px 1px rgba(255,255,255,0.9),inset 0 -1px 1px rgba(255,255,255,0.15),0 10px 30px rgba(0,0,0,0.08),0 2px 8px rgba(0,0,0,0.04);transition:background 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease,transform 0.25s ease;animation:navZoomIn 0.7s cubic-bezier(0.25,0.46,0.45,0.94) both}
+.nav-pill:hover{transform:translateY(-2px);background:linear-gradient(180deg,rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.38) 100%);box-shadow:inset 0 1px 1px rgba(255,255,255,0.95),inset 0 -1px 1px rgba(255,255,255,0.2),0 14px 34px rgba(0,0,0,0.12),0 4px 12px rgba(0,0,0,0.06)}
+.nav-logo{display:none;font-size:17px;font-weight:600;letter-spacing:0.01em;color:var(--text-primary);text-decoration:none;cursor:pointer;transition:color 0.3s ease}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;cursor:pointer;font-weight:500}
 .nav-links a:hover,.nav-links a.active{color:var(--text-primary)}
+nav.nav-on-dark .nav-pill{background:linear-gradient(180deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.1) 100%);border-color:rgba(255,255,255,0.38);box-shadow:inset 0 1px 1px rgba(255,255,255,0.55),inset 0 -1px 1px rgba(255,255,255,0.05),0 10px 30px rgba(0,0,0,0.2),0 2px 8px rgba(0,0,0,0.1)}
+nav.nav-on-dark .nav-pill:hover{background:linear-gradient(180deg,rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.18) 100%);box-shadow:inset 0 1px 1px rgba(255,255,255,0.7),inset 0 -1px 1px rgba(255,255,255,0.1),0 14px 34px rgba(0,0,0,0.24),0 4px 12px rgba(0,0,0,0.12)}
+nav.nav-on-dark .nav-logo{color:#fff}
+nav.nav-on-dark .nav-links a{color:rgba(255,255,255,0.78)}
+nav.nav-on-dark .nav-links a:hover,nav.nav-on-dark .nav-links a.active{color:#fff}
 .container{max-width:1100px;margin:0 auto;padding:0 4rem}
 
 /* ── Hero ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 6rem;position:relative}
+.hero{padding:8rem 0 6rem;position:relative}
 .hero-inner{width:100%}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;background:var(--accent-dim);padding:0.4rem 0.9rem;border-radius:100px}
 .hero-eyebrow::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent)}
@@ -72,63 +85,62 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
 .link-pill:hover{color:var(--accent);border-color:var(--border-hover);background:var(--accent-dim2)}
 .link-pill svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
 
+/* ── Hero v2 ── */
+.hero-v2 .hero-inner{width:100%}
+.hero-v2 .container{max-width:1360px;width:100%;padding:0 4.5rem}
+.hero-v2-layout{display:flex;align-items:flex-start;justify-content:center;gap:4.5rem}
+.hero-v2-left{flex:0 1 auto;width:698px;min-width:0}
+.hero-v2-headline{font-family:'Poppins',sans-serif;font-weight:700;font-size:var(--hero-fs);line-height:1.04;letter-spacing:-0.02em;color:var(--hero-text);margin-bottom:2.5rem}
+.hero-v2-logos{display:flex;align-items:center;gap:2.25rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-v2-logo-img{height:26px;width:auto;display:block;flex-shrink:0}
+.hero-v2-logo-img.is-meta{height:20px}
+.hero-v2-photo{position:relative;flex-shrink:0;width:clamp(180px,22vw,300px);height:clamp(180px,22vw,300px);border-radius:50%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.35),inset 0 0 0 1px rgba(255,255,255,0.3);margin-top:calc(var(--hero-fs)*1.04)}
+.hero-v2-photo img{position:relative;z-index:1;width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.hero-v2-photo::after{content:'';position:absolute;inset:0;z-index:2;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 28% 18%,rgba(255,255,255,0.55) 0%,rgba(255,255,255,0) 24%),linear-gradient(135deg,rgba(255,255,255,0.28) 0%,rgba(255,255,255,0.05) 35%,rgba(255,255,255,0) 55%,rgba(255,255,255,0.15) 100%)}
+
 /* ── Work section ── */
-.work-section{padding:5rem 0 8rem}
+.work-section{padding:4rem 0 5rem}
+.work-section .container{max-width:1360px}
 .section-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
 .section-title{font-family:'DM Sans',sans-serif;font-size:clamp(22px,2.5vw,30px);font-weight:600;color:var(--text-primary);line-height:1.2;margin-bottom:3rem;letter-spacing:-0.02em;opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
 .section-title.card-visible{opacity:1;transform:translateY(0)}
-.work-grid{display:flex;flex-direction:column;gap:32px}
-.work-card{opacity:0;transform:translateY(70px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.25s,box-shadow 0.25s}
-.work-card.card-visible{opacity:1;transform:translateY(0)}
-.work-card.card-visible:hover{transform:translateY(-2px)}
-.work-card{
-  background:rgba(255,255,255,0.55);
-  border:1px solid rgba(255,255,255,0.85);
-  border-radius:20px;
-  overflow:hidden;
-  cursor:pointer;
-  backdrop-filter:blur(24px) saturate(1.6);
-  -webkit-backdrop-filter:blur(24px) saturate(1.6);
-  box-shadow:0 2px 0 0 rgba(255,255,255,0.9) inset,0 8px 32px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
-}
-.work-card:hover{
-  border-color:rgba(255,255,255,1);
-  box-shadow:0 2px 0 0 rgba(255,255,255,0.9) inset,0 16px 48px rgba(0,0,0,0.1),0 2px 4px rgba(0,0,0,0.05);
-  transform:translateY(-2px);
-}
-.card-layout{display:grid;grid-template-columns:1fr 1fr;min-height:300px}
-.card-content{padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between}
-.card-num{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.75rem}
-.card-title{font-family:'DM Sans',sans-serif;font-size:clamp(22px,2.5vw,32px);font-weight:700;color:var(--text-primary);line-height:1.1;letter-spacing:-0.025em;margin-bottom:0.75rem}
-.card-blurb{font-size:14px;font-weight:400;color:var(--text-secondary);line-height:1.7}
-.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:2rem}
-.card-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
-.tag{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-muted);background:var(--tag-bg);border:1px solid var(--border);padding:0.25rem 0.6rem;border-radius:4px}
-.card-cta{display:flex;align-items:center;gap:0.35rem;font-size:12px;font-weight:600;color:var(--accent);opacity:0;transform:translateX(-6px);transition:opacity 0.2s,transform 0.2s;white-space:nowrap}
-.card-cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
-.work-card:hover .card-cta{opacity:1;transform:translateX(0)}
-.card-image{overflow:hidden;position:relative;background:transparent;display:flex;align-items:flex-end;justify-content:center;padding:2rem 2rem 0}
-.browser-frame{width:100%;border-radius:10px 10px 0 0;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.12);transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
-.work-card:hover .browser-frame{transform:translateY(-4px)}
-.browser-frame img{width:100%;display:block;height:auto}
+.work-cards{opacity:0;transform:translateY(70px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.work-cards.card-visible{opacity:1;transform:translateY(0)}
 
-.home-footer{border-top:1px solid var(--rule);padding:2.5rem 0;display:flex;align-items:center;justify-content:space-between}
-.footer-left{font-size:12px;color:var(--text-muted)}
-.footer-about-btn{font-size:13px;font-weight:500;color:var(--text-secondary);display:flex;align-items:center;gap:0.4rem;border:1px solid var(--border);padding:0.5rem 1rem;border-radius:100px;cursor:pointer;transition:all 0.2s;background:white}
-.footer-about-btn:hover{color:var(--accent);border-color:var(--border-hover)}
+.tilt-card{background:#fff;border-radius:20px;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,0.22);cursor:pointer;display:flex;flex-direction:column;transform:perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1);transition:transform 0.4s ease,box-shadow 0.4s ease;will-change:transform}
+.tilt-card:hover{box-shadow:0 30px 65px rgba(0,0,0,0.3)}
+.tilt-card-inner{border-radius:12px;overflow:hidden;display:flex;flex-direction:column;flex:1}
+.tilt-card-media{height:250px;overflow:hidden}
+.tilt-card-media img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.tilt-card-body{padding:1.75rem 1.5rem 2rem;text-align:left;flex:1;display:flex;flex-direction:column;justify-content:flex-start}
+.focus-label{font-size:13px;font-weight:600;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.85rem}
+.tilt-card .card-title{font-family:'DM Serif Display',serif;font-size:clamp(23px,2.1vw,29px);font-weight:400;color:#fff;line-height:1.2;letter-spacing:-0.01em;margin-bottom:1.25rem}
+.tilt-card-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:13px;font-weight:600;color:#fff;margin-top:auto;width:fit-content;background:#141414;padding:0.65rem 1.15rem;border-radius:100px;transition:transform 0.2s ease,background 0.2s ease}
+.tilt-card:hover .tilt-card-link{transform:translateY(-2px);background:#000}
+.tilt-card-inner.light-bg .focus-label{color:rgba(0,0,0,0.55)}
+.tilt-card-inner.light-bg .card-title{color:#1a1a1a}
+.tilt-card-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+.home-footer-container{max-width:1360px}
+.home-footer{padding:2.5rem 0 4rem;display:flex;align-items:center;justify-content:space-between}
+.footer-left{font-size:12px;color:rgba(255,255,255,0.6)}
+.footer-about-btn{font-size:13px;font-weight:500;color:rgba(255,255,255,0.9);display:flex;align-items:center;gap:0.4rem;border:1px solid rgba(255,255,255,0.3);padding:0.5rem 1rem;border-radius:100px;cursor:pointer;background:rgba(255,255,255,0.12);opacity:0;transform:scale(0.82);transition:color 0.2s,border-color 0.2s,background 0.2s,opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)}
+.footer-about-btn.card-visible{opacity:1;transform:scale(1)}
+.footer-about-btn:hover{color:#fff;border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.22)}
 .footer-about-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
 
-.about-page{padding:10rem 0 8rem}
+.about-page{padding:8rem 0 6rem}
+.about-page .container{max-width:1360px;width:100%}
 .about-hero{margin-bottom:4rem}
-.about-hero-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
-.about-hero-title{font-family:'DM Sans',sans-serif;font-size:clamp(34px,4.5vw,48px);font-weight:700;color:var(--text-primary);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem}
-.about-hero-title em{font-style:italic;color:var(--accent);font-family:'DM Serif Display',serif;font-weight:400}
-.about-hero-title em{font-style:italic;color:var(--accent);font-family:'DM Serif Display',serif;font-weight:400}
-.about-photo{flex-shrink:0;width:340px;border-radius:20px;overflow:hidden;background:var(--accent-dim);align-self:stretch}
-.about-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.about-simple{display:flex;gap:4rem;align-items:stretch}
-.about-text p{font-size:15px;font-weight:400;color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem}
-.about-text p strong{color:var(--text-primary);font-weight:600}
+.about-hero-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:1rem}
+.about-hero-title{font-family:'DM Sans',sans-serif;font-size:clamp(34px,4.5vw,48px);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.about-hero-title em{font-style:normal;color:var(--hero-text);font-family:inherit;font-weight:inherit}
+.about-simple{display:flex;gap:4.5rem;align-items:flex-start;justify-content:center}
+.about-text{max-width:698px}
+.about-text p{font-size:17px;font-weight:400;color:rgba(255,255,255,0.8);line-height:1.8;margin-bottom:1.25rem}
+.about-text p strong{color:#fff;font-weight:600}
+.about-page .link-pill{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.9)}
+.about-page .link-pill:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5);color:#fff}
 .about-links{display:flex;gap:0.75rem;margin-top:2.5rem;flex-wrap:wrap}
 .sidebar-block{margin-bottom:2.75rem}
 .sidebar-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
@@ -146,7 +158,11 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
 .cta-email:hover{background:var(--accent-dim)}
 
 /* Case Study */
-.cs-page{padding:8rem 0 6rem}
+.cs-page{padding:3rem 0 6rem}
+#page-creatives,#page-conversations,#page-walmart{background:var(--hero-bg);--accent:var(--hero-bg);--accent-dim:rgba(75,75,246,0.08);--accent-dim2:rgba(75,75,246,0.04)}
+.cs-panel{background:var(--bg);border-radius:32px;padding:4rem;box-shadow:0 25px 70px rgba(0,0,0,0.2)}
+.cs-content{max-width:1100px;margin:0 auto}
+.cs-page .container{max-width:none;padding:0 2rem}
 .cs-back{display:inline-flex;align-items:center;gap:0.5rem;font-size:13px;color:var(--text-muted);cursor:pointer;margin-bottom:4rem;transition:color 0.2s;background:none;border:none;padding:0}
 .cs-back:hover{color:var(--accent)}
 .cs-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
@@ -194,6 +210,7 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
 @media(max-width:768px){
   .stat-grid-2{grid-template-columns:1fr!important}
   .stat-grid-2 > div:last-child{border-left:none!important;padding-left:0!important;border-top:1px solid var(--border);padding-top:2rem}
+  .stat-grid-2 > div[style*="display:flex"]{flex-direction:column!important;align-items:flex-start!important;gap:0.85rem!important}
   /* prevent horizontal overflow on mobile */
   html,body{overflow-x:hidden!important;max-width:100vw}
   *{min-width:0}
@@ -202,30 +219,34 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
 
   /* nav */
   nav{padding:1rem 1.5rem}
+  .nav-logo{display:none}
   .container{padding:0 1.25rem}
 
   /* hero */
-  .hero{padding:5.5rem 0 2.5rem}
+  .hero{padding:9rem 0 2.5rem}
+  .hero-v2 .container{padding:0 1.25rem}
+  .hero-v2-layout{flex-direction:column;gap:1.5rem;align-items:flex-start}
+  .hero-v2-left{width:100%}
+  .hero-v2-photo{width:64px!important;height:64px!important;margin-top:0.5rem}
+  #page-home .hero-v2-photo{display:none}
+  #page-about .hero-v2-photo{width:50vw!important;height:50vw!important;margin-top:0}
+  .hero-v2-logos{justify-content:flex-start;gap:1rem;flex-wrap:nowrap}
+  .hero-v2-logo-img{height:16px}
+  .hero-v2-logo-img.is-meta{height:12px}
 
-  /* home cards */
-  .card-layout{grid-template-columns:1fr!important;min-height:0!important;grid-template-rows:auto 200px!important}
-  .work-card{overflow:hidden!important}
-  .card-image{height:200px!important;min-height:0!important;padding:0!important;align-items:stretch!important;width:100%!important;max-width:100%!important}
-  .browser-frame{border-radius:0!important;height:100%!important;overflow:hidden!important;width:100%!important;max-width:100%!important}
-  .browser-frame img{object-fit:cover!important;object-position:top center!important;height:100%!important;width:100%!important}
-  .card-content{padding:1.75rem;justify-content:flex-start;gap:1.25rem}
-  .card-tags{flex-wrap:wrap}
-  .tag{white-space:nowrap}
-  div[style*="min-height:320px"]{min-height:0!important;height:200px!important}
+  /* home cards: focus gallery */
+  .work-cards{grid-template-columns:1fr;gap:2.5rem}
   .home-footer{flex-direction:column;gap:1rem;align-items:flex-start}
 
   /* about */
-  .about-simple{flex-direction:column;gap:2rem}
-  .about-photo{width:100%!important;height:260px}
+  .about-simple{flex-direction:column-reverse;gap:2rem}
   .about-cta{flex-direction:column;gap:1.5rem;align-items:flex-start}
 
-  /* case study pages */
-  .cs-page{padding:5rem 0 3rem}
+  /* case study pages: keep original (non-purple) background on mobile, no panel inset */
+  #page-creatives,#page-conversations,#page-walmart{background:var(--bg)}
+  .cs-page .container{max-width:1100px;padding:0 1.25rem}
+  .cs-page{padding:7rem 0 3rem}
+  .cs-panel{padding:0;border-radius:0;box-shadow:none}
   .cs-title{font-size:clamp(32px,8vw,52px)!important;letter-spacing:-0.025em}
   .cs-overview,.cs-three-col,.cs-results{grid-template-columns:1fr}
   .cs-two-col{grid-template-columns:1fr;gap:2rem}
@@ -282,110 +303,72 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
 <body>
 
 <nav>
-  <span class="nav-logo" onclick="showPage('home')">Emma Gu<span style="color:#BBAFFF">.</span></span>
-  <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
-    <li><a onclick="showPage('home');setTimeout(function(){document.getElementById('work').scrollIntoView({behavior:'smooth'})},50)" id="nav-work">Work</a></li>
-    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
-  </ul>
+  <div class="nav-pill">
+    <span class="nav-logo" onclick="showPage('home')">Emma Gu<span style="color:#BBAFFF">.</span></span>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+      <li><a onclick="showPage('home',true);setTimeout(function(){document.getElementById('work').scrollIntoView({behavior:'smooth'})},50)" id="nav-work">Work</a></li>
+      <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="page-home-bg"></div>
 <div class="page active" id="page-home">
-  <section class="hero">
+  <canvas id="dot-grid-bg"></canvas>
+  <section class="hero hero-v2">
     <div class="container">
       <div class="hero-inner">
-          <h1 class="hero-name">Emma Gu</h1>
-          <p class="hero-tagline">
-            I've shaped how people advertise on
-            <span class="tagline-logo"><svg height="14" viewBox="0 0 287.56 191" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><defs><linearGradient id="mg1" x1="61" y1="117" x2="259" y2="127" gradientUnits="userSpaceOnUse"><stop stop-color="#0064e1" offset="0"/><stop stop-color="#0064e1" offset="0.4"/><stop stop-color="#0073ee" offset="0.83"/><stop stop-color="#0082fb" offset="1"/></linearGradient><linearGradient id="mg2" x1="45" y1="139" x2="45" y2="66" gradientUnits="userSpaceOnUse"><stop stop-color="#0082fb" offset="0"/><stop stop-color="#0064e0" offset="1"/></linearGradient></defs><path fill="#0081fb" d="m31.06,125.96c0,10.98 2.41,19.41 5.56,24.51 4.13,6.68 10.29,9.51 16.57,9.51 8.1,0 15.51-2.01 29.79-21.76 11.44-15.83 24.92-38.05 33.99-51.98l15.36-23.6c10.67-16.39 23.02-34.61 37.18-46.96 11.56-10.08 24.03-15.68 36.58-15.68 21.07,0 41.14,12.21 56.5,35.11 16.81,25.08 24.97,56.67 24.97,89.27 0,19.38-3.82,33.62-10.32,44.87-6.28,10.88-18.52,21.75-39.11,21.75l0-31.02c17.63,0 22.03-16.2 22.03-34.74 0-26.42-6.16-55.74-19.73-76.69-9.63-14.86-22.11-23.94-35.84-23.94-14.85,0-26.8,11.2-40.23,31.17-7.14,10.61-14.47,23.54-22.7,38.13l-9.06,16.05c-18.2,32.27-22.81,39.62-31.91,51.75-15.95,21.24-29.57,29.29-47.5,29.29-21.27,0-34.72-9.21-43.05-23.09-6.8-11.31-10.14-26.15-10.14-43.06z"/><path fill="url(#mg1)" d="m24.49,37.3c14.24-21.95 34.79-37.3 58.36-37.3 13.65,0 27.22,4.04 41.39,15.61 15.5,12.65 32.02,33.48 52.63,67.81l7.39,12.32c17.84,29.72 27.99,45.01 33.93,52.22 7.64,9.26 12.99,12.02 19.94,12.02 17.63,0 22.03-16.2 22.03-34.74l27.4-.86c0,19.38-3.82,33.62-10.32,44.87-6.28,10.88-18.52,21.75-39.11,21.75-12.8,0-24.14-2.78-36.68-14.61-9.64-9.08-20.91-25.21-29.58-39.71l-25.79-43.08c-12.94-21.62-24.81-37.74-31.68-45.04-7.39-7.85-16.89-17.33-32.05-17.33-12.27,0-22.69,8.61-31.41,21.78z"/><path fill="url(#mg2)" d="m82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78-12.33,18.61-19.88,46.33-19.88,72.95 0,10.98 2.41,19.41 5.56,24.51l-26.48,17.44c-6.8-11.31-10.14-26.15-10.14-43.06 0-30.75 8.44-62.8 24.49-87.55 14.24-21.95 34.79-37.3 58.36-37.3z"/></svg><span class="tagline-name">Meta,</span></span>
-            and sell on
-            <span class="tagline-logo"><svg height="14" viewBox="0 0 534 599.5" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><g transform="matrix(1.777778,0,0,1.777778,-32,-502.720032)"><path fill="#FDBB30" d="M168.167 396.322C176.065 396.322 182.548 392.198 183.418 386.883L191.218 298.652C191.218 289.933 181.033 282.78 168.167 282.78C155.324 282.78 145.14 289.933 145.14 298.652L152.939 386.883C153.784 392.198 160.292 396.322 168.167 396.322"/><path fill="#FDBB30" d="M120.474 423.87C124.424 417.063 124.125 409.338 119.952 405.935L47.445 355.088C39.918 350.717 28.592 355.982 22.183 367.086C15.775 378.214 16.892 390.61 24.419 394.956L104.675 432.315C109.718 434.177 116.525 430.626 120.498 423.771"/><path fill="#FDBB30" d="M215.858 423.795C219.807 430.651 226.639 434.203 231.631 432.34L311.938 394.981C319.489 390.61 320.607 378.214 314.173 367.11C307.765 355.982 296.414 350.741 288.911 355.113L216.405 405.96C212.256 409.363 211.958 417.088 215.883 423.894"/><path fill="#FDBB30" d="M168.167 506.511C176.065 506.511 182.548 510.585 183.418 515.875L191.218 604.081C191.218 612.824 181.033 619.979 168.167 619.979C155.324 619.979 145.14 612.824 145.14 604.081L152.939 515.875C153.784 510.585 160.292 506.511 168.167 506.511"/><path fill="#FDBB30" d="M215.858 478.964C219.807 472.108 226.639 468.556 231.631 470.419L311.938 507.753C319.489 512.149 320.607 524.545 314.173 535.673C307.765 546.776 296.414 552.042 288.911 547.671L216.405 496.874C212.256 493.445 211.958 485.745 215.883 478.915"/><path fill="#FDBB30" d="M120.474 478.915C124.424 485.77 124.125 493.445 119.952 496.874L47.445 547.695C39.918 552.042 28.592 546.776 22.183 535.698C15.775 524.57 16.892 512.149 24.419 507.753L104.675 470.443C109.718 468.531 116.525 472.108 120.498 478.939"/></g></svg><span class="tagline-name">Walmart</span></span>
-            — turning the most ambiguous problems into something that just flows.
-          </p>
-          <div class="hero-links">
-            <a href="mailto:yejigu@gmail.com" class="link-pill">
-              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-              Get in touch
-            </a>
-            <a href="https://www.linkedin.com/in/emmadesigner/" class="link-pill" target="_blank">
-              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-            <a href="EmmaGu_ProductDesigner_.pdf" class="link-pill" target="_blank">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-              Resume
-            </a>
+        <div class="hero-v2-layout">
+          <div class="hero-v2-left">
+            <h1 class="hero-v2-headline">I turn<br>ambiguity<br>into flow—<br>at scale.</h1>
+            <div class="hero-v2-logos">
+              <img class="hero-v2-logo-img is-meta" src="Meta logo white.svg" alt="Meta">
+              <img class="hero-v2-logo-img" src="WA logo white.svg" alt="WhatsApp">
+              <img class="hero-v2-logo-img" src="Walmart logo white.svg" alt="Walmart">
+            </div>
           </div>
-
+          <div class="hero-v2-photo">
+            <img src="yeji.png" alt="Emma Gu">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="work-section" id="work">
     <div class="container">
-      <h2 class="section-title">Selected Work</h2>
-      <div class="work-grid">
+      <div class="work-cards" id="work-cards">
 
-        <div class="work-card" onclick="showPage('creatives')">
-          <div class="card-layout">
-            <div class="card-content">
-              <div>
-                <div class="card-num">01 — Meta</div>
-                <h3 class="card-title">Creatives</h3>
-                <p class="card-blurb">Restructured how Marketing messages are created in Ads Manager — introducing multi-text options and AI-powered text generation for advertisers.</p>
-              </div>
-              <div class="card-footer">
-                <div class="card-tags"><span class="tag">IA restructure</span><span class="tag">text optimization</span></div>
-                <div class="card-cta">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-              </div>
-            </div>
-            <div class="card-image" style="min-height:320px">
-              <div class="browser-frame">
-                <img src="Creatives main image.png" alt="Meta Creatives">
-              </div>
+        <div class="tilt-card" onclick="showPage('creatives')">
+          <div class="tilt-card-inner light-bg" style="background:#F0D674">
+            <div class="tilt-card-media"><img src="creatives transparent.png" alt="Meta Creatives"></div>
+            <div class="tilt-card-body">
+              <div class="focus-label">Meta</div>
+              <h3 class="card-title">Marketing Messages Creatives</h3>
+              <span class="tilt-card-link">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
             </div>
           </div>
         </div>
 
-        <div class="work-card" onclick="showPage('conversations')">
-          <div class="card-layout">
-            <div class="card-content">
-              <div>
-                <div class="card-num">02 — Meta</div>
-                <h3 class="card-title">Conversations</h3>
-                <p class="card-blurb">Created the Conversations experience for Marketing messages in Ads Manager, enabling businesses to manage and automate how they respond to customers at scale.</p>
-              </div>
-              <div class="card-footer">
-                <div class="card-tags"><span class="tag">IA restructure</span><span class="tag">conversation strategy</span></div>
-                <div class="card-cta">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-              </div>
-            </div>
-            <div class="card-image" style="min-height:320px">
-              <div class="browser-frame">
-                <img src="Conversations main image.png" alt="Meta Conversations">
-              </div>
+        <div class="tilt-card" onclick="showPage('conversations')">
+          <div class="tilt-card-inner light-bg" style="background:#F1EDE7">
+            <div class="tilt-card-media"><img src="Conversations transparent.png" alt="Meta Conversations"></div>
+            <div class="tilt-card-body">
+              <div class="focus-label">Meta</div>
+              <h3 class="card-title">Marketing Messages Conversations</h3>
+              <span class="tilt-card-link">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
             </div>
           </div>
         </div>
 
-        <div class="work-card" onclick="showPage('walmart')">
-          <div class="card-layout">
-            <div class="card-content">
-              <div>
-                <div class="card-num">03 — Walmart</div>
-                <h3 class="card-title">Seller Center</h3>
-                <p class="card-blurb">Built the first Seller Center homepage for Walmart sellers and redesigned the onboarding and communications experience, driving a +12 NPS lift.</p>
-              </div>
-              <div class="card-footer">
-                <div class="card-tags"><span class="tag">+12 NPS</span><span class="tag">content strategy</span></div>
-                <div class="card-cta">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-              </div>
-            </div>
-            <div class="card-image" style="min-height:320px">
-              <div class="browser-frame">
-                <img src="Seller Center main image.png" alt="Walmart Seller Center">
-              </div>
+        <div class="tilt-card" onclick="showPage('walmart')">
+          <div class="tilt-card-inner light-bg" style="background:#B6FA6A">
+            <div class="tilt-card-media"><img src="Seller Center transparent.png" alt="Walmart Seller Center"></div>
+            <div class="tilt-card-body">
+              <div class="focus-label">Walmart</div>
+              <h3 class="card-title">Seller Center</h3>
+              <span class="tilt-card-link">View work <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
             </div>
           </div>
         </div>
@@ -394,7 +377,7 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
     </div>
   </section>
 
-  <div class="container">
+  <div class="container home-footer-container">
     <div class="home-footer">
       <span class="footer-left">© 2026 Emma Gu</span>
       <button class="footer-about-btn" onclick="showPage('about')">
@@ -411,105 +394,353 @@ nav.scrolled{background:rgba(240,238,255,0.55);backdrop-filter:blur(20px) satura
       <div class="about-simple">
         <div class="about-text">
           <p class="about-hero-label">About</p>
-          <h1 class="about-hero-title">Hi, I'm <em>Emma.</em></h1>
+          <h1 class="about-hero-title"><span id="about-typed-prefix"></span><em><span id="about-emma-text"></span></em></h1>
           <p>A product designer based in the <strong>Bay Area</strong> (San Jose).</p>
           <p>Most recently I was at <strong>Meta</strong>, leading the Marketing message experience team — building 0→1 AI-powered creative tools and working closely with PMs, engineers, and data scientists along the way.</p>
           <p>Before that, I was at <strong>Walmart Marketplace</strong> leading the seller acquisition and communications team — designing the Seller Center homepage, onboarding, notifications, and the overall seller experience.</p>
           <p>Earlier in my career I did a completely different kind of design — experiential and brand work. Different medium, same job: I've always been a designer.</p>
+          <div class="hero-links" style="margin-top:3.5rem">
+            <a href="mailto:yejigu@gmail.com" class="link-pill">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+              Get in touch
+            </a>
+            <a href="https://www.linkedin.com/in/emmadesigner/" class="link-pill" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="EmmaGu_ProductDesigner.pdf" class="link-pill" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              Resume
+            </a>
+          </div>
         </div>
-        <div class="about-photo"><img src="yeji.png" alt="Emma Gu"></div>
+        <div class="hero-v2-photo about-photo">
+          <img src="yeji.png" alt="Emma Gu">
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// Intro animation — masked word rise (replayable)
-var heroInners=[];
+// Intro animation — headline/photo are owned by the canvas from frame one (see below);
+// only the logos row still fades in as plain DOM.
+var heroCharStep=26;
+var heroFadeEls=[];
+var heroTotalChars=0;
 (function(){
-  var name=document.querySelector('.hero-name');
-  var tagline=document.querySelector('.hero-tagline');
-  var links=document.querySelector('.hero-links');
-  if(!name)return;
+  var headline=document.querySelector('.hero-v2-headline');
+  if(!headline)return;
+  headline.style.visibility='hidden';
 
-  function makeWord(text, delay){
-    var outer=document.createElement('span');
-    outer.style.cssText='display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit';
-    var inner=document.createElement('span');
-    inner.style.cssText='display:inline-block;transform:translateY(105%);transition:transform 0.65s cubic-bezier(0.16,1,0.3,1);transition-delay:'+delay+'ms';
-    inner.textContent=text;
-    outer.appendChild(inner);
-    heroInners.push(inner);
-    return outer;
-  }
-
-  function makeFade(el, delay){
-    el.style.opacity='0';
-    el.style.transition='opacity 0.5s ease';
-    el.style.transitionDelay=delay+'ms';
-    heroInners.push({_fade:true, el:el});
-  }
-
-  var nameWords=name.textContent.trim().split(/\s+/);
-  name.innerHTML='';
-  var NSTART=100, NSTEP=90;
-  nameWords.forEach(function(word,i){
-    if(i>0) name.appendChild(document.createTextNode(' '));
-    name.appendChild(makeWord(word, NSTART+i*NSTEP));
-  });
-
-  if(tagline){
-    var tagStart=NSTART+nameWords.length*NSTEP+140;
-    var TSTEP=50;
-    var wi=0;
-    var nodes=Array.from(tagline.childNodes);
-    tagline.innerHTML='';
-    nodes.forEach(function(node){
-      if(node.nodeType===3){
-        var parts=node.textContent.split(/(\s+)/);
-        parts.forEach(function(part){
-          if(!part)return;
-          if(/^\s+$/.test(part)){
-            tagline.appendChild(document.createTextNode(part));
-          } else {
-            tagline.appendChild(makeWord(part, tagStart+wi*TSTEP));
-            wi++;
-          }
-        });
-      } else if(node.nodeType===1){
-        makeFade(node, tagStart+wi*TSTEP);
-        wi++;
-        tagline.appendChild(node);
+  var lines=headline.innerHTML.split(/<br\s*\/?>/i).map(function(s){return s.trim();});
+  headline.innerHTML='';
+  var idx=0;
+  lines.forEach(function(line,li){
+    if(li>0) headline.appendChild(document.createElement('br'));
+    line.split('').forEach(function(ch){
+      if(ch===' '){
+        headline.appendChild(document.createTextNode(' '));
+      } else {
+        var span=document.createElement('span');
+        span.className='char';
+        span.textContent=ch;
+        headline.appendChild(span);
+        idx++;
       }
     });
-    if(links) makeFade(links, tagStart+wi*TSTEP+120);
+  });
+  heroTotalChars=idx;
+
+  var photo=document.querySelector('.hero-v2-photo');
+  if(photo)photo.style.visibility='hidden';
+
+  var logos=document.querySelector('.hero-v2-logos');
+  if(logos){
+    logos.style.transition='opacity 0.6s ease,transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+    logos.style.transitionDelay='250ms';
+    heroFadeEls.push(logos);
   }
 
-  playHeroAnim();
+  setTimeout(playHeroAnim,0);
 })();
 
 function playHeroAnim(){
-  // reset
-  heroInners.forEach(function(item){
-    if(item._fade) item.el.style.opacity='0';
-    else item.style.transform='translateY(105%)';
+  heroFadeEls.forEach(function(el){
+    el.style.opacity='0';
+    el.style.transform='translateY(16px)';
   });
   // re-trigger after two frames
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
-      heroInners.forEach(function(item){
-        if(item._fade) item.el.style.opacity='1';
-        else item.style.transform='translateY(0)';
+      heroFadeEls.forEach(function(el){
+        el.style.opacity='1';
+        el.style.transform='translateY(0)';
       });
     });
   });
+  if(window.dotGridHeroStart)window.dotGridHeroStart();
 }
 
-// Nav glass on scroll
+// Interactive grid background (home page only) — dots + connecting lines that push/lens near the cursor.
+// The headline text and photo are drawn ON THIS SAME CANVAS (not separate DOM transforms) so they react
+// to the exact same field as the dots — fully merged with the background, not a second synced system.
+(function(){
+  var canvas=document.getElementById('dot-grid-bg');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var pageEl=document.getElementById('page-home');
+  var dotColor='255,255,255';
+  var textColor='253,240,157';
+  var dotSize=3,dotSpacing=34,impactRadius=150,pushStrength=24,scaleOnHover=2;
+  var dotAlpha=0.13,hoverAlphaBoost=0.5,lineAlpha=0.07;
+  var textRadius=160,textScaleMax=1.32;
+  var photoFieldRadius=260,photoScaleMax=1.18;
+  var revealCharDur=150,revealPhotoDur=550;
+  var W=0,H=0,cols=0,rows=0,dots=[];
+  var mouse={x:-9999,y:-9999};
+  var hovering=false,leaveTs=0,prevTs=0,raf=0,running=false;
+  var dpr=window.devicePixelRatio||1;
+  var magnetActive=false,logoTargets=[];
+  var heroCanvasReady=false,textGlyphs=[],textFontPx=60,photoData=null,heroStartTs=0;
+
+  function buildDots(){
+    dots=[];
+    cols=Math.ceil(W/dotSpacing)+2;
+    rows=Math.ceil(H/dotSpacing)+2;
+    for(var r=0;r<rows;r++){
+      for(var c=0;c<cols;c++){
+        dots.push({bx:c*dotSpacing,by:r*dotSpacing});
+      }
+    }
+  }
+  function buildLogoTargets(){
+    logoTargets=[];
+    document.querySelectorAll('.hero-v2-logo-img').forEach(function(el){
+      logoTargets.push({el:el,radius:120,scaleMax:1.3});
+    });
+    logoTargets.forEach(function(t){
+      var r=t.el.getBoundingClientRect();
+      t.cx=r.left+r.width/2+window.scrollX;
+      t.cy=r.top+r.height/2+window.scrollY;
+    });
+  }
+  function buildHeroCanvasContent(){
+    var headline=document.querySelector('.hero-v2-headline');
+    if(!headline){heroCanvasReady=false;return;}
+    textFontPx=parseFloat(getComputedStyle(headline).fontSize);
+    textGlyphs=[];
+    var idx=0;
+    headline.querySelectorAll('.char').forEach(function(el){
+      var r=el.getBoundingClientRect();
+      textGlyphs.push({ch:el.textContent,bx:r.left+r.width/2+window.scrollX,by:r.top+r.height/2+window.scrollY,delay:idx*heroCharStep});
+      idx++;
+    });
+    headline.style.visibility='hidden';
+    var photo=document.querySelector('.hero-v2-photo');
+    photoData=null;
+    if(photo){
+      var img=photo.querySelector('img');
+      var r2=photo.getBoundingClientRect();
+      photoData={bx:r2.left+r2.width/2+window.scrollX,by:r2.top+r2.height/2+window.scrollY,radius:r2.width/2,img:img,delay:100};
+      photo.style.visibility='hidden';
+    }
+    heroStartTs=performance.now();
+    heroCanvasReady=true;
+  }
+  function resize(){
+    W=pageEl.scrollWidth;
+    H=pageEl.scrollHeight;
+    canvas.style.width=W+'px';
+    canvas.style.height=H+'px';
+    canvas.width=W*dpr;
+    canvas.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    buildDots();
+    buildLogoTargets();
+    if(heroCanvasReady)buildHeroCanvasContent();
+  }
+  function smoothstep(t){var c=Math.max(0,Math.min(1,t));return c*c*(3-2*c);}
+  function frame(ts){
+    if(!running)return;
+    raf=requestAnimationFrame(frame);
+    prevTs=ts;
+    ctx.clearRect(0,0,W,H);
+    var mx=mouse.x,my=mouse.y;
+    var timeSinceLeave=hovering?0:Math.max(0,ts-leaveTs)/1000;
+    var decay=hovering?1:smoothstep(Math.max(0,1-timeSinceLeave*1.5));
+    var n=dots.length;
+    var xs=new Float32Array(n),ys=new Float32Array(n),sc=new Float32Array(n),al=new Float32Array(n);
+    // Only compute/draw the rows currently near the viewport — a full-page canvas redrawing
+    // thousands of dots below the fold every frame is what was causing the jank on load.
+    var viewTop=window.scrollY-150,viewBottom=window.scrollY+window.innerHeight+150;
+    var rowStart=Math.max(0,Math.floor(viewTop/dotSpacing)-1);
+    var rowEnd=Math.min(rows-1,Math.ceil(viewBottom/dotSpacing)+1);
+    for(var r=rowStart;r<=rowEnd;r++){
+      for(var c=0;c<cols;c++){
+        var i=r*cols+c;
+        var d=dots[i];
+        var dx=d.bx-mx,dy=d.by-my;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        var x=d.bx,y=d.by,scale=1,alpha=dotAlpha;
+        if(dist<impactRadius&&dist>0){
+          var falloff=Math.exp(-Math.pow(dist/(impactRadius*0.4),2))*decay;
+          var nx=dx/dist,ny=dy/dist;
+          x=d.bx+nx*falloff*pushStrength;
+          y=d.by+ny*falloff*pushStrength;
+          scale=1+falloff*(scaleOnHover-1);
+          alpha=dotAlpha+falloff*hoverAlphaBoost;
+        }
+        xs[i]=x;ys[i]=y;sc[i]=scale;al[i]=alpha;
+      }
+    }
+    ctx.strokeStyle='rgba('+dotColor+','+lineAlpha+')';
+    ctx.lineWidth=1;
+    ctx.beginPath();
+    for(var r2=rowStart;r2<=rowEnd;r2++){
+      for(var c2=0;c2<cols;c2++){
+        var i2=r2*cols+c2;
+        if(c2<cols-1){ctx.moveTo(xs[i2],ys[i2]);ctx.lineTo(xs[i2+1],ys[i2+1]);}
+        if(r2<rowEnd){ctx.moveTo(xs[i2],ys[i2]);ctx.lineTo(xs[i2+cols],ys[i2+cols]);}
+      }
+    }
+    ctx.stroke();
+    for(r=rowStart;r<=rowEnd;r++){
+      for(var c3=0;c3<cols;c3++){
+        var i3=r*cols+c3;
+        var rad=dotSize/2*sc[i3];
+        ctx.beginPath();
+        ctx.arc(xs[i3],ys[i3],rad,0,Math.PI*2);
+        ctx.fillStyle='rgba('+dotColor+','+al[i3]+')';
+        ctx.fill();
+      }
+    }
+    if(heroCanvasReady){
+      var elapsedGlobal=ts-heroStartTs;
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      ctx.font="700 "+textFontPx+"px 'Poppins', sans-serif";
+      for(var gi=0;gi<textGlyphs.length;gi++){
+        var g=textGlyphs[gi];
+        var gdx=g.bx-mx,gdy=g.by-my;
+        var gdist=Math.sqrt(gdx*gdx+gdy*gdy);
+        var gscale=1;
+        if(gdist<textRadius&&gdist>0){
+          var gfall=Math.exp(-Math.pow(gdist/(textRadius*0.4),2))*decay;
+          gscale=1+gfall*(textScaleMax-1);
+        }
+        var alphaP=Math.max(0,Math.min(1,(elapsedGlobal-g.delay)/70));
+        var geased=smoothstep(alphaP);
+        if(geased<=0)continue;
+        var grp=Math.max(0,Math.min(1,(elapsedGlobal-g.delay)/revealCharDur));
+        var grpEased=smoothstep(grp);
+        var gYOff=(1-grpEased)*textFontPx*0.08;
+        var gGlow=(1-grpEased)*16;
+        var gPop=0.82+grpEased*0.18;
+        ctx.save();
+        ctx.globalAlpha=geased;
+        if(gGlow>0.5){ctx.shadowColor='rgba(253,240,157,0.9)';ctx.shadowBlur=gGlow;}
+        ctx.fillStyle='rgb('+textColor+')';
+        ctx.translate(g.bx,g.by+gYOff);
+        ctx.scale(gscale*gPop,gscale*gPop);
+        ctx.fillText(g.ch,0,0);
+        ctx.restore();
+      }
+      if(photoData){
+        var prp=Math.max(0,Math.min(1,(elapsedGlobal-photoData.delay)/revealPhotoDur));
+        var peased=smoothstep(prp);
+        if(peased>0){
+          var pdx=photoData.bx-mx,pdy=photoData.by-my;
+          var pdist=Math.sqrt(pdx*pdx+pdy*pdy);
+          var pscale=1;
+          if(pdist<photoFieldRadius&&pdist>0){
+            var pfall=Math.exp(-Math.pow(pdist/(photoFieldRadius*0.4),2))*decay;
+            pscale=1+pfall*(photoScaleMax-1);
+          }
+          var pYOff=(1-peased)*16;
+          var drawBy=photoData.by+pYOff;
+          var rr=photoData.radius*pscale;
+          ctx.save();
+          ctx.globalAlpha=peased;
+          ctx.beginPath();
+          ctx.arc(photoData.bx,drawBy,rr,0,Math.PI*2);
+          ctx.closePath();
+          ctx.clip();
+          ctx.drawImage(photoData.img,photoData.bx-rr,drawBy-rr,rr*2,rr*2);
+          var grad=ctx.createRadialGradient(photoData.bx-rr*0.35,drawBy-rr*0.45,0,photoData.bx,drawBy,rr);
+          grad.addColorStop(0,'rgba(255,255,255,0.35)');
+          grad.addColorStop(0.35,'rgba(255,255,255,0.05)');
+          grad.addColorStop(1,'rgba(255,255,255,0)');
+          ctx.fillStyle=grad;
+          ctx.fillRect(photoData.bx-rr,drawBy-rr,rr*2,rr*2);
+          ctx.restore();
+        }
+      }
+    }
+    if(magnetActive){
+      for(var mi=0;mi<logoTargets.length;mi++){
+        var t=logoTargets[mi];
+        var mdx=t.cx-mx,mdy=t.cy-my;
+        var mdist=Math.sqrt(mdx*mdx+mdy*mdy);
+        var s=1;
+        if(mdist<t.radius){
+          var mfall=Math.exp(-Math.pow(mdist/(t.radius*0.4),2))*decay;
+          s=1+mfall*(t.scaleMax-1);
+        }
+        t.el.style.transform='scale('+s.toFixed(3)+')';
+      }
+    }
+  }
+  function start(){if(running)return;running=true;prevTs=0;raf=requestAnimationFrame(frame);}
+  function stop(){
+    running=false;
+    if(raf)cancelAnimationFrame(raf);
+    logoTargets.forEach(function(t){t.el.style.transform='';});
+  }
+  window.addEventListener('resize',resize,{passive:true});
+  window.addEventListener('mousemove',function(e){
+    var rect=canvas.getBoundingClientRect();
+    mouse.x=e.clientX-rect.left;
+    mouse.y=e.clientY-rect.top;
+    hovering=true;
+  },{passive:true});
+  window.addEventListener('mouseout',function(e){
+    if(!e.relatedTarget){mouse.x=-9999;mouse.y=-9999;hovering=false;leaveTs=performance.now();}
+  });
+  window.addEventListener('load',resize);
+  resize();
+  window.dotGridStart=start;
+  window.dotGridStop=stop;
+  window.dotGridResize=resize;
+  window.dotGridHeroStart=function(){
+    magnetActive=true;
+    buildLogoTargets();
+    buildHeroCanvasContent();
+  };
+  window.dotGridHeroStop=function(){
+    magnetActive=false;
+    logoTargets.forEach(function(t){t.el.style.transform='';});
+    heroCanvasReady=false;
+    var headline=document.querySelector('.hero-v2-headline');
+    if(headline)headline.style.visibility='';
+    var photo=document.querySelector('.hero-v2-photo');
+    if(photo)photo.style.visibility='';
+  };
+  if(document.getElementById('page-home').classList.contains('active'))start();
+})();
+
+// Nav theme: white/dark text over the hero, dark/light text everywhere else
 (function(){
   var nav=document.querySelector('nav');
-  function update(){nav.classList.toggle('scrolled',window.scrollY>40);}
+  function update(){
+    var onHome=document.getElementById('page-home').classList.contains('active');
+    var onAbout=document.getElementById('page-about').classList.contains('active');
+    var heroEl=document.querySelector('.hero-v2');
+    var overHero=onHome && heroEl && heroEl.getBoundingClientRect().bottom>80;
+    nav.classList.toggle('nav-on-dark',overHero||onAbout);
+  }
   window.addEventListener('scroll',update,{passive:true});
+  window.updateNavTheme=update;
   update();
 })();
 
@@ -522,9 +753,30 @@ function playHeroAnim(){
         observer.unobserve(entry.target);
       }
     });
-  },{threshold:0.15});
-  document.querySelectorAll('.section-title,.work-card').forEach(function(el){
+  },{threshold:0,rootMargin:'0px 0px -10px 0px'});
+  var revealEls=document.querySelectorAll('.section-title,.work-cards,.footer-about-btn');
+  revealEls.forEach(function(el){
     observer.observe(el);
+  });
+  setTimeout(function(){revealEls.forEach(function(el){el.classList.add('card-visible')});},2500);
+})();
+
+(function(){
+  var maxTilt=12;
+  document.querySelectorAll('#work-cards .tilt-card').forEach(function(card){
+    card.addEventListener('mouseenter',function(){
+      card.style.transition='transform 0.05s ease-out';
+    });
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width-0.5;
+      var py=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform='perspective(800px) rotateX('+(py*maxTilt*2)+'deg) rotateY('+(-px*maxTilt*2)+'deg) scale3d(1.04,1.04,1.04)';
+    });
+    card.addEventListener('mouseleave',function(){
+      card.style.transition='transform 0.4s ease';
+      card.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+    });
   });
 })();
 
@@ -533,7 +785,7 @@ function openLightbox(src){
   document.getElementById('lightbox-img').src=src;
   lb.style.display='flex';
 }
-function _doShowPage(n){
+function _doShowPage(n,skipHeroAnim){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   var pageEl=document.getElementById('page-'+n);
   pageEl.classList.add('active');
@@ -541,27 +793,65 @@ function _doShowPage(n){
   document.getElementById('nav-'+n)?.classList.add('active');
   window.scrollTo({top:0,behavior:'instant'});
   location.hash = n==='home' ? '' : n;
+  if(window.updateNavTheme)window.updateNavTheme();
+  if(n==='home'){
+    if(window.dotGridResize)window.dotGridResize();
+    if(window.dotGridStart)window.dotGridStart();
+  } else if(window.dotGridStop){
+    window.dotGridStop();
+  }
   if(n==='creatives'){
     setTimeout(function(){if(window.drawIAArrows)drawIAArrows();},150);
   }
   if(n==='home'){
-    playHeroAnim();
-    document.querySelectorAll('.section-title,.work-card').forEach(function(el){
+    if(!skipHeroAnim)playHeroAnim();
+    document.querySelectorAll('.section-title,.work-cards,.footer-about-btn').forEach(function(el){
       el.classList.remove('card-visible');
     });
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){entry.target.classList.add('card-visible');obs.unobserve(entry.target);}
       });
-    },{threshold:0.15});
-    document.querySelectorAll('.section-title,.work-card').forEach(function(el){obs.observe(el);});
+    },{threshold:0,rootMargin:'0px 0px -10px 0px'});
+    var revealElsRevisit=document.querySelectorAll('.section-title,.work-cards,.footer-about-btn');
+    revealElsRevisit.forEach(function(el){obs.observe(el);});
+    setTimeout(function(){revealElsRevisit.forEach(function(el){el.classList.add('card-visible')});},2500);
+  }
+  if(n==='about'){
+    playAboutTypewriter();
   }
 }
-function showPage(n){
+var emmaTypeTimer=null;
+function playAboutTypewriter(){
+  var prefixEl=document.getElementById('about-typed-prefix');
+  var emmaEl=document.getElementById('about-emma-text');
+  if(!prefixEl||!emmaEl)return;
+  if(emmaTypeTimer)clearTimeout(emmaTypeTimer);
+  var prefixFull="Hi, I'm ";
+  var emmaFull='Emma.';
+  prefixEl.textContent='';
+  emmaEl.textContent='';
+  var i=0;
+  (function stepPrefix(){
+    prefixEl.textContent=prefixFull.slice(0,i);
+    i++;
+    if(i<=prefixFull.length){
+      emmaTypeTimer=setTimeout(stepPrefix,55);
+    } else {
+      var j=0;
+      (function stepEmma(){
+        emmaEl.textContent=emmaFull.slice(0,j);
+        j++;
+        if(j<=emmaFull.length){emmaTypeTimer=setTimeout(stepEmma,110);}
+      })();
+    }
+  })();
+}
+function showPage(n,skipHeroAnim){
   if(PROTECTED.indexOf(n)!==-1 && localStorage.getItem('auth')!=='ok'){
-    requireAuth(function(){_doShowPage(n);});
+    requireAuth(function(){_doShowPage(n,skipHeroAnim);});
   } else {
-    _doShowPage(n);
+    _doShowPage(n,skipHeroAnim);
   }
 }
 // restore page from URL hash on load
@@ -575,6 +865,8 @@ window.addEventListener('load', function(){
 <div class="page" id="page-creatives">
   <div class="cs-page">
     <div class="container">
+      <div class="cs-panel">
+      <div class="cs-content">
 
       <div class="cs-hero" style="margin-bottom:3rem">
         <div class="cs-eyebrow">01 — Meta · Ads Manager</div>
@@ -826,7 +1118,7 @@ window.addEventListener('load', function(){
           var bText=pos('ia-b-text'),aText=pos('ia-a-text');
           var bAr=pos('ia-b-ar'),aAr=pos('ia-a-ar');
           var bQr=pos('ia-b-qr'),aQr=pos('ia-a-qr');
-          bezier(bText.right,bText.y,aText.x,aText.y,'#7B6FE8');
+          bezier(bText.right,bText.y,aText.x,aText.y,'#4B4BF6');
           bezier(bAr.right,bAr.y,aAr.x,aAr.y,'#378ADD');
           bezier(bQr.right,bQr.y,aQr.x,aQr.y,'#378ADD');
         };
@@ -935,7 +1227,7 @@ window.addEventListener('load', function(){
           var mmY1=ir.top-wr.top+ir.height*0.60;
           var mmY2=ir.top-wr.top+ir.height*0.72;
 
-          annotate(imgRight,adY1,adY2,s1x,s1y,'#7B6FE8');
+          annotate(imgRight,adY1,adY2,s1x,s1y,'#4B4BF6');
           annotate(imgRight,mmY1,mmY2,s2x,s2y,'rgba(0,0,0,0.5)');
         },200);
         </script>
@@ -1217,6 +1509,8 @@ window.addEventListener('load', function(){
         </div>
       </div>
 
+      </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1225,6 +1519,7 @@ window.addEventListener('load', function(){
 <div class="page" id="page-conversations">
   <div class="cs-page">
     <div class="container">
+    <div class="cs-panel"><div class="cs-content">
 
       <div class="cs-hero" style="margin-bottom:3rem">
         <div class="cs-eyebrow">02 — Meta · Ads Manager</div>
@@ -1635,6 +1930,7 @@ window.addEventListener('load', function(){
 
       </div>
 
+    </div></div>
     </div>
   </div>
 </div>
@@ -1643,6 +1939,7 @@ window.addEventListener('load', function(){
 
   <div class="cs-page">
     <div class="container">
+    <div class="cs-panel"><div class="cs-content">
 
       <!-- Hero -->
       <div class="cs-hero" style="margin-bottom:3rem">
@@ -2061,6 +2358,7 @@ window.addEventListener('load', function(){
         </div>
       </div>
 
+    </div></div>
     </div>
   </div>
 </div>
@@ -2069,6 +2367,7 @@ window.addEventListener('load', function(){
 <div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center;padding:2rem">
   <img id="lightbox-img" style="max-width:90vw;max-height:90vh;border-radius:8px;object-fit:contain" onclick="event.stopPropagation()">
 </div>
+
 
 </body>
 </html>
