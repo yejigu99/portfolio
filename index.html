@@ -206,6 +206,11 @@ nav.nav-on-dark .nav-links a:hover,nav.nav-on-dark .nav-links a.active{color:#ff
 .cs-result-card{background:white;border:1px solid var(--border);border-radius:12px;padding:2rem}
 .cs-result-num{font-family:'DM Sans',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--accent);line-height:1;margin-bottom:0.5rem;letter-spacing:-0.03em}
 .cs-result-label{font-size:13px;color:var(--text-secondary);font-weight:400;line-height:1.6}
+.cd-nav-link{width:100%;box-sizing:border-box;font-size:12px;color:var(--text-secondary);text-decoration:none;padding:0.55rem 0.5rem;border-radius:100px;border:1px solid var(--border);background:#fff;font-weight:500;transition:all 0.2s ease;white-space:normal;line-height:1.3;text-align:center;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.cd-nav-group-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin:0.6rem 0 0.1rem 0.4rem;text-align:left;width:100%}
+.cd-nav-link:hover{border-color:var(--border-hover);color:var(--text-primary)}
+.cd-nav-link.active{background:var(--hero-text);color:#141414;border-color:var(--hero-text);font-weight:700}
+#page-creatives .cs-panel,#page-conversations .cs-panel,#page-walmart .cs-panel{padding-left:260px}
 
 @media(max-width:768px){
   .stat-grid-2{grid-template-columns:1fr!important}
@@ -278,6 +283,15 @@ nav.nav-on-dark .nav-links a:hover,nav.nav-on-dark .nav-links a.active{color:#ff
   /* fixed-width containers */
   div[style*="width:560px"]{width:100%!important;flex-shrink:1!important;min-width:0!important}
   div[style*="flex:0 0 480px"]{flex:none!important;width:100%!important}
+  .mm-draft-text{flex:none!important;width:100%!important}
+  .mm-draft-img{width:100%!important;flex-shrink:1!important;min-width:0!important}
+  .mm-draft-row{flex-direction:column!important;gap:1.5rem!important}
+  #ia2-svg,#r2d-svg,#cbd-svg{display:none!important}
+  div[style*="justify-content:center;gap:1rem;margin-bottom:1.25rem"]{flex-direction:column!important;align-items:center!important}
+  div[style*="grid-template-columns:1fr auto 1fr"]{grid-template-columns:1fr!important;justify-items:center!important;gap:1rem!important}
+  #cd-fixed-nav{display:none!important}
+  #page-creatives .cs-panel,#page-conversations .cs-panel,#page-walmart .cs-panel{padding-left:0!important}
+  #cv-fixed-nav,#cw-fixed-nav{display:none!important}
   div[style*="width:760px"]{width:100%!important;flex-shrink:1!important}
   div[style*="max-width:780px"]{padding:1rem!important}
   div[style*="max-width:520px"]{max-width:100%!important}
@@ -863,10 +877,25 @@ window.addEventListener('load', function(){
 
 <!-- ═══════════════════════════════════════════ META CREATIVES ═══ -->
 <div class="page" id="page-creatives">
+
+  <nav id="cd-fixed-nav" style="position:fixed;left:70px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.5rem;z-index:50;width:160px">
+    <a data-target="cd-nav-overview" class="cd-nav-link active">Background</a>
+    <div class="cd-nav-group-label">Phase 1</div>
+    <a data-target="cd-phase-1" class="cd-nav-link">Problem</a>
+    <a data-target="cd-nav-ia-design" class="cd-nav-link">Design</a>
+    <div class="cd-nav-group-label">Phase 2</div>
+    <a data-target="cd-phase-2" class="cd-nav-link">Opportunity</a>
+    <a data-target="cd-nav-design" class="cd-nav-link">Wireframe</a>
+    <a data-target="cd-nav-abtest" class="cd-nav-link">A/B Testing</a>
+    <a data-target="cd-nav-final-design" class="cd-nav-link">Design</a>
+    <a data-target="cd-nav-results" class="cd-nav-link">Results</a>
+    <a data-target="cd-phase-3" class="cd-nav-link">Future Direction</a>
+  </nav>
+
   <div class="cs-page">
     <div class="container">
-      <div class="cs-panel">
-      <div class="cs-content">
+    <div class="cs-panel">
+    <div class="cs-content">
 
       <div class="cs-hero" style="margin-bottom:3rem">
         <div class="cs-eyebrow">01 — Meta · Ads Manager</div>
@@ -899,13 +928,13 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Background -->
-      <div class="cs-section">
+      <div class="cs-section" id="cd-nav-overview">
         <div class="cs-section-label">Background</div>
         <h2 class="cs-section-title" style="font-size:clamp(20px,2.5vw,28px)">Marketing messages inside Meta Ads Manager</h2>
         <div style="display:grid;grid-template-columns:1fr 220px;gap:4rem;align-items:start">
           <div>
-            <p class="cs-body">Marketing messages (MM) are a message-based format — distinct from standard ads — that lets businesses send promotional messages directly to customers who have opted in via WhatsApp, Instagram, or Messenger. This project focused on WhatsApp.</p>
-            <p class="cs-body" style="margin-top:1rem">I led design across multiple projects combined into three phases — restructuring how MM fits into the creative flow, building multi-text optimization on top of it, and defining a unified future direction. Since the Ads team owns the broader Creative space in Ads Manager, close alignment with them was a constant throughout — not just a one-time handoff.</p>
+            <p class="cs-body">Marketing messages (MM) are a message-based ad format for messaging opted-in customers on WhatsApp, Instagram, or Messenger. This project focused on&nbsp;WhatsApp.</p>
+            <p class="cs-body" style="margin-top:1rem">I led design on how MM fits into the creative flow and how to bring ads-level text optimization on top of it, working closely with the Ads team throughout since they own the broader Creative space.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:1rem">
             <div>
@@ -928,52 +957,39 @@ window.addEventListener('load', function(){
 
       <!-- What is MM -->
       <div class="cs-section">
-        <div style="display:flex;gap:4rem;align-items:center;margin-top:0">
-          <div style="flex:0 0 480px">
-            <div class="cs-section-label" style="margin-bottom:1rem">What is a Marketing message?</div>
-            <p class="cs-body" style="margin:0">A WhatsApp Marketing message is a promotional message businesses send directly to customers who have opted in — delivered to their WhatsApp inbox, not a feed. Unlike standard ads, when a consumer replies, it opens a real conversation.</p>
-            <p class="cs-body" style="margin-top:1rem">Marketing messages can be sent through multiple channels. One of them is Meta Ads Manager — the largest advertising platform at Meta — where MM runs as a placement alongside existing ads, letting businesses leverage their ad spend to reach opted-in customers on WhatsApp.</p>
+        <div class="mm-draft-row" style="display:flex;gap:2rem;align-items:center;margin-top:0">
+          <div class="mm-draft-text" style="flex:0 0 640px">
+            <div class="cs-section-label" style="margin-bottom:1rem">What is a Marketing message (MM)?</div>
+            <p class="cs-body" style="margin:0">A WhatsApp MM is a promotional message delivered straight to an opted-in customer's inbox, not a feed. Unlike standard ads, a reply opens a real conversation.</p>
+            <p class="cs-body" style="margin-top:1rem">MM can be sent through multiple channels. One is Meta Ads Manager, where it runs as a placement alongside existing ads — letting businesses reach opted-in WhatsApp customers with their existing ad spend.</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem">
               <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">New product launches</span>
               <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Promotions &amp; deals</span>
-<span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Re-engagement</span>
+              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Re-engagement</span>
             </div>
           </div>
-          <div style="position:relative;width:560px;flex-shrink:0;margin-left:auto;align-self:center">
-            <!-- Image -->
+          <div class="mm-draft-img" style="position:relative;width:432px;flex-shrink:0;margin-left:auto;align-self:center">
             <img src="Marketing messages.png" alt="Marketing message example" style="width:240px;display:block;border-radius:12px">
-
-            <!-- Media ~20% -->
             <div style="position:absolute;top:24%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
               <div style="width:28px;height:1px;background:#AAA8A3"></div>
               <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-secondary)">Media</div>
             </div>
-
-            <!-- TEP Target ~40% -->
             <div style="position:absolute;top:38%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
               <div style="width:28px;height:1px;background:#AAA8A3"></div>
               <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-secondary)">Tap Target</div>
             </div>
-
-            <!-- Headline ~46% -->
             <div style="position:absolute;top:44%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
               <div style="width:28px;height:1px;background:var(--accent)"></div>
               <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent)">Headline</div>
             </div>
-
-            <!-- Primary Text ~51% -->
             <div style="position:absolute;top:51%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
               <div style="width:28px;height:1px;background:var(--accent)"></div>
               <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent)">Primary Text</div>
             </div>
-
-            <!-- CTA ~61% -->
             <div style="position:absolute;top:61%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
               <div style="width:28px;height:1px;background:#378ADD"></div>
               <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#378ADD">Call to Action</div>
             </div>
-
-            <!-- Quick Replies ~69% -->
             <div style="position:absolute;top:69%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
               <div style="width:28px;height:1px;background:#378ADD"></div>
               <div style="font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#378ADD">Quick Replies</div>
@@ -982,541 +998,528 @@ window.addEventListener('load', function(){
         </div>
       </div>
 
-      <!-- R1 -->
-      <div class="cs-section">
-        <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
-          <div class="cs-section-label">Phase 1</div>
-        </div>
-        <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Restructuring the IA — and building on top</h2>
-
-        <!-- R1 Problem -->
-        <div class="cs-section-label" style="margin-top:3rem">The Problem</div>
-        <p class="cs-body" style="margin-top:0.75rem">MM setup was disconnected from Ad Creative — buried in a separate modal that most advertisers never reached. Because MM text wasn't required, advertisers skipped it entirely. The result: even after a campaign went live, MM often wasn't sent at all. The structural problem was a delivery rate problem.</p>
-        <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-          <div>
-            <img src="Original creative.png" alt="Original creative setup" id="creatives-left-img" style="width:100%;display:block;border-radius:8px;cursor:zoom-in" onclick="openLightbox(this.src)">
-            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Ad creative setup — MM buried at the bottom</div>
+      <!-- Phase 1 -->
+        <div class="cs-section" id="cd-phase-1" style="margin-top:5rem">
+          <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
+            <div class="cs-section-label">Phase 1</div>
           </div>
-          <div>
-            <div id="creatives-modal-bg" style="background:rgba(0,0,0,0.45);border-radius:8px;padding:0.75rem;display:flex;align-items:center;justify-content:center">
-              <img src="MM setup before.png" alt="MM setup modal" style="width:85%;display:block;border-radius:6px;cursor:zoom-in" onclick="openLightbox(this.src)">
-            </div>
-            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Clicking "Edit marketing message" opened a separate modal</div>
-          </div>
-        </div>
-        <script>
-        (function(){
-          function matchHeight(){
-            var left=document.getElementById('creatives-left-img');
-            var modal=document.getElementById('creatives-modal-bg');
-            if(!left||!modal) return;
-            modal.style.height=left.offsetHeight+'px';
-            modal.style.boxSizing='border-box';
-          }
-          if(document.readyState==='complete') matchHeight();
-          else window.addEventListener('load',matchHeight);
-        })();
-        </script>
+          <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Restructuring the IA — and building on top</h2>
 
-        <!-- IA Comparison Diagram -->
-        <div id="ia-diagram" style="position:relative;margin-top:2.5rem;font-size:13px">
-          <div id="ia1-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div id="ia-inner" style="display:grid;grid-template-columns:1fr 60px 1fr;align-items:start;min-width:480px;position:relative">
-          <svg id="ia-svg" style="position:absolute;top:0;left:0;pointer-events:none;overflow:visible;z-index:10"></svg>
+          <div class="cs-section-label" style="margin-top:3rem">The Problem</div>
+          <p class="cs-body" style="margin-top:0.75rem">MM setup was buried in a separate modal most advertisers never reached, and since it wasn't required, they skipped it — so MM often wasn't sent at all. The fix was structural: I moved it into the Creative flow itself, with its own field pre-filled from the ad text so it's never blank but still clearly distinct. That alone lifted delivery rate from near-zero to <strong style="color:var(--text-primary)">95%</strong>.</p>
 
-            <!-- Before -->
-            <div style="padding-right:1.5rem">
-              <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">Before</div>
-              <div style="display:flex;flex-direction:column;gap:4px">
-                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
-                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
-                <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
-                  <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
-                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px;border-bottom:0.5px solid #f0eefe">
-                    <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:2px">Ad setup</div>
-                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media</div>
-                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Text</div>
-                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Enhancement</div>
-                  </div>
-                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
-                    <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#534AB7;margin-bottom:2px">Marketing message setup</div>
-                    <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Suggested optimizations</div>
-                    <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
-                      <div id="ia-b-text" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Text</div>
-                      <div id="ia-b-ar" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Auto reply</div>
-                    </div>
-                    <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7;margin-top:1px">Advanced features</div>
-                    <div style="padding-left:10px;border-left:1.5px solid #AFA9EC">
-                      <div id="ia-b-qr" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Quick replies</div>
-                    </div>
-                  </div>
-                </div>
-                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ · Language · Tracking</div>
-              </div>
-            </div>
-
-            <div></div>
-
-            <!-- After -->
-            <div style="padding-left:1.5rem">
-              <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">After</div>
-              <div style="display:flex;flex-direction:column;gap:4px">
-                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
-                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
-                <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
-                  <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
-                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
-                    <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#534AB7;margin-bottom:2px">Ad + Marketing message setup</div>
-                    <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media · Enhancement</div>
-                    <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Text</div>
-                    <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
-                      <div style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Ad text</div>
-                      <div id="ia-a-text" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Marketing message text</div>
-                    </div>
-                  </div>
-                </div>
-                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ creative</div>
-                <div style="border:1px solid #85B7EB;border-radius:10px;overflow:hidden">
-                  <div style="background:#E6F1FB;padding:8px 11px;font-size:11px;font-weight:500;color:#0C447C;border-bottom:0.5px solid #85B7EB;display:flex;align-items:center;gap:6px">Conversations <span style="font-size:9px;background:#B5D4F4;color:#0C447C;padding:1px 6px;border-radius:100px">new</span></div>
-                  <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
-                    <div id="ia-a-ar" style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Auto reply</div>
-                    <div id="ia-a-qr" style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Quick replies</div>
-                  </div>
-                </div>
-                <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Language · Tracking</div>
-              </div>
-            </div>
-
-          </div></div><!-- /ia1-scroll -->
-        </div>
-        <script>
-        window.drawIAArrows=function(){
-          var wrap=document.getElementById('ia-inner');
-          var svg=document.getElementById('ia-svg');
-          if(!wrap||!svg||!wrap.offsetWidth)return;
-          svg.innerHTML='';
-          svg.setAttribute('width',wrap.offsetWidth);
-          svg.setAttribute('height',wrap.offsetHeight);
-          function pos(id){
-            var el=document.getElementById(id);
-            var wr=wrap.getBoundingClientRect();
-            var er=el.getBoundingClientRect();
-            return{x:er.left-wr.left,right:er.right-wr.left,y:er.top-wr.top+er.height/2};
-          }
-          function bezier(x1,y1,x2,y2,color){
-            var cx=(x1+x2)/2;
-            var path=document.createElementNS('http://www.w3.org/2000/svg','path');
-            path.setAttribute('d','M'+x1+' '+y1+' C'+cx+' '+y1+' '+cx+' '+y2+' '+x2+' '+y2);
-            path.setAttribute('stroke',color);path.setAttribute('stroke-width','1.5');
-            path.setAttribute('fill','none');path.setAttribute('stroke-dasharray','4 3');
-            path.setAttribute('opacity','0.65');
-            svg.appendChild(path);
-            var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
-            dot.setAttribute('cx',x2);dot.setAttribute('cy',y2);dot.setAttribute('r','3');
-            dot.setAttribute('fill',color);dot.setAttribute('opacity','0.9');
-            svg.appendChild(dot);
-          }
-          var bText=pos('ia-b-text'),aText=pos('ia-a-text');
-          var bAr=pos('ia-b-ar'),aAr=pos('ia-a-ar');
-          var bQr=pos('ia-b-qr'),aQr=pos('ia-a-qr');
-          bezier(bText.right,bText.y,aText.x,aText.y,'#4B4BF6');
-          bezier(bAr.right,bAr.y,aAr.x,aAr.y,'#378ADD');
-          bezier(bQr.right,bQr.y,aQr.x,aQr.y,'#378ADD');
-        };
-        </script>
-
-        <!-- Design sub-label -->
-        <div class="cs-section-label" style="margin-top:5rem">Design</div>
-
-        <!-- Text setup + Gen AI descriptions -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1.5rem">
-          <div>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem">Text setup</div>
-            <p class="cs-body">MM was a zero-to-one product — new to Ads Manager and unfamiliar to most advertisers. Giving MM its own separate text field made it legible as something distinct from ad copy. To lower the barrier, the MM field pre-fills from the ad text already written — so it's never blank, but clearly its own thing.</p>
-          </div>
-          <div>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem">Gen AI</div>
-            <p class="cs-body">We introduced Gen AI text generation natively within the creative wizard. The MM field surfaces performance-optimized alternatives so advertisers can accept a suggestion or refine the pre-filled text manually — without ever leaving Ads Manager.</p>
-          </div>
-        </div>
-
-        <!-- Video centered, large -->
-        <div style="margin-top:2.5rem;display:flex;overflow:visible;justify-content:center">
-          <div style="width:760px;flex-shrink:0;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.12)">
-            <video src="creative screen recording.mov" autoplay loop muted playsinline style="width:100%;display:block"></video>
-          </div>
-        </div>
-
-      </div><!-- /R1 cs-section -->
-
-      <!-- Phase 1 → Phase 2 bridge -->
-      <p class="cs-body" style="margin-top:3rem">Moving MM into Ad Creative meant primary text could automatically power MM — even for advertisers who never explicitly set it up. MM delivery rate reached <strong style="color:var(--text-primary)">95%</strong> by end of project. Phase 2 built on that foundation.</p>
-
-      <!-- R2 -->
-      <div class="cs-section" style="margin-top:3rem">
-        <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
-          <div class="cs-section-label">Phase 2</div>
-        </div>
-        <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Multi-text options — bringing ads-level optimization to MM</h2>
-
-        <!-- R2 Problem & Research -->
-        <div class="cs-section-label" style="margin-top:3rem">The Problem & Research</div>
-        <p class="cs-body" style="margin-top:0.75rem">MM was now being sent — but CTR was low, and only 1.4% of advertisers were customizing the message text. On the standard ads side, multi-text variants were already proving their value: advertisers who used them saw a <strong style="color:var(--text-primary)">+16.33% CTR lift</strong>. The opportunity was clear — if we could bring multi-text to MM, advertisers wouldn't need to do extra work, and MM CTR could follow the same pattern.</p>
-        <!-- Annotated diagram -->
-        <div id="r2-wrap" style="position:relative;margin-top:1.5rem">
-          <svg id="r2-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:10"></svg>
-          <div style="margin-right:200px;position:relative">
-            <img src="ad text example.png" id="r2-img" alt="Ad text multi-text options" style="width:100%;display:block;border-radius:10px">
-          </div>
-          <!-- 23% — top right -->
-          <div id="r2-stat1" style="position:absolute;right:0;top:22%;width:170px">
-            <div style="font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-0.02em;line-height:1">23%</div>
-            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem;line-height:1.5">of ads adopted<br>multi-text options</div>
-          </div>
-          <!-- 1.4% — bottom right -->
-          <div id="r2-stat2" style="position:absolute;right:0;bottom:22%;width:170px">
-            <div style="font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;line-height:1">1.4%</div>
-            <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem;line-height:1.5">of MM texts<br>were customized</div>
-          </div>
-        </div>
-        <script>
-        setTimeout(function(){
-          var wrap=document.getElementById('r2-wrap');
-          var svg=document.getElementById('r2-svg');
-          var img=document.getElementById('r2-img');
-          var s1=document.getElementById('r2-stat1');
-          var s2=document.getElementById('r2-stat2');
-          var wr=wrap.getBoundingClientRect();
-          var ir=img.getBoundingClientRect();
-          var s1r=s1.getBoundingClientRect();
-          var s2r=s2.getBoundingClientRect();
-          svg.setAttribute('width',wrap.offsetWidth);
-          svg.setAttribute('height',wrap.offsetHeight+60);
-
-          // Y positions in image: primary text for ad ~38%, MM ~64%
-          var adY=ir.top-wr.top+ir.height*0.38;
-          var mmY=ir.top-wr.top+ir.height*0.64;
-          var imgRight=ir.right-wr.left;
-
-          // Stat anchor points
-          var s1x=s1r.left-wr.left;
-          var s1y=s1r.top-wr.top+12;
-          var s2x=s2r.left-wr.left;
-          var s2y=s2r.bottom-wr.top-12;
-
-          function annotate(barX,barY1,barY2,statX,statY,color){
-            var midY=(barY1+barY2)/2;
-            // Vertical bar at image edge
-            var bar=document.createElementNS('http://www.w3.org/2000/svg','line');
-            bar.setAttribute('x1',barX);bar.setAttribute('y1',barY1);
-            bar.setAttribute('x2',barX);bar.setAttribute('y2',barY2);
-            bar.setAttribute('stroke',color);bar.setAttribute('stroke-width','2');bar.setAttribute('opacity','0.7');
-            svg.appendChild(bar);
-            // Dotted line from midpoint of bar to stat
-            var p=document.createElementNS('http://www.w3.org/2000/svg','path');
-            var cx=(barX+statX)/2;
-            p.setAttribute('d','M'+barX+' '+midY+' C'+cx+' '+midY+' '+cx+' '+statY+' '+statX+' '+statY);
-            p.setAttribute('stroke',color);p.setAttribute('stroke-width','1.5');
-            p.setAttribute('fill','none');p.setAttribute('stroke-dasharray','4 3');p.setAttribute('opacity','0.55');
-            svg.appendChild(p);
-          }
-
-          // 23%: moved up a bit
-          var adY1=ir.top-wr.top+ir.height*0.16;
-          var adY2=ir.top-wr.top+ir.height*0.54;
-          // 1.4%: longer bar
-          var mmY1=ir.top-wr.top+ir.height*0.60;
-          var mmY2=ir.top-wr.top+ir.height*0.72;
-
-          annotate(imgRight,adY1,adY2,s1x,s1y,'#4B4BF6');
-          annotate(imgRight,mmY1,mmY2,s2x,s2y,'rgba(0,0,0,0.5)');
-        },200);
-        </script>
-        <p class="cs-body" style="margin-top:2rem">Advertisers were already doing the work on the ads side — we just weren't leveraging it for MM. We extended their existing multi-text options to automatically apply to MM, without asking them to do extra work. The key challenge: surface this without overwhelming them visually.</p>
-        <div class="cs-highlight" style="margin-top:1.5rem">
-          <div class="cs-highlight-text">"Due to low adoption, we planned to <span style="color:var(--accent)">leverage the multi-text options</span> already added by advertisers for ads — and extend them to MM."</div>
-        </div>
-
-        <div class="cs-section-label" style="margin-top:5rem">Design & A/B Test</div>
-        <p class="cs-body" style="margin-top:1rem">Phase 1 showed that MM was buried at the bottom of the ad creative flow — advertisers never reached it. Phase 2 opened a new path: since advertisers were already writing multiple ad text variants, we could extend those to MM automatically. The design question became: how do you surface that connection in the UI clearly, without adding yet another input to an already complex workflow?</p>
-
-        <!-- Design Exploration sub-section -->
-        <div style="margin-top:3rem;padding:2rem;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
-          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem">Step 1 · Design Exploration</div>
-          <p class="cs-body" style="margin-top:0.5rem;margin-bottom:1.5rem">I explored three directions before deciding how to move forward:</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
             <div>
-              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Direction 1 — Unified ad & MM text</div>
-              <img src="text optimization - option 1.png" style="width:100%;border-radius:8px;display:block">
+              <img src="Original creative.png" alt="Original creative setup" id="cd-left-img" style="width:100%;display:block;border-radius:8px;cursor:zoom-in" onclick="openLightbox(this.src)">
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Ad creative setup — MM buried at the bottom</div>
             </div>
             <div>
-              <div style="font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Direction 2 — Conditional MM customization ✦ Chosen</div>
-              <img src="text optimization - option 3.png" style="width:100%;border-radius:8px;display:block">
+              <div id="cd-modal-bg" style="background:rgba(0,0,0,0.45);border-radius:8px;padding:0.75rem;display:flex;align-items:center;justify-content:center">
+                <img src="MM setup before.png" alt="MM setup modal" style="width:85%;display:block;border-radius:6px;cursor:zoom-in" onclick="openLightbox(this.src)">
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.75rem">Clicking "Edit marketing message" opened a separate modal</div>
             </div>
           </div>
-          <p class="cs-body" style="margin-top:1.25rem">I recommended Direction 2 as the MVP approach — it kept MM always visible without adding UI complexity, and required the lowest engineering lift.</p>
-        </div>
+          <script>
+          (function(){
+            function matchHeightCD(){
+              var left=document.getElementById('cd-left-img');
+              var modal=document.getElementById('cd-modal-bg');
+              var page=document.getElementById('page-creatives');
+              if(!left||!modal||!page||!page.classList.contains('active')) return;
+              modal.style.height=left.offsetHeight+'px';
+              modal.style.boxSizing='border-box';
+            }
+            var page=document.getElementById('page-creatives');
+            if(page){
+              new MutationObserver(matchHeightCD).observe(page,{attributes:true,attributeFilter:['class']});
+            }
+            window.addEventListener('resize',matchHeightCD);
+          })();
+          </script>
 
-        <!-- A/B Test sub-section -->
-        <div style="margin-top:1.5rem;padding:2rem;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
-          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem">Step 2 · A/B Test</div>
-          <p class="cs-body" style="margin-top:0.5rem;margin-bottom:2rem">With Direction 2 chosen, the remaining question was <em>how</em> visible to make the customization option. I ran an A/B test to validate.</p>
+          <!-- IA Comparison Diagram -->
+          <div id="ia2-diagram" style="position:relative;margin-top:2.5rem;font-size:13px">
+            <div id="ia2-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div id="ia2-inner" style="display:grid;grid-template-columns:1fr 60px 1fr;align-items:start;min-width:480px;position:relative">
+            <svg id="ia2-svg" style="position:absolute;top:0;left:0;pointer-events:none;overflow:visible;z-index:10"></svg>
 
-        <!-- Option A -->
-        <div style="margin-top:2rem">
-          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Option A — Progressive disclosure</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-            <img src="option a-2.png" style="width:100%;border-radius:8px;display:block">
-            <img src="option a-4.png" style="width:100%;border-radius:8px;display:block">
-          </div>
-          <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">Displays options only when needed. By default, ads copy is used for MM. If advertisers want to customize their marketing message, they can select "Provide your own text" to enter their own.</p>
-          <div style="display:flex;flex-direction:column;gap:0.3rem">
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Keeps the UI simple and focused</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Reduces visual noise and cognitive load</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:0.2rem"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>MM customization may be missed unless advertisers expand</div>
-          </div>
-        </div>
+              <!-- Before -->
+              <div style="padding-right:1.5rem">
+                <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">Before</div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
+                  <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
+                    <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
+                    <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px;border-bottom:0.5px solid #f0eefe">
+                      <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:2px">Ad setup</div>
+                      <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media</div>
+                      <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Text</div>
+                      <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Enhancement</div>
+                    </div>
+                    <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                      <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#534AB7;margin-bottom:2px">Marketing message setup</div>
+                      <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Suggested optimizations</div>
+                      <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
+                        <div id="ia2-b-text" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Text</div>
+                        <div id="ia2-b-ar" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Auto reply</div>
+                      </div>
+                      <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7;margin-top:1px">Advanced features</div>
+                      <div style="padding-left:10px;border-left:1.5px solid #AFA9EC">
+                        <div id="ia2-b-qr" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Quick replies</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ · Language · Tracking</div>
+                </div>
+              </div>
 
-        <!-- Option B -->
-        <div style="margin-top:2.5rem">
-          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Option B — Full visibility</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-            <img src="option b-2.png" style="width:100%;border-radius:8px;display:block">
-            <img src="option b-3.png" style="width:100%;border-radius:8px;display:block">
-          </div>
-          <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">Displays all options at once for immediate comparison. Makes MM customization more visible and easier to discover.</p>
-          <div style="display:flex;flex-direction:column;gap:0.3rem">
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Greater visibility and prominence for MM</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Advertisers can compare options at a glance</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Fewer clicks to explore</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:0.2rem"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>UI may feel visually dense or cluttered</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>Higher cognitive load when multiple elements compete</div>
-          </div>
-        </div>
+              <div></div>
 
-        <!-- A/B Test Results -->
-        <p class="cs-body" style="margin-top:2.5rem">We measured MM customization rate — how many advertisers chose to write their own MM text. We ran a 10% rollout followed by a 50% rollout to validate at scale.</p>
-        <div style="margin-top:1.5rem;border-left:3px solid var(--accent);padding-left:1.5rem">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem">
+              <!-- After -->
+              <div style="padding-left:1.5rem">
+                <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">After</div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Name · Identity · Setup</div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Destination</div>
+                  <div style="border:0.5px solid #AFA9EC;border-radius:10px;overflow:hidden">
+                    <div style="background:#EEEDFE;padding:8px 11px;font-size:11px;font-weight:500;color:#3C3489;border-bottom:0.5px solid #AFA9EC">Creative</div>
+                    <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                      <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#534AB7;margin-bottom:2px">Ad + Marketing message setup</div>
+                      <div style="background:white;border:0.5px solid var(--border);border-radius:5px;padding:4px 8px;font-size:11px;color:var(--text-secondary)">Media · Enhancement</div>
+                      <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Text</div>
+                      <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
+                        <div style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Ad text</div>
+                        <div id="ia2-a-text" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Marketing message text</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Advantage+ creative</div>
+                  <div style="border:1px solid #85B7EB;border-radius:10px;overflow:hidden">
+                    <div style="background:#E6F1FB;padding:8px 11px;font-size:11px;font-weight:500;color:#0C447C;border-bottom:0.5px solid #85B7EB;display:flex;align-items:center;gap:6px">Conversations <span style="font-size:9px;background:#B5D4F4;color:#0C447C;padding:1px 6px;border-radius:100px">new</span></div>
+                    <div style="padding:8px 11px;display:flex;flex-direction:column;gap:3px">
+                      <div id="ia2-a-ar" style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Auto reply</div>
+                      <div id="ia2-a-qr" style="background:#E6F1FB;border-radius:5px;padding:4px 8px;font-size:11px;color:#185FA5">Quick replies</div>
+                    </div>
+                  </div>
+                  <div style="background:white;border:0.5px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11px;color:var(--text-secondary)">Language · Tracking</div>
+                </div>
+              </div>
+
+            </div></div><!-- /ia2-scroll -->
+          </div>
+          <script>
+          (function(){
+            function drawIA2Arrows(){
+              var wrap=document.getElementById('ia2-inner');
+              var page=document.getElementById('page-creatives');
+              if(!wrap||!page||!page.classList.contains('active')||!wrap.offsetWidth||window.innerWidth<769) return;
+              var svg=document.getElementById('ia2-svg');
+              svg.innerHTML='';
+              svg.setAttribute('width',wrap.offsetWidth);
+              svg.setAttribute('height',wrap.offsetHeight);
+              function pos(id){
+                var el=document.getElementById(id);
+                var wr=wrap.getBoundingClientRect();
+                var er=el.getBoundingClientRect();
+                return{x:er.left-wr.left,right:er.right-wr.left,y:er.top-wr.top+er.height/2};
+              }
+              function bezier(x1,y1,x2,y2,color){
+                var cx=(x1+x2)/2;
+                var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+                path.setAttribute('d','M'+x1+' '+y1+' C'+cx+' '+y1+' '+cx+' '+y2+' '+x2+' '+y2);
+                path.setAttribute('stroke',color);path.setAttribute('stroke-width','1.5');
+                path.setAttribute('fill','none');path.setAttribute('stroke-dasharray','4 3');
+                path.setAttribute('opacity','0.65');
+                svg.appendChild(path);
+                var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+                dot.setAttribute('cx',x2);dot.setAttribute('cy',y2);dot.setAttribute('r','3');
+                dot.setAttribute('fill',color);dot.setAttribute('opacity','0.9');
+                svg.appendChild(dot);
+              }
+              var bText=pos('ia2-b-text'),aText=pos('ia2-a-text');
+              var bAr=pos('ia2-b-ar'),aAr=pos('ia2-a-ar');
+              var bQr=pos('ia2-b-qr'),aQr=pos('ia2-a-qr');
+              bezier(bText.right,bText.y,aText.x,aText.y,'#4B4BF6');
+              bezier(bAr.right,bAr.y,aAr.x,aAr.y,'#378ADD');
+              bezier(bQr.right,bQr.y,aQr.x,aQr.y,'#378ADD');
+            }
+            var page=document.getElementById('page-creatives');
+            if(page) new MutationObserver(drawIA2Arrows).observe(page,{attributes:true,attributeFilter:['class']});
+            window.addEventListener('resize',drawIA2Arrows);
+          })();
+          </script>
+
+          <div class="cs-section-label" style="margin-top:5rem" id="cd-nav-ia-design">Design</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1.5rem">
             <div>
-              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.4rem">Option A — Dropdown</div>
-              <div style="font-size:26px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;line-height:1">27.8%</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem">customization rate at 50% rollout</div>
+              <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem">Text setup</div>
+              <p class="cs-body">MM was zero-to-one for most advertisers, so giving it its own field made it legible as distinct from ad copy — pre-filled from the ad text so it's never blank.</p>
             </div>
             <div>
-              <div style="font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.4rem">Option B — Radio · Winner</div>
-              <div style="font-size:26px;font-weight:700;color:var(--accent);letter-spacing:-0.02em;line-height:1">32.4%</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem">customization rate at 50% rollout</div>
+              <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem">Gen AI</div>
+              <p class="cs-body">We added Gen AI text generation natively in the creative wizard, surfacing performance-optimized alternatives advertisers can accept or refine without leaving Ads Manager.</p>
             </div>
           </div>
-          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">Full visibility made it easier for advertisers to discover and act on the customization option. Option B was selected as the winning design.</p>
-        </div>
-        </div><!-- /A/B Test container -->
 
-        <div class="cs-section-label" style="margin-top:5rem">Gen AI Redesign</div>
-        <p class="cs-body" style="margin-top:1rem">To further support customization adoption, we redesigned the Gen AI experience for MM.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
-          <div>
-            <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">Before</div>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Single replacement</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem">Gen AI generated one suggestion at a time — advertisers had to replace their text entirely to use it.</div>
-            <img src="Gen AI before.png" style="width:100%;border-radius:8px;display:block">
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">After</div>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Multi-select</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem">Up to 5 MM-specific variants presented at once — advertisers pick which ones to include, adding multiple options in one step.</div>
-            <img src="Gen AI after.png" style="width:100%;border-radius:8px;display:block">
-          </div>
-        </div>
-
-        <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
-          <div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">MM-specific best practices</div>
-          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">We synthesized <strong style="color:var(--text-primary)">~17,000 Marketing messages</strong> to identify what drives high CTR in MM — tone, phrasing, and structure that works in direct messaging is different from standard ads. This informed how GenAI generates MM-specific suggestions.</p>
-        </div>
-        <div style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-          <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem">
-            <div style="font-size:11px;font-weight:600;color:#3FA66B;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">Do</div>
-            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:12px;color:var(--text-secondary);line-height:1.6">
-              <div>✓ Include an emoji, used selectively</div>
-              <div>✓ Personalize the message</div>
-              <div>✓ Keep under 550 characters</div>
-            </div>
-          </div>
-          <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem">
-            <div style="font-size:11px;font-weight:600;color:#D9534F;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">Don't</div>
-            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:12px;color:var(--text-secondary);line-height:1.6">
-              <div>✗ Overload with sale-heavy language</div>
-              <div>✗ Overuse emojis</div>
+          <div style="margin-top:2.5rem;display:flex;overflow:visible;justify-content:center">
+            <div style="width:760px;flex-shrink:0;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.12)">
+              <video src="creative screen recording.mov" autoplay loop muted playsinline style="width:100%;display:block"></video>
             </div>
           </div>
         </div>
-        <p class="cs-body" style="margin-top:1rem;margin-bottom:0">Together, these changes — the radio button design and the Gen AI redesign — formed the final experience.</p>
-      </div>
 
-      <!-- Final Design -->
-      <div class="cs-section">
-        <div class="cs-section-label">Final Design</div>
-        <div style="display:flex;flex-direction:column;gap:3rem;margin-top:1.5rem">
-          <!-- Step 1 -->
-          <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
-            <div style="padding-top:0.25rem">
-              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
-                <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">1</span></div>
-                <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Default</div>
+        <!-- Phase 2 -->
+        <div class="cs-section" id="cd-phase-2" style="margin-top:5rem">
+          <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
+            <div class="cs-section-label">Phase 2</div>
+          </div>
+          <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Multi-text options — bringing ads-level optimization to MM</h2>
+          <p class="cs-body" style="margin-top:0.75rem">MM was being sent, but CTR was low, and only 1.4% of advertisers customized the message text. Multi-text variants were already proving their value on the ads side — a <strong style="color:var(--text-primary)">+16.33% CTR lift</strong> — so the opportunity was clear: bring that same lift to MM.</p>
+
+          <div id="r2d-wrap" style="position:relative;margin-top:1.5rem">
+            <svg id="r2d-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:10"></svg>
+            <div style="margin-right:200px;position:relative">
+              <img src="ad text example.png" id="r2d-img" alt="Ad text multi-text options" style="width:100%;display:block;border-radius:10px">
+            </div>
+            <div id="r2d-stat1" style="position:absolute;right:0;top:22%;width:170px">
+              <div style="font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-0.02em;line-height:1">23%</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem;line-height:1.5">of ads adopted<br>multi-text options</div>
+            </div>
+            <div id="r2d-stat2" style="position:absolute;right:0;bottom:22%;width:170px">
+              <div style="font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;line-height:1">1.4%</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem;line-height:1.5">of MM texts<br>were customized</div>
+            </div>
+          </div>
+          <script>
+          (function(){
+            function drawR2D(){
+              var wrap=document.getElementById('r2d-wrap');
+              var page=document.getElementById('page-creatives');
+              if(!wrap||!page||!page.classList.contains('active')||window.innerWidth<769) return;
+              var svg=document.getElementById('r2d-svg');
+              var img=document.getElementById('r2d-img');
+              var s1=document.getElementById('r2d-stat1');
+              var s2=document.getElementById('r2d-stat2');
+              svg.innerHTML='';
+              var wr=wrap.getBoundingClientRect();
+              var ir=img.getBoundingClientRect();
+              var s1r=s1.getBoundingClientRect();
+              var s2r=s2.getBoundingClientRect();
+              svg.setAttribute('width',wrap.offsetWidth);
+              svg.setAttribute('height',wrap.offsetHeight+60);
+              var imgRight=ir.right-wr.left;
+              var s1x=s1r.left-wr.left, s1y=s1r.top-wr.top+12;
+              var s2x=s2r.left-wr.left, s2y=s2r.bottom-wr.top-12;
+              function annotate(barY1,barY2,statX,statY,color){
+                var midY=(barY1+barY2)/2;
+                var bar=document.createElementNS('http://www.w3.org/2000/svg','line');
+                bar.setAttribute('x1',imgRight);bar.setAttribute('y1',barY1);
+                bar.setAttribute('x2',imgRight);bar.setAttribute('y2',barY2);
+                bar.setAttribute('stroke',color);bar.setAttribute('stroke-width','2');bar.setAttribute('opacity','0.7');
+                svg.appendChild(bar);
+                var p=document.createElementNS('http://www.w3.org/2000/svg','path');
+                var cx=(imgRight+statX)/2;
+                p.setAttribute('d','M'+imgRight+' '+midY+' C'+cx+' '+midY+' '+cx+' '+statY+' '+statX+' '+statY);
+                p.setAttribute('stroke',color);p.setAttribute('stroke-width','1.5');
+                p.setAttribute('fill','none');p.setAttribute('stroke-dasharray','4 3');p.setAttribute('opacity','0.55');
+                svg.appendChild(p);
+              }
+              var adY1=ir.top-wr.top+ir.height*0.16, adY2=ir.top-wr.top+ir.height*0.54;
+              var mmY1=ir.top-wr.top+ir.height*0.60, mmY2=ir.top-wr.top+ir.height*0.72;
+              annotate(adY1,adY2,s1x,s1y,'#4B4BF6');
+              annotate(mmY1,mmY2,s2x,s2y,'rgba(0,0,0,0.5)');
+            }
+            var page=document.getElementById('page-creatives');
+            if(page) new MutationObserver(drawR2D).observe(page,{attributes:true,attributeFilter:['class']});
+            window.addEventListener('resize',drawR2D);
+          })();
+          </script>
+
+          <div class="cs-highlight" style="margin-top:1.5rem">
+            <div class="cs-highlight-text">"Due to low adoption, we planned to <span style="color:var(--accent)">leverage the multi-text options</span> already added by advertisers for ads — and extend them to MM."</div>
+          </div>
+
+          <div class="cs-section-label" style="margin-top:3rem" id="cd-nav-design">Design & A/B Test</div>
+          <p class="cs-body" style="margin-top:1rem">Phase 1 showed MM was buried at the bottom of the ad creative flow. Phase 2 opened a new path: since advertisers were already writing multiple ad text variants, we could extend those to MM automatically, without adding yet another input to an already complex workflow.</p>
+
+          <div style="margin-top:3rem;padding:2rem;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
+            <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem">Step 1 · Design Exploration</div>
+            <p class="cs-body" style="margin-top:0.5rem;margin-bottom:1.5rem">I explored three directions before deciding how to move forward:</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Direction 1 — Unified ad & MM text</div>
+                <img src="text optimization - option 1.png" style="width:100%;border-radius:8px;display:block">
               </div>
-              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Ads copy is used for MM by default — "Optimize with ad text" is pre-selected</div>
-            </div>
-            <img src="final 1.png" style="width:100%;border-radius:8px;display:block">
-          </div>
-          <!-- Step 2 -->
-          <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
-            <div style="padding-top:0.25rem">
-              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
-                <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">2</span></div>
-                <div style="font-size:13px;font-weight:600;color:var(--text-primary)">First option selected</div>
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Direction 2 — Conditional MM customization ✦ Chosen</div>
+                <img src="text optimization - option 3.png" style="width:100%;border-radius:8px;display:block">
               </div>
-              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Advertiser adds multiple ad texts — MM automatically inherits all variants for system testing</div>
             </div>
-            <img src="final 2.png" style="width:100%;border-radius:8px;display:block">
+            <p class="cs-body" style="margin-top:1.25rem">I recommended Direction 2 as the MVP — always visible without adding UI complexity, and the lowest engineering lift.</p>
           </div>
-          <!-- Step 3 -->
-          <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
-            <div style="padding-top:0.25rem">
-              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
-                <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">3</span></div>
-                <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Customize selected</div>
+
+          <div style="margin-top:1.5rem;padding:2rem;background:var(--surface);border-radius:14px;border:1px solid var(--border)" id="cd-nav-abtest">
+            <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem">Step 2 · A/B Test</div>
+            <p class="cs-body" style="margin-top:0.5rem;margin-bottom:2rem">With Direction 2 chosen, the open question was <em>how visible</em> to make the customization option, so I ran an A/B test.</p>
+
+            <div style="margin-top:2rem">
+              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Option A — Progressive disclosure</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+                <img src="option a-2.png" style="width:100%;border-radius:8px;display:block">
+                <img src="option a-4.png" style="width:100%;border-radius:8px;display:block">
               </div>
-              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Advertiser writes MM-specific text — Gen AI surfaces up to 5 tailored variants to choose from</div>
-            </div>
-            <img src="final 3.png" style="width:100%;border-radius:8px;display:block">
-          </div>
-        </div>
-      </div>
-
-      <!-- Results -->
-      <div class="cs-section">
-        <div class="cs-section-label">Results</div>
-        <h2 class="cs-section-title">Multi-text drove significantly higher CTR for marketing messages</h2>
-        <p class="cs-body">The more text options an advertiser adds, the more variants the system tests — and the better it gets at identifying which message resonates most with each consumer. The best-performing variant is then delivered to the majority of the audience, compounding the impact over time.</p>
-        <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
-          <div style="font-size:48px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1">+42.67%</div>
-          <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-top:0.4rem">CTR lift for MM with multiple body text variants vs. single text</div>
-        </div>
-      </div>
-
-      <!-- Phase 3 -->
-      <div class="cs-section" style="margin-top:5rem">
-        <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
-          <div class="cs-section-label">Phase 3 · Future Direction</div>
-        </div>
-        <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Unification — questioning the structure, not just the features</h2>
-        <p class="cs-body">As the ads team began exploring changes to the creative setup, I partnered with them early to ensure MM wasn't designed around — the two surfaces share the same space, and decisions on one directly impact the other. That collaboration opened up a bigger strategic question: <strong style="color:var(--text-primary)">rather than maintaining two separate inputs, what if we unified them?</strong></p>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2rem">
-          <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
-            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">01</div>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">One unified field</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Single primary text input serving both ads and MM — one workflow, no duplication</div>
-          </div>
-          <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
-            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">02</div>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Differentiated GenAI</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Same source, tailored output — GenAI surfaces distinct suggestions for ads vs. MM based on their separate best practices</div>
-          </div>
-          <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
-            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">03</div>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Simpler interface</div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Unification reduces screen complexity — less real estate, cleaner creation flow</div>
-          </div>
-        </div>
-
-        <!-- Wireframe -->
-        <p class="cs-body" style="margin-top:2rem">This is what that unified experience could look like.</p>
-        <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:1rem;margin-bottom:0.75rem">Sketch</div>
-        <div style="border-radius:12px;overflow:hidden;background:rgba(30,28,40,0.72);padding:1.5rem;display:flex;justify-content:center;max-width:780px;margin:0 auto">
-          <div style="width:100%;max-width:520px;background:white;border-radius:10px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.3)">
-            <!-- Modal header -->
-            <div style="padding:12px 16px;border-bottom:1px solid #ECEAE7;display:flex;align-items:center;justify-content:space-between">
-              <div style="display:flex;align-items:center;gap:6px">
-                <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
-                <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
-                <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
+              <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">Shows options only when needed; ads copy is used for MM by default.</p>
+              <div style="display:flex;flex-direction:column;gap:0.3rem">
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Keeps the UI simple and focused</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Reduces visual noise and cognitive load</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:0.2rem"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>MM customization may be missed unless advertisers expand</div>
               </div>
-              <div style="font-size:11px;color:#AAA8A3">Text</div>
-              <div style="font-size:11px;color:#AAA8A3">✕</div>
             </div>
-            <!-- Modal body: two columns -->
-            <div style="display:grid;grid-template-columns:1fr 1fr">
-              <!-- Left -->
-              <div style="padding:1.25rem;border-right:1px solid #ECEAE7">
-                <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:10px">Add text</div>
-                <div style="border:1px solid #ECEAE7;border-radius:6px;padding:10px 12px;background:#FAFAF9;min-height:68px">
-                  <div style="height:9px;background:#ECEAE7;border-radius:3px;width:90%;margin-bottom:6px"></div>
-                  <div style="height:9px;background:#ECEAE7;border-radius:3px;width:75%;margin-bottom:6px"></div>
-                  <div style="height:9px;background:#ECEAE7;border-radius:3px;width:55%"></div>
+
+            <div style="margin-top:2.5rem">
+              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">Option B — Full visibility</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+                <img src="option b-2.png" style="width:100%;border-radius:8px;display:block">
+                <img src="option b-3.png" style="width:100%;border-radius:8px;display:block">
+              </div>
+              <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">Displays all options at once for immediate comparison.</p>
+              <div style="display:flex;flex-direction:column;gap:0.3rem">
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Greater visibility and prominence for MM</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Advertisers can compare options at a glance</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#22C55E;font-weight:600;margin-right:0.4rem">+</span>Fewer clicks to explore</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:0.2rem"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>UI may feel visually dense or cluttered</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6"><span style="color:#EF4444;font-weight:600;margin-right:0.4rem">−</span>Higher cognitive load when multiple elements compete</div>
+              </div>
+            </div>
+
+            <p class="cs-body" style="margin-top:2.5rem">We measured MM customization rate across a 10% then 50% rollout.</p>
+            <div style="margin-top:1.5rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem">
+                <div>
+                  <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.4rem">Option A — Dropdown</div>
+                  <div style="font-size:26px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;line-height:1">27.8%</div>
+                  <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem">customization rate at 50% rollout</div>
                 </div>
-                <div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;border:1px solid #ECEAE7;border-radius:6px;padding:5px 10px;font-size:11px;color:#6B6965">+ Add text option</div>
-                <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #ECEAE7">
-                  <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:6px">Call to action</div>
-                  <div style="border:1px solid #ECEAE7;border-radius:6px;padding:7px 10px;font-size:11px;color:#AAA8A3;display:flex;justify-content:space-between">Learn more, Shop now… <span>▾</span></div>
-                </div>
-                <div style="margin-top:1rem;display:flex;align-items:center;gap:8px">
-                  <div style="flex:1;height:1px;background:#ECEAE7"></div>
-                  <div style="font-size:10px;color:#AAA8A3">AI routes to each placement</div>
-                  <div style="flex:1;height:1px;background:#ECEAE7"></div>
+                <div>
+                  <div style="font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.4rem">Option B — Radio · Winner</div>
+                  <div style="font-size:26px;font-weight:700;color:var(--accent);letter-spacing:-0.02em;line-height:1">32.4%</div>
+                  <div style="font-size:12px;color:var(--text-secondary);margin-top:0.3rem">customization rate at 50% rollout</div>
                 </div>
               </div>
-              <!-- Right -->
-              <div style="padding:1.25rem;background:#FAFAF9">
-                <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:10px">Advantage+ text generation ✦</div>
-                <div style="display:flex;flex-direction:column;gap:6px">
-                  <div style="background:white;border:1px solid #ECEAE7;border-radius:6px;padding:10px 12px">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-                      <div style="font-size:11px;font-weight:600;color:#18181A">Strategy 1</div>
-                      <span style="font-size:10px;color:#AAA8A3">▾</span>
+              <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">Full visibility made the option easier to find and act on — Option B won.</p>
+            </div>
+          </div>
+
+          <div class="cs-section-label" style="margin-top:3rem" id="cd-nav-final-design">Gen AI Redesign</div>
+          <p class="cs-body" style="margin-top:1rem">To push customization further, we redesigned Gen AI for MM — from one suggestion advertisers had to fully replace their text with, to up to 5 variants they can pick from at once.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">Before</div>
+              <img src="Gen AI before.png" style="width:100%;border-radius:8px;display:block">
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">After</div>
+              <img src="Gen AI after.png" style="width:100%;border-radius:8px;display:block">
+            </div>
+          </div>
+          <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+            <div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">MM-specific best practices</div>
+            <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">We synthesized <strong style="color:var(--text-primary)">~17,000 Marketing messages</strong> to find what drives high CTR in MM — tone and structure that work in direct messaging differ from standard ads. That informed Gen AI's suggestions: selective emoji use, personalization, under 550 characters, no sale-heavy language.</p>
+          </div>
+
+          <!-- Final Design -->
+          <div class="cs-section-label" style="margin-top:5rem">Final Design</div>
+          <div style="display:flex;flex-direction:column;gap:3rem;margin-top:1.5rem">
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
+              <div style="padding-top:0.25rem">
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
+                  <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">1</span></div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Default</div>
+                </div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Ads copy is used for MM by default</div>
+              </div>
+              <img src="final 1.png" style="width:100%;border-radius:8px;display:block">
+            </div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
+              <div style="padding-top:0.25rem">
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
+                  <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">2</span></div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-primary)">First option selected</div>
+                </div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">MM automatically inherits all ad text variants for system testing</div>
+              </div>
+              <img src="final 2.png" style="width:100%;border-radius:8px;display:block">
+            </div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;align-items:start">
+              <div style="padding-top:0.25rem">
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem">
+                  <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:10px;color:white;font-weight:700">3</span></div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Customize selected</div>
+                </div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Gen AI surfaces up to 5 tailored variants to choose from</div>
+              </div>
+              <img src="final 3.png" style="width:100%;border-radius:8px;display:block">
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div class="cs-section-label" style="margin-top:5rem" id="cd-nav-results">Results</div>
+          <h2 class="cs-section-title">Multi-text drove significantly higher CTR for marketing messages</h2>
+          <p class="cs-body">The more text options an advertiser adds, the more variants the system tests — surfacing whichever resonates most per consumer, and compounding the impact over time.</p>
+          <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+            <div style="font-size:48px;font-weight:700;color:var(--accent);letter-spacing:-0.03em;line-height:1">+42.67%</div>
+            <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-top:0.4rem">CTR lift for MM with multiple body text variants vs. single text</div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="cs-section" id="cd-phase-3" style="margin-top:5rem">
+          <div style="border-top:2px solid var(--accent);padding-top:1.5rem;margin-bottom:0.75rem">
+            <div class="cs-section-label">Phase 3 · Future Direction</div>
+          </div>
+          <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Unification — questioning the structure, not just the features</h2>
+          <p class="cs-body">As the ads team began reworking the creative setup, I partnered with them early since MM and ads creative share the same space. That raised a bigger question: <strong style="color:var(--text-primary)">instead of two separate inputs, what if we unified them?</strong></p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2rem">
+            <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
+              <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">01</div>
+              <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">One unified field</div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Single primary text input for both ads and MM — one workflow, no duplication</div>
+            </div>
+            <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
+              <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">02</div>
+              <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Differentiated Gen AI</div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Same source, tailored output for ads vs. MM based on their separate best practices</div>
+            </div>
+            <div style="padding:1.25rem;background:white;border:1px solid var(--border);border-radius:12px">
+              <div style="font-size:22px;font-weight:700;color:var(--accent);margin-bottom:0.5rem">03</div>
+              <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem">Simpler interface</div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Less real estate, cleaner creation flow</div>
+            </div>
+          </div>
+
+          <p class="cs-body" style="margin-top:2rem">This is what that unified experience could look like.</p>
+          <div style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:1rem;margin-bottom:0.75rem">Sketch</div>
+          <div style="border-radius:12px;overflow:hidden;background:rgba(30,28,40,0.72);padding:1.5rem;display:flex;justify-content:center;max-width:780px;margin:0 auto">
+            <div style="width:100%;max-width:520px;background:white;border-radius:10px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.3)">
+              <div style="padding:12px 16px;border-bottom:1px solid #ECEAE7;display:flex;align-items:center;justify-content:space-between">
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
+                  <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
+                  <div style="width:7px;height:7px;border-radius:50%;background:#E8E6E1"></div>
+                </div>
+                <div style="font-size:11px;color:#AAA8A3">Text</div>
+                <div style="font-size:11px;color:#AAA8A3">✕</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr">
+                <div style="padding:1.25rem;border-right:1px solid #ECEAE7">
+                  <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:10px">Add text</div>
+                  <div style="border:1px solid #ECEAE7;border-radius:6px;padding:10px 12px;background:#FAFAF9;min-height:68px">
+                    <div style="height:9px;background:#ECEAE7;border-radius:3px;width:90%;margin-bottom:6px"></div>
+                    <div style="height:9px;background:#ECEAE7;border-radius:3px;width:75%;margin-bottom:6px"></div>
+                    <div style="height:9px;background:#ECEAE7;border-radius:3px;width:55%"></div>
+                  </div>
+                  <div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;border:1px solid #ECEAE7;border-radius:6px;padding:5px 10px;font-size:11px;color:#6B6965">+ Add text option</div>
+                  <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #ECEAE7">
+                    <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:6px">Call to action</div>
+                    <div style="border:1px solid #ECEAE7;border-radius:6px;padding:7px 10px;font-size:11px;color:#AAA8A3;display:flex;justify-content:space-between">Learn more, Shop now… <span>▾</span></div>
+                  </div>
+                  <div style="margin-top:1rem;display:flex;align-items:center;gap:8px">
+                    <div style="flex:1;height:1px;background:#ECEAE7"></div>
+                    <div style="font-size:10px;color:#AAA8A3">AI routes to each placement</div>
+                    <div style="flex:1;height:1px;background:#ECEAE7"></div>
+                  </div>
+                </div>
+                <div style="padding:1.25rem;background:#FAFAF9">
+                  <div style="font-size:11px;font-weight:600;color:#18181A;margin-bottom:10px">Advantage+ text generation ✦</div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <div style="background:white;border:1px solid #ECEAE7;border-radius:6px;padding:10px 12px">
+                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                        <div style="font-size:11px;font-weight:600;color:#18181A">Strategy 1</div>
+                        <span style="font-size:10px;color:#AAA8A3">▾</span>
+                      </div>
+                      <div style="font-size:10px;color:#AAA8A3;margin-bottom:5px">Ad text</div>
+                      <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+                        <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:60%"></div></div>
+                        <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:80%"></div></div>
+                      </div>
+                      <div style="font-size:10px;color:#AAA8A3;margin-bottom:5px">Marketing message text</div>
+                      <div style="display:flex;flex-direction:column;gap:4px">
+                        <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:75%"></div></div>
+                        <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:55%"></div></div>
+                      </div>
                     </div>
-                    <div style="font-size:10px;color:#AAA8A3;margin-bottom:5px">Ad text</div>
-                    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
-                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:60%"></div></div>
-                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:80%"></div></div>
+                    <div style="border:1px solid #ECEAE7;border-radius:6px;padding:9px 12px;background:white;display:flex;justify-content:space-between;align-items:center">
+                      <span style="font-size:11px;color:#6B6965">Strategy 2</span><span style="font-size:10px;color:#AAA8A3">▸</span>
                     </div>
-                    <div style="font-size:10px;color:#AAA8A3;margin-bottom:5px">Marketing message text</div>
-                    <div style="display:flex;flex-direction:column;gap:4px">
-                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:75%"></div></div>
-                      <div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border:1px solid #ECEAE7;border-radius:2px;flex-shrink:0"></div><div style="height:8px;background:#ECEAE7;border-radius:3px;width:55%"></div></div>
+                    <div style="border:1px solid #ECEAE7;border-radius:6px;padding:9px 12px;background:white;display:flex;justify-content:space-between;align-items:center">
+                      <span style="font-size:11px;color:#6B6965">Strategy 3</span><span style="font-size:10px;color:#AAA8A3">▸</span>
                     </div>
                   </div>
-                  <div style="border:1px solid #ECEAE7;border-radius:6px;padding:9px 12px;background:white;display:flex;justify-content:space-between;align-items:center">
-                    <span style="font-size:11px;color:#6B6965">Strategy 2</span><span style="font-size:10px;color:#AAA8A3">▸</span>
-                  </div>
-                  <div style="border:1px solid #ECEAE7;border-radius:6px;padding:9px 12px;background:white;display:flex;justify-content:space-between;align-items:center">
-                    <span style="font-size:11px;color:#6B6965">Strategy 3</span><span style="font-size:10px;color:#AAA8A3">▸</span>
-                  </div>
                 </div>
               </div>
-            </div>
-            <!-- Modal footer -->
-            <div style="padding:10px 16px;border-top:1px solid #ECEAE7;display:flex;justify-content:flex-end;gap:8px">
-              <div style="border:1px solid #ECEAE7;border-radius:6px;padding:6px 14px;font-size:11px;color:#6B6965">Cancel</div>
-              <div style="background:#18181A;border-radius:6px;padding:6px 14px;font-size:11px;color:white">Next</div>
+              <div style="padding:10px 16px;border-top:1px solid #ECEAE7;display:flex;justify-content:flex-end;gap:8px">
+                <div style="border:1px solid #ECEAE7;border-radius:6px;padding:6px 14px;font-size:11px;color:#6B6965">Cancel</div>
+                <div style="background:#18181A;border-radius:6px;padding:6px 14px;font-size:11px;color:white">Next</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
-          <div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">What's next</div>
-          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">This strategy was defined and handed off as the north star for where MM and ads creative should converge next — a single input, with GenAI surfacing tailored suggestions for each surface behind the scenes.</p>
+          <div style="margin-top:2rem;border-left:3px solid var(--accent);padding-left:1.5rem">
+            <div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">What's next</div>
+            <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0">This became the north star for where MM and ads creative should converge next: a single input, with Gen AI tailoring suggestions for each surface behind the scenes.</p>
+          </div>
         </div>
-      </div>
+      <script>
+      (function(){
+        function initCDNav(){
+          var page=document.getElementById('page-creatives');
+          if(!page) return;
+          var ids=['cd-nav-overview','cd-phase-1','cd-nav-ia-design','cd-phase-2','cd-nav-design','cd-nav-abtest','cd-nav-final-design','cd-nav-results','cd-phase-3'];
+          var links={};
+          document.querySelectorAll('#cd-fixed-nav .cd-nav-link').forEach(function(a){links[a.dataset.target]=a;});
+          var sections=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+          function setActive(id){
+            Object.keys(links).forEach(function(k){links[k].classList.toggle('active', k===id);});
+          }
+          var observer=new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+              if(entry.isIntersecting) setActive(entry.target.id);
+            });
+          },{root:null,rootMargin:'-20% 0px -70% 0px',threshold:0});
+          sections.forEach(function(s){observer.observe(s);});
+          document.querySelectorAll('#cd-fixed-nav .cd-nav-link').forEach(function(a){
+            a.addEventListener('click',function(e){
+              e.preventDefault();
+              var target=document.getElementById(a.dataset.target);
+              if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+            });
+          });
+        }
+        initCDNav();
+      })();
+      </script>
 
-      </div>
-      </div>
+
+    </div>
+    </div>
     </div>
   </div>
 </div>
 
+
 <!-- ═══════════════════════════════════════════ META CONVERSATIONS ═══ -->
 <div class="page" id="page-conversations">
+
+  <nav id="cv-fixed-nav" style="position:fixed;left:70px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.5rem;z-index:50;width:160px">
+    <a data-target="cv-nav-overview" class="cd-nav-link active">Background</a>
+    <a data-target="cv-nav-research" class="cd-nav-link">Opportunity</a>
+    <a data-target="cv-nav-structural" class="cd-nav-link">Problem</a>
+    <a data-target="cv-nav-solution" class="cd-nav-link">Design</a>
+    <a data-target="cv-nav-future" class="cd-nav-link">Future Direction</a>
+  </nav>
+
   <div class="cs-page">
     <div class="container">
     <div class="cs-panel"><div class="cs-content">
@@ -1534,13 +1537,13 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Background -->
-      <div class="cs-section">
+      <div class="cs-section" id="cv-nav-overview">
         <div class="cs-section-label">Background</div>
         <h2 class="cs-section-title" style="font-size:clamp(20px,2.5vw,28px)">Turning marketing messages into conversations</h2>
         <div style="display:grid;grid-template-columns:1fr 220px;gap:4rem;align-items:start">
           <div>
-            <p class="cs-body">Marketing messages don't end at publish. When a consumer receives an MM and replies on WhatsApp, a conversation begins — but that post-publish experience had no dedicated home in Ads Manager. It was buried inside the creative setup flow, designed for pre-publish decisions, not post-publish conversations.</p>
-            <p class="cs-body" style="margin-top:1rem">I led the end-to-end design to give conversations their own surface — a standalone Conversations card — and defined the future direction for how AI could make those conversations scalable for advertisers.</p>
+            <p class="cs-body">Marketing messages don't end at publish. When a consumer replies on WhatsApp, a conversation begins — but that post-publish experience had no home in Ads Manager, buried inside the pre-publish creative setup flow.</p>
+            <p class="cs-body" style="margin-top:1rem">I led the end-to-end design to give conversations their own surface, and defined the future direction for how AI could make those conversations scalable for advertisers.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:1rem">
             <div>
@@ -1559,18 +1562,18 @@ window.addEventListener('load', function(){
 
       <!-- What is MM -->
       <div class="cs-section">
-        <div style="display:flex;gap:4rem;align-items:center;margin-top:0">
-          <div style="flex:0 0 480px">
-            <div class="cs-section-label" style="margin-bottom:1rem">What is a Marketing message?</div>
-            <p class="cs-body" style="margin:0">A WhatsApp Marketing message is a promotional message businesses send directly to customers who have opted in — delivered to their WhatsApp inbox, not a feed. Unlike standard ads, when a consumer replies, it opens a real conversation.</p>
-            <p class="cs-body" style="margin-top:1rem">Marketing messages can be sent through multiple channels. One of them is Meta Ads Manager — the largest advertising platform at Meta — where MM runs as a placement alongside existing ads, letting businesses leverage their ad spend to reach opted-in customers on WhatsApp.</p>
+        <div class="mm-draft-row" style="display:flex;gap:2rem;align-items:center;margin-top:0">
+          <div class="mm-draft-text" style="flex:0 0 640px">
+            <div class="cs-section-label" style="margin-bottom:1rem">What is a Marketing message (MM)?</div>
+            <p class="cs-body" style="margin:0">A WhatsApp MM is a promotional message delivered straight to an opted-in customer's inbox, not a feed. Unlike standard ads, a reply opens a real conversation.</p>
+            <p class="cs-body" style="margin-top:1rem">MM can be sent through multiple channels. One is Meta Ads Manager, where it runs as a placement alongside existing ads — letting businesses reach opted-in WhatsApp customers with their existing ad spend.</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem">
               <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">New product launches</span>
               <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Promotions &amp; deals</span>
               <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Re-engagement</span>
             </div>
           </div>
-          <div style="position:relative;width:560px;flex-shrink:0;margin-left:auto;align-self:center">
+          <div class="mm-draft-img" style="position:relative;width:432px;flex-shrink:0;margin-left:auto;align-self:center">
             <img src="Marketing messages.png" alt="Marketing message example" style="width:240px;display:block;border-radius:12px">
             <div style="position:absolute;top:24%;left:240px;display:flex;align-items:center;gap:0.75rem;transform:translateY(-50%)">
               <div style="width:28px;height:1px;background:#AAA8A3"></div>
@@ -1603,28 +1606,28 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Research -->
-      <div class="cs-section">
-        <div class="cs-section-label">Research</div>
+      <div class="cs-section" id="cv-nav-research">
+        <div class="cs-section-label">Opportunity</div>
         <h2 class="cs-section-title">Conversations drive MM performance — but they're not happening</h2>
-        <p class="cs-body">Marketing messages are one-directional today. 60% of consumers read them — but only ~1% end up in a real conversation.</p>
+        <p class="cs-body">Marketing messages are one-directional today. 60% of consumers read them, but only ~1% end up in a real conversation.</p>
         <div class="cs-three-col" style="margin-top:2.5rem">
           <div class="cs-pillar">
             <div class="cs-pillar-num">FINDING 01</div>
             <div class="cs-pillar-title">60% read rate</div>
-            <div class="cs-pillar-body">Consumers see Marketing messages. The drop-off happens after — there's no conversational partner on the other side to continue the exchange.</div>
+            <div class="cs-pillar-body">Consumers see the message, but the drop-off happens after — there's no partner on the other side to continue it.</div>
           </div>
           <div class="cs-pillar">
             <div class="cs-pillar-num">FINDING 02</div>
             <div class="cs-pillar-title">3.26% → 19.31%</div>
-            <div class="cs-pillar-body">Only 3.26% of consumers reply to MMs. Of those, just 19.31% become deep conversations — defined as 2+ messages from each side. The rest drop off with no follow-through.</div>
+            <div class="cs-pillar-body">Only 3.26% of consumers reply. Of those, just 19.31% become deep conversations (2+ messages each side) — the rest drop off.</div>
           </div>
           <div class="cs-pillar">
             <div class="cs-pillar-num">FINDING 03</div>
             <div class="cs-pillar-title">+11% CTR</div>
-            <div class="cs-pillar-body">MMs with deep conversations show 11% higher CTR compared to those without. When conversations happen, performance follows.</div>
+            <div class="cs-pillar-body">MMs with deep conversations show 11% higher CTR. When conversations happen, performance follows.</div>
           </div>
         </div>
-        <p class="cs-body" style="margin-top:2rem">Of our MM advertisers, 61% manage replies directly — without any third-party tool. Of those, <strong style="color:var(--text-primary)">89% have no conversation tool at all.</strong> For them, Chat Builder wouldn't be an upgrade. It would be their first ever reply management solution. Consumers were already replying to their MMs — and getting no response.</p>
+        <p class="cs-body" style="margin-top:2rem">Of our MM advertisers, 61% manage replies directly with no third-party tool, and <strong style="color:var(--text-primary)">89% of those have no conversation tool at all.</strong> Chat Builder wouldn't be an upgrade for them — it'd be their first ever reply management solution.</p>
 
         <div class="cs-highlight" style="margin-top:2.5rem">
           <div class="cs-highlight-text">"The data showed a clear opportunity: if we could <span style="color:var(--accent);font-weight:600">make conversations happen more reliably, CTR would follow.</span> The product just didn't have the right surface to support that yet."</div>
@@ -1634,11 +1637,11 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Structural Problem -->
-      <div class="cs-section">
+      <div class="cs-section" id="cv-nav-structural">
         <div class="cs-section-label">Structural Problem</div>
         <h2 class="cs-section-title">The automation setup was in the wrong place entirely</h2>
         <!-- Insight highlight -->
-        <p class="cs-body" style="margin-top:1rem">Auto Reply and Quick Replies were collapsed into Creative — a pre-publish flow with no connection to post-publish conversations. Two different moments in the advertiser journey were sharing the same card.</p>
+        <p class="cs-body" style="margin-top:1rem">Auto Reply and Quick Replies were collapsed into Creative, a pre-publish flow with no connection to post-publish conversations — two different moments in the advertiser journey sharing one card.</p>
         <div class="cs-highlight" style="margin-top:1.5rem">
           <div class="cs-highlight-text">"Most advertisers <span style="color:var(--accent);font-weight:600">never found the automation setup</span> at all."</div>
         </div>
@@ -1647,11 +1650,11 @@ window.addEventListener('load', function(){
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem">
           <div>
             <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.25rem">Pre-publish · Creative</div>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">This is where advertisers configure how the marketing message looks before it goes live — media, copy, and creative decisions. It's a setup flow that happens once, before the campaign launches.</p>
+            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">Where advertisers configure the marketing message before it goes live — a one-time setup before the campaign launches.</p>
           </div>
           <div>
             <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.25rem">Post-publish · Conversations</div>
-            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">This is where automation lives — Auto Reply and Quick Replies are only relevant after a consumer sends a message in response to a marketing message. It's a response layer that operates independently of how the marketing message was built.</p>
+            <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">Where automation lives — Auto Reply and Quick Replies only matter once a consumer replies. A response layer, independent of how the message was built.</p>
           </div>
         </div>
 
@@ -1676,7 +1679,7 @@ window.addEventListener('load', function(){
         </div>
 
         <!-- Before → Recommended side by side -->
-        <div id="ia3-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:start;margin-top:2.5rem;font-size:13px;min-width:480px">
+        <div id="ia3d-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:start;margin-top:2.5rem;font-size:13px;min-width:480px">
 
           <!-- Before -->
           <div>
@@ -1697,11 +1700,11 @@ window.addEventListener('load', function(){
                   <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7">Suggested optimizations</div>
                   <div style="padding-left:10px;border-left:1.5px solid #AFA9EC;display:flex;flex-direction:column;gap:2px">
                     <div style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Text</div>
-                    <div id="ia3-ar" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Auto reply</div>
+                    <div id="ia3d-ar" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Auto reply</div>
                   </div>
                   <div style="background:#EEEDFE;border-radius:5px;padding:4px 8px;font-size:11px;color:#534AB7;margin-top:1px">Advanced features</div>
                   <div style="padding-left:10px;border-left:1.5px solid #AFA9EC">
-                    <div id="ia3-qr" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Quick replies</div>
+                    <div id="ia3d-qr" style="background:#EEEDFE;border-radius:4px;padding:3px 8px;font-size:10px;color:#534AB7">Quick replies</div>
                   </div>
                 </div>
               </div>
@@ -1740,17 +1743,17 @@ window.addEventListener('load', function(){
             </div>
           </div>
 
-        </div></div><!-- /ia3-scroll -->
+        </div></div><!-- /ia3d-scroll -->
 
-        <div style="display:none"><div id="ia3-diagram"><svg id="ia3-svg"></svg></div></div>
+        <div style="display:none"><div id="ia3d-diagram"><svg id="ia3d-svg"></svg></div></div>
       </div>
 
       <!-- R1 -->
-      <div class="cs-section">
+      <div class="cs-section" id="cv-nav-solution">
         <div class="cs-section-label" style="margin-bottom:0.75rem">Solution</div>
         <h2 class="cs-section-title">Chat Builder — a new home for conversations</h2>
-        <p class="cs-body" style="margin-top:1rem">Auto Reply and Quick Replies moved out of Creative into their own dedicated card — Chat Builder — a new Conversations section at the same level as Creative in the L1 flow.</p>
-        <p class="cs-body" style="margin-top:1rem">For the design pattern, we didn't start from scratch. <strong>Click to WhatsApp (CTWA)</strong> already had a Chat Builder — and most MM advertisers are also CTWA users. We built on the same pattern to give advertisers one consistent surface for conversation setup, no matter which product they're using.</p>
+        <p class="cs-body" style="margin-top:1rem">Auto Reply and Quick Replies moved out of Creative into their own dedicated card — Chat Builder — at the same level as Creative in the L1 flow.</p>
+        <p class="cs-body" style="margin-top:1rem">We didn't start from scratch: <strong>Click to WhatsApp (CTWA)</strong> already had a Chat Builder, and most MM advertisers are also CTWA users, so we built on the same pattern for one consistent setup surface.</p>
         <div class="cs-highlight" style="margin-top:1.5rem">
           <div class="cs-highlight-text">"We didn't introduce something new. <span style="color:var(--accent);font-weight:600">The mental model transferred directly.</span>"</div>
         </div>
@@ -1764,19 +1767,19 @@ window.addEventListener('load', function(){
         <!-- Annotated chat builder card -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem">
           <!-- Left: annotated image -->
-          <div id="cb-wrap" style="position:relative">
-            <svg id="cb-svg" style="position:absolute;top:0;left:0;pointer-events:none;overflow:visible;z-index:2"></svg>
-            <img src="chat builder.png" id="cb-img" style="width:100%;display:block;border-radius:10px;position:relative;z-index:1">
+          <div id="cbd-wrap" style="position:relative">
+            <svg id="cbd-svg" style="position:absolute;top:0;left:0;pointer-events:none;overflow:visible;z-index:2"></svg>
+            <img src="chat builder.png" id="cbd-img" style="width:100%;display:block;border-radius:10px;position:relative;z-index:1">
           </div>
           <!-- Right: labels with IDs for JS positioning -->
           <div style="position:relative;display:flex;flex-direction:column;gap:1.75rem">
-            <div id="cb-l1">
+            <div id="cbd-l1">
               <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem">Template Management</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">Choose from previously saved configurations to apply a full automation setup in one click. Every time you publish, Chat Builder auto-saves your setup as a template — so returning advertisers start with their preferred configuration already filled in.</p>
+              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">Apply a full automation setup in one click from a saved configuration — Chat Builder auto-saves your setup every time you publish.</p>
             </div>
-            <div id="cb-l2">
+            <div id="cbd-l2">
               <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem">Automation Preview</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">See what's configured before you publish — both automations shown inline so advertisers can review at a glance.</p>
+              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0 0 0.75rem">See what's configured before you publish — both automations shown inline.</p>
               <div style="display:flex;flex-direction:column;gap:0.5rem;padding-left:0.75rem;border-left:1.5px solid var(--border)">
                 <div>
                   <div style="font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:0.15rem">Quick Replies</div>
@@ -1788,49 +1791,56 @@ window.addEventListener('load', function(){
                 </div>
               </div>
             </div>
-            <div id="cb-l3" style="display:none"></div>
+            <div id="cbd-l3" style="display:none"></div>
           </div>
         </div>
         <script>
-        setTimeout(function(){
-          var wrap=document.getElementById('cb-wrap');
-          var svg=document.getElementById('cb-svg');
-          var img=document.getElementById('cb-img');
-          var wr=wrap.getBoundingClientRect();
-          svg.setAttribute('width',wrap.offsetWidth);
-          svg.setAttribute('height',wrap.offsetHeight);
-          // approximate y positions on image (as % of image height)
-          var imgH=img.offsetHeight;
-          var pts=[
-            {id:'cb-l1',pct:0.32},
-            {id:'cb-l2',pct:0.65}
-          ];
-          function labelMidY(id){
-            var el=document.getElementById(id);
-            var er=el.getBoundingClientRect();
-            return er.top-wr.top+er.height/2;
+        (function(){
+          function drawCBD(){
+            var wrap=document.getElementById('cbd-wrap');
+            var page=document.getElementById('page-conversations');
+            if(!wrap||!page||!page.classList.contains('active')||!wrap.offsetWidth||window.innerWidth<769) return;
+            var svg=document.getElementById('cbd-svg');
+            var img=document.getElementById('cbd-img');
+            svg.innerHTML='';
+            var wr=wrap.getBoundingClientRect();
+            svg.setAttribute('width',wrap.offsetWidth);
+            svg.setAttribute('height',wrap.offsetHeight);
+            var imgH=img.offsetHeight;
+            var pts=[
+              {id:'cbd-l1',pct:0.32},
+              {id:'cbd-l2',pct:0.65}
+            ];
+            function labelMidY(id){
+              var el=document.getElementById(id);
+              var er=el.getBoundingClientRect();
+              return er.top-wr.top+er.height/2;
+            }
+            pts.forEach(function(pt){
+              var x1=img.offsetWidth;
+              var y1=imgH*pt.pct;
+              var x2=img.offsetWidth+20;
+              var y2=labelMidY(pt.id);
+              var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+              var cx=(x1+x2)/2;
+              path.setAttribute('d','M'+x1+' '+y1+' C'+cx+' '+y1+' '+cx+' '+y2+' '+x2+' '+y2);
+              path.setAttribute('stroke','#AFA9EC');path.setAttribute('stroke-width','1');
+              path.setAttribute('fill','none');path.setAttribute('opacity','0.7');
+              svg.appendChild(path);
+              var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+              dot.setAttribute('cx',x1);dot.setAttribute('cy',y1);dot.setAttribute('r','3');
+              dot.setAttribute('fill','#7B6FE8');dot.setAttribute('opacity','0.8');
+              svg.appendChild(dot);
+            });
           }
-          pts.forEach(function(pt){
-            var x1=img.offsetWidth; // right edge of image
-            var y1=imgH*pt.pct;
-            var x2=img.offsetWidth+20; // gap before label column starts
-            var y2=labelMidY(pt.id);
-            var path=document.createElementNS('http://www.w3.org/2000/svg','path');
-            var cx=(x1+x2)/2;
-            path.setAttribute('d','M'+x1+' '+y1+' C'+cx+' '+y1+' '+cx+' '+y2+' '+x2+' '+y2);
-            path.setAttribute('stroke','#AFA9EC');path.setAttribute('stroke-width','1');
-            path.setAttribute('fill','none');path.setAttribute('opacity','0.7');
-            svg.appendChild(path);
-            var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
-            dot.setAttribute('cx',x1);dot.setAttribute('cy',y1);dot.setAttribute('r','3');
-            dot.setAttribute('fill','#7B6FE8');dot.setAttribute('opacity','0.8');
-            svg.appendChild(dot);
-          });
-        },200);
+          var page=document.getElementById('page-conversations');
+          if(page) new MutationObserver(drawCBD).observe(page,{attributes:true,attributeFilter:['class']});
+          window.addEventListener('resize',drawCBD);
+        })();
         </script>
 
         <!-- QR Modal Before/After -->
-        <div style="margin-top:3rem">
+        <div style="margin-top:3rem" id="cv-nav-setup">
           <div class="cs-section-label" style="margin-bottom:1.25rem">Improving the setup experience</div>
           <div style="display:flex;flex-direction:column;gap:1.5rem">
             <!-- Before row -->
@@ -1885,14 +1895,14 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- BizAI -->
-      <div class="cs-section">
+      <div class="cs-section" id="cv-nav-future">
         <div class="cs-section-label">Future Direction</div>
         <h2 class="cs-section-title">Automating the conversation gap at scale</h2>
         <!-- The gap -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;align-items:start">
           <div>
-            <p class="cs-body">Business AI closes that gap by turning every marketing message into an <span style="color:var(--accent);font-weight:600">intelligent two-way conversation.</span> When a consumer replies, AI responds instantly — keeping the exchange within the 24-hour free messaging window so advertisers incur no additional cost to reopen conversations.</p>
-            <p class="cs-body" style="margin-top:1rem">Existing MM advertisers complete a one-time BizAI onboarding. Once enabled, the feature surfaces directly inside the Conversations card and Chat Builder at the L1 level — no new surface to learn.</p>
+            <p class="cs-body">Business AI closes that gap by turning every marketing message into an <span style="color:var(--accent);font-weight:600">intelligent two-way conversation.</span> AI responds instantly within the 24-hour free messaging window, so advertisers pay nothing extra to reopen conversations.</p>
+            <p class="cs-body" style="margin-top:1rem">Existing MM advertisers complete a one-time BizAI onboarding, then the feature surfaces directly inside the Conversations card and Chat Builder — no new surface to learn.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:1.25rem">
             <div style="padding:1.25rem;background:var(--accent-dim);border-radius:10px">
@@ -1901,7 +1911,7 @@ window.addEventListener('load', function(){
             </div>
             <div style="padding:1.25rem;background:var(--accent-dim);border-radius:10px">
               <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">24-hour free window</div>
-              <div style="font-size:12px;color:var(--text-secondary);line-height:1.5">When a consumer replies to an MM, a free 24-hour messaging window opens. Business AI responds instantly within that window — so advertisers pay nothing extra to continue the conversation.</div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.5">A consumer reply opens a free 24-hour window. Business AI responds instantly within it, at no extra cost.</div>
             </div>
             <div style="padding:1.25rem;background:var(--accent-dim);border-radius:10px">
               <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">One-time onboarding</div>
@@ -1921,7 +1931,7 @@ window.addEventListener('load', function(){
         <!-- Icebreaker -->
         <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)">
           <div class="cs-section-label" style="margin-bottom:0.75rem">Alongside this</div>
-          <p class="cs-body">I also redesigned the quick reply placement — moving the buttons below the CTA to create a visual separation between the marketing message and the conversation entry point. The hypothesis: advertisers who clearly distinguish the two will see higher conversation initiation rates than those using the current placement.</p>
+          <p class="cs-body">I also redesigned the quick reply placement, moving the buttons below the CTA to visually separate the marketing message from the conversation entry point — the hypothesis being that a clearer distinction drives higher conversation initiation.</p>
         </div>
 
         <div class="cs-highlight" style="margin-top:2.5rem">
@@ -1930,12 +1940,56 @@ window.addEventListener('load', function(){
 
       </div>
 
+      <script>
+      (function(){
+        function initCVNav(){
+          var page=document.getElementById('page-conversations');
+          if(!page) return;
+          var ids=['cv-nav-overview','cv-nav-research','cv-nav-structural','cv-nav-solution','cv-nav-future'];
+          var links={};
+          document.querySelectorAll('#cv-fixed-nav .cd-nav-link').forEach(function(a){links[a.dataset.target]=a;});
+          var sections=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+          function setActive(id){
+            Object.keys(links).forEach(function(k){links[k].classList.toggle('active', k===id);});
+          }
+          var observer=new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+              if(entry.isIntersecting) setActive(entry.target.id);
+            });
+          },{root:null,rootMargin:'-20% 0px -70% 0px',threshold:0});
+          sections.forEach(function(s){observer.observe(s);});
+          document.querySelectorAll('#cv-fixed-nav .cd-nav-link').forEach(function(a){
+            a.addEventListener('click',function(e){
+              e.preventDefault();
+              var target=document.getElementById(a.dataset.target);
+              if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+            });
+          });
+        }
+        initCVNav();
+      })();
+      </script>
+
     </div></div>
     </div>
   </div>
 </div>
 
+
 <div class="page" id="page-walmart">
+
+  <nav id="cw-fixed-nav" style="position:fixed;left:70px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.5rem;z-index:50;width:160px">
+    <a data-target="cw-nav-overview" class="cd-nav-link active">Background</a>
+    <a data-target="cw-nav-problem" class="cd-nav-link">Problem</a>
+    <a data-target="cw-nav-discovery" class="cd-nav-link">Discovery</a>
+    <a data-target="cw-nav-design" class="cd-nav-link">Design Direction</a>
+    <a data-target="cw-nav-journey" class="cd-nav-link">Seller Journey</a>
+    <a data-target="cw-nav-exploration" class="cd-nav-link">Design Exploration</a>
+    <a data-target="cw-nav-testing" class="cd-nav-link">Usability Testing</a>
+    <a data-target="cw-nav-final" class="cd-nav-link">Design Solution</a>
+    <a data-target="cw-nav-content" class="cd-nav-link">Content Framework</a>
+    <a data-target="cw-nav-impact" class="cd-nav-link">Impact</a>
+  </nav>
 
   <div class="cs-page">
     <div class="container">
@@ -1974,7 +2028,7 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Background -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-overview">
         <div class="cs-section-label">Background</div>
         <h2 class="cs-section-title" style="font-size:clamp(20px,2.5vw,28px)">The platform powering Walmart's third-party sellers</h2>
         <div style="display:grid;grid-template-columns:1fr 220px;gap:4rem;align-items:start">
@@ -1995,7 +2049,7 @@ window.addEventListener('load', function(){
       </div>
 
       <!-- Problem -->
-      <div class="cs-section" style="margin-bottom:1.5rem">
+      <div class="cs-section" style="margin-bottom:1.5rem" id="cw-nav-problem">
         <div class="cs-section-label">The Problem</div>
         <h2 class="cs-section-title">There was no homepage — sellers had nowhere to start</h2>
         <p class="cs-body">Without a dedicated landing page, sellers went straight to the items page. Unrelated notifications appeared on this page to alert sellers, with no sense of priority or context. There was no homepage that could help sellers understand their business, complete tasks, or grow their store.</p>
@@ -2028,7 +2082,7 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Discovery: Competitive Analysis -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-discovery">
         <div class="cs-section-label">Discovery — Competitive Analysis</div>
         <h2 class="cs-section-title">Every major competitor was ahead</h2>
         <p class="cs-body">I audited Amazon, eBay, Etsy, and Shopify to understand what sellers experience elsewhere. All four had dedicated homepages with task guidance and growth features. Walmart had none of these — and was the only platform without a dismissible notification system or a promotions discovery surface.</p>
@@ -2084,7 +2138,7 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Mission: 3 Pillars -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-design">
         <div class="cs-section-label">Design Direction</div>
         <h2 class="cs-section-title">Three pillars. One homepage.</h2>
         <p class="cs-body">A clear mission emerged from the research: the homepage should help sellers run their business, complete their tasks, and grow their store — in that order of urgency.</p>
@@ -2108,7 +2162,7 @@ window.addEventListener('load', function(){
       </div>
 
       <!-- Seller Journey Map -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-journey">
         <div class="cs-section-label">Seller Journey</div>
         <h2 class="cs-section-title">Mapping needs by lifecycle stage</h2>
         <p class="cs-body">A week-one seller and a three-year veteran need completely different things. I mapped the full journey to design an experience that adapts to where sellers are.</p>
@@ -2120,7 +2174,7 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Visual Exploration -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-exploration">
         <div class="cs-section-label">Design Exploration</div>
         <h2 class="cs-section-title">Exploring the layout</h2>
         <p class="cs-body">I explored several directions before converging on the final approach — testing how to balance metrics density with task clarity.</p>
@@ -2148,7 +2202,7 @@ window.addEventListener('load', function(){
       </div>
 
       <!-- Usability Testing -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-testing">
         <div class="cs-section-label">Usability Testing</div>
         <h2 class="cs-section-title">Testing comprehension — new design vs. original onboarding</h2>
         <p class="cs-body">We tested this first-round design using the PURE (Practical Usability Rating by Experts) method with 5 evaluators. To set a baseline, we first tested the original onboarding flow, then integrated that onboarding into the new homepage to see how the To-do section improved seller comprehension.</p>
@@ -2166,7 +2220,7 @@ window.addEventListener('load', function(){
         </div>
       </div>
 
-      <div class="cs-section" style="padding-top:0">
+      <div class="cs-section" style="padding-top:0" id="cw-nav-results">
         <div class="cs-section-label">PURE Results</div>
         <h2 class="cs-section-title">New design outperformed across every task</h2>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem">
@@ -2250,7 +2304,7 @@ window.addEventListener('load', function(){
       <hr class="cs-rule">
 
       <!-- Final Solution -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-final">
         <div class="cs-section-label">Final Solution</div>
         <h2 class="cs-section-title">A homepage that knows who you are</h2>
         <p class="cs-body">The redesigned homepage brings together three focused sections in one scannable layout — adapting to each seller's stage and surfacing the right information at the right time.</p>
@@ -2277,7 +2331,7 @@ window.addEventListener('load', function(){
       </div>
 
       <!-- Content Design Framework -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-content">
         <div class="cs-section-label">Content Design</div>
         <h2 class="cs-section-title">A framework for what shows up and when</h2>
         <p class="cs-body">In collaboration with the Content Designer, we developed a framework to determine what content belongs on the homepage and where — including where seller alerts should be routed, how each module is prioritized, and when content appears or retires based on the seller's lifecycle stage.</p>
@@ -2297,7 +2351,7 @@ window.addEventListener('load', function(){
       </div>
 
       <!-- Seller Quotes -->
-      <div class="cs-section">
+      <div class="cs-section" id="cw-nav-impact">
         <div class="cs-section-label">Seller Feedback</div>
         <h2 class="cs-section-title">What sellers said</h2>
         <div style="margin-top:2.5rem">
@@ -2357,6 +2411,36 @@ window.addEventListener('load', function(){
           </div>
         </div>
       </div>
+
+      <script>
+      (function(){
+        function initCWNav(){
+          var page=document.getElementById('page-walmart');
+          if(!page) return;
+          var ids=['cw-nav-overview','cw-nav-problem','cw-nav-discovery','cw-nav-design','cw-nav-journey','cw-nav-exploration','cw-nav-testing','cw-nav-final','cw-nav-content','cw-nav-impact'];
+          var links={};
+          document.querySelectorAll('#cw-fixed-nav .cd-nav-link').forEach(function(a){links[a.dataset.target]=a;});
+          var sections=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+          function setActive(id){
+            Object.keys(links).forEach(function(k){links[k].classList.toggle('active', k===id);});
+          }
+          var observer=new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+              if(entry.isIntersecting) setActive(entry.target.id);
+            });
+          },{root:null,rootMargin:'-20% 0px -70% 0px',threshold:0});
+          sections.forEach(function(s){observer.observe(s);});
+          document.querySelectorAll('#cw-fixed-nav .cd-nav-link').forEach(function(a){
+            a.addEventListener('click',function(e){
+              e.preventDefault();
+              var target=document.getElementById(a.dataset.target);
+              if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+            });
+          });
+        }
+        initCWNav();
+      })();
+      </script>
 
     </div></div>
     </div>
