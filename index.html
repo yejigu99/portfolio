@@ -856,6 +856,8 @@ function _doShowPage(n,skipHeroAnim){
   pageEl.classList.add('active');
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   document.getElementById('nav-'+n)?.classList.add('active');
+  var csNavId=n==='creatives'?'cd-fixed-nav':n==='walmart'?'cw-fixed-nav':n==='partnership'?'cp-fixed-nav':null;
+  if(csNavId){document.querySelectorAll('#'+csNavId+' .cd-nav-link').forEach(a=>a.classList.remove('active'));}
   window.scrollTo({top:0,behavior:'instant'});
   location.hash = n==='home' ? '' : n;
   if(window.updateNavTheme)window.updateNavTheme();
@@ -930,7 +932,7 @@ window.addEventListener('load', function(){
 <div class="page" id="page-creatives">
 
   <nav id="cd-fixed-nav" style="position:fixed;left:70px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.5rem;z-index:50;width:160px">
-    <a data-target="cd-nav-background" class="cd-nav-link active">Background</a>
+    <a data-target="cd-nav-background" class="cd-nav-link">Background</a>
     <a data-target="cd-nav-problem" class="cd-nav-link">Problem</a>
     <a data-target="cd-nav-approach" class="cd-nav-link">Approach</a>
     <a data-target="cd-nav-finaldesign" class="cd-nav-link">Creative Design</a>
@@ -1712,7 +1714,7 @@ window.addEventListener('load', function(){
 <div class="page" id="page-walmart">
 
   <nav id="cw-fixed-nav" style="position:fixed;left:70px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.5rem;z-index:50;width:160px">
-    <a data-target="cw-nav-overview" class="cd-nav-link active">Background</a>
+    <a data-target="cw-nav-overview" class="cd-nav-link">Background</a>
     <a data-target="cw-nav-problem" class="cd-nav-link">Problem</a>
     <a data-target="cw-nav-discovery" class="cd-nav-link">Discovery</a>
     <a data-target="cw-nav-design" class="cd-nav-link">Design Direction</a>
@@ -2197,7 +2199,7 @@ window.addEventListener('load', function(){
 <div class="page" id="page-partnership">
 
   <nav id="cp-fixed-nav" style="position:fixed;left:70px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.5rem;z-index:50;width:160px">
-    <a data-target="cp-nav-background" class="cd-nav-link active">Background</a>
+    <a data-target="cp-nav-background" class="cd-nav-link">Background</a>
     <a data-target="cp-nav-problem" class="cd-nav-link">Problem</a>
     <a data-target="cp-nav-exploration" class="cd-nav-link">Exploration</a>
     <a data-target="cp-nav-final-design" class="cd-nav-link">Consumer Side</a>
