@@ -1686,6 +1686,7 @@ window.addEventListener('load', function(){
             Object.keys(links).forEach(function(k){links[k].classList.toggle('active', k===id);});
           }
           var observer=new IntersectionObserver(function(entries){
+            if(window.scrollY<=0) return;
             entries.forEach(function(entry){
               if(entry.isIntersecting) setActive(entry.target.id);
             });
@@ -2174,6 +2175,7 @@ window.addEventListener('load', function(){
             Object.keys(links).forEach(function(k){links[k].classList.toggle('active', k===id);});
           }
           var observer=new IntersectionObserver(function(entries){
+            if(window.scrollY<=0) return;
             entries.forEach(function(entry){
               if(entry.isIntersecting) setActive(entry.target.id);
             });
@@ -2580,6 +2582,7 @@ window.addEventListener('load', function(){
             if(parentTarget && links[parentTarget]) links[parentTarget].classList.add('active');
           }
           var observer=new IntersectionObserver(function(entries){
+            if(window.scrollY<=0) return;
             entries.forEach(function(entry){
               if(entry.isIntersecting) setActive(entry.target.id);
             });
