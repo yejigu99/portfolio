@@ -937,6 +937,7 @@ window.addEventListener('load', function(){
     <a data-target="cd-nav-approach" class="cd-nav-link">Approach</a>
     <a data-target="cd-nav-finaldesign" class="cd-nav-link">Creative Design</a>
     <a data-target="cd-nav-conversations" class="cd-nav-link">Conversations Design</a>
+    <a data-target="cd-nav-northstar" class="cd-nav-link">What's Next</a>
     <a data-target="cd-nav-outcome" class="cd-nav-link">Outcome</a>
   </nav>
 
@@ -997,11 +998,36 @@ window.addEventListener('load', function(){
         <h2 class="cs-section-title" style="font-size:clamp(28px,3.6vw,44px)">Before we dig in, what is MM?</h2>
         <div class="mm-draft-row" style="display:flex;gap:2rem;align-items:center;margin-top:1.5rem">
           <div class="mm-draft-text" style="flex:1 1 420px;min-width:0">
-            <p class="cs-body" style="margin:0">Marketing messages (MM) are a message-based ad format for messaging opted-in customers on WhatsApp, Instagram, or Messenger. This project focused on WhatsApp. A WhatsApp MM lands straight in the customer's inbox, and a reply opens a real conversation, unlike a standard ad. Advertisers use MM to reach people who have already opted in, so it carries a level of trust and directness that standard ads don't, and that's exactly what makes the reply, and everything that happens after it, worth designing for.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem">
-              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">New product launches</span>
-              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Promotions &amp; deals</span>
-              <span style="font-size:12px;color:var(--text-secondary);border:1px solid var(--border);border-radius:100px;padding:4px 12px">Re-engagement</span>
+            <p class="cs-body" style="margin:0">Marketing messages (MM) are how businesses re-engage customers across Meta's messaging apps, primarily WhatsApp. This project focused on WhatsApp.</p>
+
+            <div style="margin-top:1.5rem">
+              <div style="font-size:17px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em;margin-bottom:0.65rem">What They Are</div>
+              <ul style="margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:0.4rem">
+                <li class="cs-body" style="margin:0">A combination of media, text, and a call-to-action delivered as a single in-thread unit, alongside other business conversations.</li>
+                <li class="cs-body" style="margin:0">Delivered directly in a personal thread between a business and a user, not in Feed, Stories, or other ad placements.</li>
+              </ul>
+
+              <div style="font-size:17px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em;margin:1.5rem 0 0.65rem">Key Distinctions From Ads</div>
+              <ul style="margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:0.4rem">
+                <li class="cs-body" style="margin:0">Opt-in required. Users must consent to be contacted by a business, no prospecting.</li>
+                <li class="cs-body" style="margin:0">In-thread delivery. Sent chronologically in a personal thread, not a universal ad placement.</li>
+                <li class="cs-body" style="margin:0">Business-initiated. Sent directly from the business to a user, unlike ads served per-user per-placement.</li>
+              </ul>
+            </div>
+
+            <div style="display:flex;gap:2.25rem;flex-wrap:wrap;margin-top:1.75rem">
+              <div>
+                <div style="font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-0.02em">$1B+</div>
+                <div style="font-size:11px;color:var(--text-secondary);margin-top:0.25rem">Business today</div>
+              </div>
+              <div>
+                <div style="font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-0.02em">$9.5B</div>
+                <div style="font-size:11px;color:var(--text-secondary);margin-top:0.25rem">2030 target, of $12.4B paid messaging</div>
+              </div>
+              <div>
+                <div style="font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-0.02em">$5B+</div>
+                <div style="font-size:11px;color:var(--text-secondary);margin-top:0.25rem">Incremental opportunity by 2030</div>
+              </div>
             </div>
           </div>
           <div class="mm-draft-img" style="position:relative;width:432px;flex-shrink:0;align-self:center;--mm-img-w:240px">
@@ -1627,6 +1653,106 @@ window.addEventListener('load', function(){
 
       </div>
 
+      <hr class="cs-rule-thick" style="border-top-color:#DEDBD5;border-top-width:1px">
+
+      <!-- What's Next -->
+      <div class="cs-section" id="cd-nav-northstar">
+        <div class="cs-section-label">What's Next</div>
+
+        <!-- The Gap -->
+        <div id="gap-connect-wrap" style="position:relative;display:flex;gap:3rem;align-items:center;margin-top:0.5rem">
+          <svg id="gap-connect-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:5"></svg>
+          <div style="flex:0 0 44%;min-width:0">
+            <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.75rem">The Gap</div>
+            <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Setup Solved. Responding Wasn't.</h2>
+            <p class="cs-body" style="margin-top:1rem">Conversations solved discoverability. Advertisers could finally find and set up Quick Replies and Auto Reply, but most businesses still can't respond to every consumer message manually, at scale.</p>
+            <p class="cs-body" style="margin-top:1rem">Managing replies manually isn't realistic, and most conversations were still dying unanswered.</p>
+          </div>
+          <div style="flex:0 0 auto;display:flex;justify-content:center">
+            <img id="gap-connect-img" src="the gap.png" alt="A WhatsApp conversation left unanswered" style="width:220px;display:block;border-radius:16px;cursor:zoom-in;box-shadow:0 20px 50px rgba(0,0,0,0.12)" onclick="openLightbox(this.src)">
+          </div>
+          <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:1rem">
+            <div id="gap-box-1" style="background:var(--accent-dim);border-radius:16px;padding:1.25rem 1.5rem">
+              <div style="font-size:14px;font-weight:500;color:#5B4FD6">Consumer replies:</div>
+              <div style="font-size:18px;font-weight:700;color:#1E1B4B;margin-top:0.25rem;letter-spacing:-0.01em">24h free window opens</div>
+            </div>
+            <div style="background:var(--accent-dim);border-radius:16px;padding:1.25rem 1.5rem">
+              <div style="font-size:14px;font-weight:500;color:#5B4FD6">Business doesn't respond:</div>
+              <div style="font-size:18px;font-weight:700;color:#1E1B4B;margin-top:0.25rem;letter-spacing:-0.01em">window closes</div>
+            </div>
+            <div style="background:rgba(196,60,60,0.09);border-radius:16px;padding:1.25rem 1.5rem">
+              <div style="font-size:14px;font-weight:500;color:#B23A3A">Conversations dies.</div>
+              <div style="font-size:18px;font-weight:700;color:#7A1F1F;margin-top:0.25rem;letter-spacing:-0.01em">Opportunity lost</div>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          function drawGapConnect(){
+            var wrap=document.getElementById('gap-connect-wrap');
+            var page=document.getElementById('page-creatives');
+            var svg=document.getElementById('gap-connect-svg');
+            if(!wrap||!page||!page.classList.contains('active')) return;
+            if(!wrap.offsetWidth||window.innerWidth<769){ if(svg) svg.innerHTML=''; return; }
+            var img=document.getElementById('gap-connect-img');
+            var box=document.getElementById('gap-box-1');
+            svg.innerHTML='';
+            var wr=wrap.getBoundingClientRect();
+            var ir=img.getBoundingClientRect();
+            var br=box.getBoundingClientRect();
+            svg.setAttribute('width',wrap.offsetWidth);
+            svg.setAttribute('height',wrap.offsetHeight);
+            var x1=ir.left-wr.left+ir.width*0.95, y1=ir.top-wr.top+ir.height*0.86;
+            var x2=br.left-wr.left, y2=br.top-wr.top+br.height*0.5;
+            var cx=(x1+x2)/2;
+            var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+            path.setAttribute('d','M'+x1+' '+y1+' C'+cx+' '+y1+' '+cx+' '+y2+' '+x2+' '+y2);
+            path.setAttribute('stroke','#7B6FE8');path.setAttribute('stroke-width','1.5');
+            path.setAttribute('fill','none');path.setAttribute('stroke-dasharray','4 3');
+            path.setAttribute('opacity','0.65');
+            svg.appendChild(path);
+            var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+            dot.setAttribute('cx',x1);dot.setAttribute('cy',y1);dot.setAttribute('r','3');
+            dot.setAttribute('fill','#7B6FE8');dot.setAttribute('opacity','0.9');
+            svg.appendChild(dot);
+          }
+          var page=document.getElementById('page-creatives');
+          if(page) new MutationObserver(drawGapConnect).observe(page,{attributes:true,attributeFilter:['class']});
+          window.addEventListener('resize',drawGapConnect);
+        })();
+        </script>
+
+        <!-- North Star -->
+        <div class="cs-fade-split" style="display:flex;gap:3rem;align-items:stretch;margin-top:9rem">
+          <div style="flex:0 0 40%;min-width:0">
+            <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.75rem">Strategy · North Star</div>
+            <h2 class="cs-section-title" style="font-size:clamp(26px,3.2vw,40px)">Business AI Answers Conversations On Its Own</h2>
+            <p class="cs-body" style="margin-top:1rem">Conversations gave advertisers better tools to reply. Business AI removes the need for them to do it manually, inside the same free window, on the same setup surface they already use.</p>
+
+            <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.75rem">
+              <div style="background:var(--accent-dim);border-radius:14px;padding:1.35rem 1.5rem">
+                <div style="font-size:15px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em">Replies for free, on its own</div>
+                <div style="font-size:13px;color:var(--text-secondary);margin-top:0.4rem;line-height:1.6">Answers every consumer reply inside the free 24-hour window.</div>
+              </div>
+              <div style="background:var(--accent-dim);border-radius:14px;padding:1.35rem 1.5rem">
+                <div style="font-size:15px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em">Turn on once, works everywhere</div>
+                <div style="font-size:13px;color:var(--text-secondary);margin-top:0.4rem;line-height:1.6">One switch covers every campaign and message, learning over time.</div>
+              </div>
+              <div style="background:var(--accent-dim);border-radius:14px;padding:1.35rem 1.5rem">
+                <div style="font-size:15px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em">Proven upside</div>
+                <div style="font-size:13px;color:var(--text-secondary);margin-top:0.4rem;line-height:1.6">Real back-and-forth conversations already lift CTR by 11%. Business AI makes that happen automatically, for everyone.</div>
+              </div>
+            </div>
+          </div>
+          <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column">
+            <div style="flex:1 1 auto;min-height:0;overflow:hidden;border-radius:12px">
+              <img src="North star.png" alt="Business AI agent responding to conversations automatically" style="width:100%;height:100%;object-fit:cover;object-position:62% center;display:block;cursor:zoom-in;-webkit-mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)" onclick="openLightbox(this.src)">
+            </div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:0.75rem;text-align:center">Ads Manager · Conversations AI, proposed</div>
+          </div>
+        </div>
+      </div>
+
       <hr class="cs-rule-thick">
 
       <!-- Outcome -->
@@ -1678,7 +1804,7 @@ window.addEventListener('load', function(){
         function initCDNav(){
           var page=document.getElementById('page-creatives');
           if(!page) return;
-          var ids=['cd-nav-background','cd-nav-problem','cd-nav-approach','cd-nav-finaldesign','cd-nav-conversations','cd-nav-outcome'];
+          var ids=['cd-nav-background','cd-nav-problem','cd-nav-approach','cd-nav-finaldesign','cd-nav-conversations','cd-nav-northstar','cd-nav-outcome'];
           var links={};
           document.querySelectorAll('#cd-fixed-nav .cd-nav-link').forEach(function(a){links[a.dataset.target]=a;});
           var sections=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
